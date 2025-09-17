@@ -102,40 +102,82 @@
     .links a.shop::before { content: "🛒 "; }
     .links a.support::before { content: "💬 "; }
     .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .step-number {
-            background-color: #2196f3;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .step-content {
-            flex: 1;
-        }
-        .step-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e90ff;
-            margin-bottom: 8px;
-            text-decoration: underline wavy #1e90ff;
-        }
-        .step-desc {
-            font-size: 14px;
-            color: #1e90ff;
-            line-height: 1.4;
-        }
-        
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .step-number {
+      background-color: #2196f3;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .step-content {
+      flex: 1;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e90ff;
+      margin-bottom: 8px;
+      text-decoration: underline wavy #1e90ff;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: #1e90ff;
+      line-height: 1.4;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      border-left: 4px solid #1e90ff;
+      background-color: #e3f2fd;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #1e90ff;
+    }
+    .close:hover {
+      color: #4169e1;
+    }
+    .modal a {
+      color: #1e90ff;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .modal a:hover {
+      color: #4169e1;
+    }
   </style>
   <script>
     var _hmt = _hmt || [];
@@ -145,6 +187,29 @@
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
+
+    // 控制公告显示的开关，设置为 true 显示，false 不显示
+    const enableAnnouncement = true; // 您可以在这里修改为 false 来关闭公告
+
+    // 页面加载时显示公告弹窗
+    window.onload = function() {
+      const modal = document.getElementById('announcementModal');
+      if (enableAnnouncement) {
+        modal.style.display = 'flex';
+      }
+
+      // 关闭弹窗
+      document.querySelector('.close').addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+
+      // 点击模态背景关闭
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    };
   </script>
 </head>
 <body>
@@ -152,25 +217,22 @@
     <div class="title">ChatGPT Plus 代充系统</div>
     <div class="subtitle">安全、快捷、稳定的代充服务 三步搞定</div>
     <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-            <div class="step-title"><a href="https://yk.dtyuedan.cn//details/31A1EAC9" style="color: #1e90ff; text-decoration: none; font-weight: bold;">购买充值plus卡密(激活码)</a></div>
-            
-        </div>
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title"><a href="https://yk.dtyuedan.cn//details/31A1EAC9" style="color: #1e90ff; text-decoration: none; font-weight: bold;">购买充值plus卡密(激活码)</a></div>
+      </div>
     </div>
     <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-            <div class="step-title"><a href="https://chongzhi.pro/%E6%95%99%E5%AD%A6%E8%A7%86%E9%A2%91.mp4" style="color: #1e90ff; text-decoration: none; font-weight: bold;">观看视频</a></div>
-            
-        </div>
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <div class="step-title"><a href="https://chongzhi.pro/%E6%95%99%E5%AD%A6%E8%A7%86%E9%A2%91.mp4" style="color: #1e90ff; text-decoration: none; font-weight: bold;">观看视频</a></div>
+      </div>
     </div>
     <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-            <div class="step-title"><a href="https://chongzhi.pro/?lang=zh-CN&site=aicygg888" style="color: #1e90ff; text-decoration: blink; font-weight: bold;">进入自助充值系统充值</a></div>
-            
-        </div>
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <div class="step-title"><a href="https://chongzhi.pro/?lang=zh-CN&site=aicygg888" style="color: #1e90ff; text-decoration: none; font-weight: bold;">进入自助充值系统充值</a></div>
+      </div>
     </div>
   </div>
   <div class="card">
@@ -186,6 +248,13 @@
     <a href="https://chongzhi.pro/%E6%95%99%E5%AD%A6%E8%A7%86%E9%A2%91.mp4" target="_blank" class="help">用户使用教程</a>
     <a href="https://yk.dtyuedan.cn//details/31A1EAC9" target="_blank" class="shop">卡密购买</a>
     <a href="https://littlemagic8.github.io/" target="_blank" class="support">在线客服</a>
+  </div>
+  <div id="announcementModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="title">重要公告</div>
+      <p>2025年9月17日 16:51 发布：使用备用系统进行充值服务<a href="https://yk.dtyuedan.cn//details/03612F60" target="_blank">卡密购买</a>以后然后充值<a href="https://www.ow521.com/" target="_blank">GPT充值系统</a>有问题联系：aicygg888</p>
+    </div>
   </div>
 </body>
 </html>
