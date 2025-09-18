@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>ChatGPT Plus 代充系统</title>
   <style>
     body {
@@ -209,13 +212,19 @@
           modal.style.display = 'none';
         }
       });
+
+      // 使用一次性标记避免重复刷新
+      if (!sessionStorage.getItem('loadedOnce')) {
+        window.location.reload(true); // 仅在首次加载时强制刷新
+        sessionStorage.setItem('loadedOnce', 'true'); // 设置标记
+      }
     };
   </script>
 </head>
 <body>
   <div class="card">
-    <div class="title">ChatGPT Plus 代充系统</div>
-    <div class="subtitle">安全、快捷、稳定的代充服务 三步搞定</div>
+    <div class="title">ChatGPT Plus代充系统使用说明</div>
+    <div class="subtitle">安全、快捷、稳定 三步搞定</div>
     <div class="step">
       <div class="step-number">1</div>
       <div class="step-content">
