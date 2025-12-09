@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT 充值 - AI模型服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        body, h1, h2, h3, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 头部导航栏 (样式保持不变) */
+        .main-header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; justify-content: space-between; }
+        .logo-container { display: flex; align-items: center; }
+        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
+        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
+        .main-nav ul { list-style: none; display: flex; gap: 25px; }
+        .main-nav ul li a { text-decoration: none; color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+        .main-nav ul li a:hover { color: #6f42c1; }
+        
+        /* 主体内容 */
+        .main-content { padding: 40px 0; }
+        .purchase-layout { display: flex; gap: 30px; }
+        .iframe-container { flex-grow: 1; height: 85vh; }
+        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; }
+
+        /* 右侧边栏 */
+        .sidebar { width: 280px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; }
+        .sidebar h3 { font-size: 20px; color: #343a40; margin-bottom: 15px; text-align: center; }
+        .sidebar p { color: #6c757d; margin-bottom: 25px; font-size: 15px; text-align: center; }
+        
+        /* 渠道按钮 */
+        .channel-btn { 
+            display: block; 
+            background-color: #f8f9fa; 
+            color: #495057; 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+            cursor: pointer;
+        }
+        .channel-btn:hover { 
+            border-color: #6f42c1;
+            color: #6f42c1;
+        }
+        /* 选中状态的按钮 */
+        .channel-btn.active {
+            background-color: #6f42c1;
+            color: #fff;
+            border-color: #6f42c1;
+            box-shadow: 0 4px 8px rgba(111, 66, 193, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .purchase-link {
+            font-size: 14px;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        .purchase-link a {
+            color: #6f42c1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .purchase-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header container">
+        <div class="logo-container">
+            <div class="logo">G</div>
+            <div class="logo-text">
+                <h1>AI Pro Service</h1>
+                <span class="subtitle">GPT/Claude/Gemini 充值</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="./index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
+                <li><a href="#"><i class="fa-solid fa-bolt"></i> 一键升级</a></li>
+                <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex额度</a></li>
+                <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini等</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+            <div class="more-services">
+                更多服务 <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div> 
+    </header>
+
+    <main class="main-content container">
+        <div class="purchase-layout">
+            <!-- 左侧 iframe，默认加载渠道一的系统 -->
+            <div class="iframe-container">
+                <iframe id="recharge-iframe" src="https://9977ai.vip/" title="充值网站"></iframe>
+            </div>
+
+            <!-- 右侧边栏 -->
+            <aside class="sidebar">
+                <h3>GPT 充值</h3>
+                <p>请先选择充值系统，然后点击对应渠道购买卡密。</p>
+                <p></p>
+                <p>*卡密购买成功后回到本页面充值即可*</p>
+
+                <!-- 渠道一 -->
+                <div id="btn-ch1" class="channel-btn active" data-target-url="https://9977ai.vip/">充值系统：渠道一</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/item/l8fpil" target="_blank">购买 “渠道一” 卡密 &raquo;</a></p>
+
+                <!-- 渠道二 -->
+                <div id="btn-ch2" class="channel-btn" data-target-url="https://gptget.pro/">充值系统：渠道二</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/2tnsn1" target="_blank">购买 “渠道二” 卡密 &raquo;</a></p>
+
+                <!-- 渠道三 -->
+                <div id="btn-ch3" class="channel-btn" data-target-url="https://plus.aicheap.vip/">充值系统：渠道三</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/txa6nx" target="_blank">购买 “渠道三” 卡密 &raquo;</a></p>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // 获取 iframe 元素
+        const iframe = document.getElementById('recharge-iframe');
+        // 获取所有渠道按钮
+        const channelButtons = document.querySelectorAll('.channel-btn');
+
+        // 为每个按钮添加点击事件
+        channelButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的 'active' 状态
+                channelButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // 为当前点击的按钮添加 'active' 状态
+                this.classList.add('active');
+                
+                // 获取该按钮绑定的目标 URL
+                const targetUrl = this.getAttribute('data-target-url');
+                
+                // 将 iframe 的 src 更新为目标 URL
+                iframe.src = targetUrl;
+            });
+        });
+    </script>
+
+</body>
+</html>

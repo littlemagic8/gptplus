@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude 充值 - AI模型服务</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS 样式与 gpt-purchase.html 完全一致，此处为了简洁省略，实际使用时请复制过来 */
+        body, h1, h2, h3, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .main-header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; justify-content: space-between; }
+        .logo-container { display: flex; align-items: center; }
+        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
+        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
+        .main-nav ul { list-style: none; display: flex; gap: 25px; }
+        .main-nav ul li a { text-decoration: none; color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+        .main-nav ul li a:hover { color: #6f42c1; }
+        .main-nav ul li a i { color: #888; }
+        .user-actions { display: flex; align-items: center; gap: 15px; }
+        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
+        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
+        .more-services { font-size: 16px; color: #495057; cursor: pointer; }
+        .main-content { padding: 40px 0; }
+        .purchase-layout { display: flex; gap: 30px; }
+        .iframe-container { flex-grow: 1; height: 85vh; }
+        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; }
+        .sidebar { width: 280px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; }
+        .sidebar h3 { font-size: 20px; color: #343a40; margin-bottom: 15px; text-align: center; }
+        .sidebar p { color: #6c757d; margin-bottom: 25px; font-size: 15px; text-align: center; }
+        .btn { display: block; background-color: #6f42c1; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.3s ease; text-align: center; }
+        .btn:hover { background-color: #59369a; }
+    </style>
+</head>
+<body>
+
+    <!-- 头部导航栏 -->
+    <header class="main-header container">
+        <div class="logo-container">
+            <div class="logo">G</div>
+            <div class="logo-text">
+                <h1>AI Pro Service</h1>
+                <span class="subtitle">GPT/Claude/Gemini 充值</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="./index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
+                <li><a href="#"><i class="fa-solid fa-bolt"></i> 一键升级</a></li>
+                <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex额度</a></li>
+                <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini等</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+            <div class="more-services">
+                更多服务 <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div> 
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="main-content container">
+        <div class="purchase-layout">
+            <!-- 左侧 iframe，加载 Claude 充值链接 -->
+            <div class="iframe-container">
+                <iframe src="https://quickplus.vip/" title="Claude 充值网站"></iframe>
+            </div>
+
+            <!-- 右侧边栏 -->
+            <aside class="sidebar">
+                <h3>没有卡密？</h3>
+                <p>请先购买卡密，再到左侧网站进行充值。</p>
+                <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/w7vxwg" target="_blank" class="btn">前往购买</a>
+            </aside>
+        </div>
+    </main>
+
+</body>
+</html>

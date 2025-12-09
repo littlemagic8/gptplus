@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok 手动代充 - AI模型服务</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS 基础重置和通用样式 */
+        body, h1, h2, h3, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .main-header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; justify-content: space-between; }
+        .logo-container { display: flex; align-items: center; }
+        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
+        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
+        .main-nav ul { list-style: none; display: flex; gap: 25px; }
+        .main-nav ul li a { text-decoration: none; color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+        .main-nav ul li a:hover { color: #6f42c1; }
+        .main-nav ul li a i { color: #888; }
+        .user-actions { display: flex; align-items: center; gap: 15px; }
+        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
+        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
+        .more-services { font-size: 16px; color: #495057; cursor: pointer; }
+        
+        /* 页面主体 */
+        .main-content { padding: 40px 0; }
+        
+        /* Grok 专属介绍卡片 */
+        .grok-info-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            text-align: center;
+        }
+        .grok-info-card .icon { font-size: 48px; color: #6f42c1; margin-bottom: 20px; }
+        .grok-info-card h2 { font-size: 32px; color: #343a40; margin-bottom: 15px; }
+        .grok-info-card .tagline { font-size: 18px; color: #6c757d; margin-bottom: 30px; }
+        
+        .features { list-style: none; display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .features li { font-size: 15px; color: #495057; background-color: #f8f9fa; padding: 8px 15px; border-radius: 20px; }
+        
+        .process-title { font-size: 20px; color: #343a40; margin-top: 30px; margin-bottom: 20px; }
+        
+        /* 联系方式区域 */
+        .contact-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .contact-info p { margin-bottom: 10px; font-size: 16px; color: #333; }
+        .contact-info .wechat-id { font-weight: bold; font-size: 20px; color: #6f42c1; background-color: #fff; padding: 5px 10px; border-radius: 6px; }
+        .qr-code img { width: 160px; height: 160px; border-radius: 8px; border: 1px solid #ddd; }
+        
+        .security-note { margin-top: 30px; font-size: 14px; color: #888; }
+    </style>
+</head>
+<body>
+
+    <!-- 头部导航栏 -->
+    <header class="main-header container">
+        <div class="logo-container">
+            <div class="logo">G</div>
+            <div class="logo-text">
+                <h1>AI Pro Service</h1>
+                <span class="subtitle">GPT/Claude/Gemini 充值</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="./index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
+                <li><a href="#"><i class="fa-solid fa-bolt"></i> 一键升级</a></li>
+                <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex额度</a></li>
+                <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini等</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+            <div class="more-services">
+                更多服务 <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>        
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="main-content container">
+        <div class="grok-info-card">
+            <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+            <h2>Grok Premium 手动代充服务</h2>
+            <p class="tagline">解锁 xAI 的前沿模型，体验实时、幽默、无限制的 AI 对话。</p>
+            
+            <ul class="features">
+                <li><i class="fa-solid fa-bolt"></i> 实时联网</li>
+                <li><i class="fa-solid fa-face-grin-wink"></i> 独特个性</li>
+                <li><i class="fa-solid fa-infinity"></i> 更少限制</li>
+            </ul>
+
+            <p>由于 Grok 官方充值渠道限制，我们为您提供专业、安全的人工代充值服务。</p>
+            
+            <h3 class="process-title">代充流程</h3>
+
+            <div class="contact-section">
+                <div class="qr-code">
+                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                </div>
+                <div class="contact-info">
+                    <p><strong>第一步：</strong>请扫描左侧二维码<br>或搜索微信号添加客服：</p>
+                    <p class="wechat-id">aicygg888</p>
+                    <p><strong>第二步：</strong>请提供您的账号和密码，<br>我们的客服将引导您完成支付和充值。</p>
+                </div>
+            </div>
+
+            <p class="security-note">
+                <strong>安全提示：</strong>我们承诺全程保障您的账号信息安全。充值成功后，建议您立即修改密码。
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,277 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>ChatGPT Plus 代充系统</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f5ff; /* 浅蓝色背景 */ /* #D094EA;  浅紫色背景 */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      color: #333;
-    }
-    .card {
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      padding: 25px;
-      margin: 15px;
-      text-align: center;
-      width: 80%;
-      max-width: 450px;
-      /* overflow: visible; */
-      /* overflow: auto; 允许溢出内容显示 */
-      /* word-wrap: break-word; 确保长文本换行 */
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .title {
-      font-size: 1.8em;
-      color: #1e90ff;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    .subtitle {
-      font-size: 1.1em;
-      color: #555;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: linear-gradient(45deg, #1e90ff, #4169e1);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 25px;
-      margin: 8px;
-      font-size: 1em;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3);
-    }
-    .btn:hover {
-      background: linear-gradient(45deg, #4169e1, #1e90ff);
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(30, 144, 255, 0.4);
-    }
-    .footer {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-    }
-    .links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .links a {
-      padding: 12px 25px;
-      background: linear-gradient(45deg, #1e90ff, #4169e1);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 25px;
-      font-size: 1em;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .links a:hover {
-      background: linear-gradient(45deg, #4169e1, #1e90ff);
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(30, 144, 255, 0.4);
-    }
-    .links a i {
-      margin-right: 8px;
-      font-style: normal;
-    }
-    .links a.help::before { content: "📚 "; }
-    .links a.shop::before { content: "🛒 "; }
-    .links a.support::before { content: "💬 "; }
-    .step {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-    .step-number {
-      background-color: #2196f3;
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-    .step-content {
-      flex: 1;
-    }
-    .step-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #1e90ff;
-      margin-bottom: 8px;
-      text-decoration: underline wavy #1e90ff;
-    }
-    .step-desc {
-      font-size: 14px;
-      color: #1e90ff;
-      line-height: 1.4;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: relative;
-      border-left: 4px solid #1e90ff;
-      background-color: #e3f2fd;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #1e90ff;
-    }
-    .close:hover {
-      color: #4169e1;
-    }
-    .modal a {
-      color: #1e90ff;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-    .modal a:hover {
-      color: #4169e1;
-    }
-  </style>
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?15012a2d5108ebb2f3155e11e66c581d";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI服务代充值服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .main-header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; justify-content: space-between; }
+        .logo-container { display: flex; align-items: center; }
+        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
+        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
+        .main-nav ul { list-style: none; display: flex; gap: 25px; }
+        .main-nav ul li a { text-decoration: none; color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+        .main-nav ul li a:hover { color: #6f42c1; }
+        .main-nav ul li a i { color: #888; }
+        .user-actions { display: flex; align-items: center; gap: 15px; }
+        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; text-decoration: none; }
+        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
+        
+        /* 更多服务下拉菜单 */
+        .more-services { position: relative; }
+        .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 120%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 1; text-align: center; }
+        .more-services:hover .dropdown-content { display: block; }
+        .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;}
+        .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
+        .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
 
-    // 控制公告显示的开关，设置为 true 显示，false 不显示
-    const enableAnnouncement = true; // 您可以在这里修改为 false 来关闭公告
-
-    // 页面加载时显示公告弹窗
-    window.onload = function() {
-      const modal = document.getElementById('announcementModal');
-      if (enableAnnouncement) {
-        modal.style.display = 'flex';
-      }
-
-      // 关闭弹窗
-      document.querySelector('.close').addEventListener('click', function() {
-        modal.style.display = 'none';
-      });
-
-      // 点击模态背景关闭
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-
-      // 使用一次性标记避免重复刷新
-      if (!sessionStorage.getItem('loadedOnce')) {
-        window.location.reload(true); // 仅在首次加载时强制刷新
-        sessionStorage.setItem('loadedOnce', 'true'); // 设置标记
-      }
-    };
-  </script>
+        .main-content { padding: 40px 0; }
+        .welcome-section { text-align: center; padding: 60px 20px; background-color: #fff; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .welcome-section h1 { font-size: 42px; color: #343a40; margin-bottom: 15px; }
+        .welcome-section p { font-size: 18px; color: #6c757d; max-width: 600px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .service-card { background-color: #fff; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
+        .service-card .icon { font-size: 48px; color: #6f42c1; margin-bottom: 20px; }
+        .service-card h2 { font-size: 24px; color: #343a40; margin-bottom: 15px; }
+        .service-card p { color: #6c757d; margin-bottom: 25px; min-height: 40px; }
+        .btn { display: inline-block; background-color: #6f42c1; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.3s ease; }
+        .btn:hover { background-color: #59369a; }
+        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <div class="title">ChatGPT Plus代充系统使用说明</div>
-    <div class="subtitle">安全、快捷、稳定 三步搞定</div>
-    <div class="step">
-      <div class="step-number">1</div>
-      <div class="step-content">
-        <div class="step-title"><a href="https://sc.dtyuedan.cn/item/l8fpil" style="color: #1e90ff; text-decoration: none; font-weight: bold;">购买充值plus卡密(激活码)</a></div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-number">2</div>
-      <div class="step-content">
-        <div class="step-title"><a href="https://chongzhi.pro/%E6%95%99%E5%AD%A6%E8%A7%86%E9%A2%91.mp4" style="color: #1e90ff; text-decoration: none; font-weight: bold;">观看视频</a></div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-number">3</div>
-      <div class="step-content">
-        <div class="step-title"><a href="https://chongzhi.pro/?lang=zh-CN&site=aicygg888" style="color: #1e90ff; text-decoration: none; font-weight: bold;">进入自助充值系统充值</a></div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="title">欢迎使用 ChatGPT Plus 代充系统</div>
-    <div class="subtitle">请点击下方按钮开始代充流程</div>
-    <a href="https://chongzhi.pro/?lang=zh-CN&site=aicygg888" class="btn">开始充值</a>
-  </div>
-  <div class="footer">
-    © 2025 ChatGPT Plus 充值系统. <a href="https://littlemagic8.github.io/2025/08/07/how-to-update-plus/" target="_blank" style="color: #ff1e1e; text-decoration: underline;">注意：plus会员账号过期或者本身没有会员(free)才能充值</a>.<br>
-    使用本服务前请阅读我们的<a href="https://littlemagic8.github.io/2025/08/07/how-to-update-plus/" target="_blank" style="color: #1e90ff; text-decoration: underline;">服务条款</a>和<a href="https://littlemagic8.github.io/2025/08/07/how-to-update-plus/" target="_blank" style="color: #1e90ff; text-decoration: underline;">图文教程</a>.
-  </div>
-  <div class="links">
-    <a href="https://chongzhi.pro/%E6%95%99%E5%AD%A6%E8%A7%86%E9%A2%91.mp4" target="_blank" class="help">用户使用教程</a>
-    <a href="https://fe.dtyuedan.cn/item/l8fpil" target="_blank" class="shop">卡密购买</a>
-    <a href="https://littlemagic8.github.io/" target="_blank" class="support">在线客服</a>
-  </div>
-  <div id="announcementModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="title">重要公告</div>
-      <p>2025年11月2日 16:09 发布：选择有货的系统进行充值GPT Plus服务，如果都缺货可以找我手动代充~</p>
-      <p><a href="" target="_blank" style="color: #ff1e1e; text-decoration: underline;">注意：站长为防止限购缺货，提供了多种plus自助充值方式，有货就可以买，缺货时请添加客服微信（aicygg888）上货</a></p>
-        <p><a style="color: #cb1eff;">"卡密购买链接" 若打不开或很慢，请关闭外网</a></p>
-        <p>自助plus充值1：<a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/ljd1qf" target="_blank">卡密购买</a>后，卡密账单提供有教程和系统！</p>
-        <p>自助plus充值2：<a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/2tnsn1" target="_blank">卡密购买</a>后，卡密账单提供有教程和系统！</p>
-        <p>自助plus充值3：<a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/txa6nx" target="_blank">卡密购买</a>后，卡密账单提供有教程和系统！</p>
-        <p><a href="https://fe.dtyuedan.cn/item/se49e1" target="_blank" style="color: #ff1e1e; text-decoration: underline;">温馨提示：新增已经充值好chatgptplus，注意！！！！！ 这不是给你的账号充值 ，而是购买一个全新账号！</a><a href="https://fe.dtyuedan.cn/item/se49e1" target="_blank"> plus成品购买点击</a> 有货就可以买，缺货时请添加客服微信（aicygg888）上货</p>
-        <p>有问题联系客服：aicygg888<a href="https://littlemagic8.github.io/img/me.jpg" >扫一扫添加好友</a></p>
-      <!-- <p>2025年9月29日 23:36 发布：因上游银行产能原因，需要充值/代充各类AI服务 ChatGPT Plus(Team) 请添加微信：aicygg888 <a href="https://littlemagic8.github.io/img/me.jpg" >扫一扫添加好友</a></p> -->
-    </div>
-  </div>
+
+    <header class="main-header container">
+        <div class="logo-container">
+            <div class="logo">G</div>
+            <div class="logo-text">
+                <h1>AI Pro Service</h1>
+                <span class="subtitle">GPT/Claude/Gemini 充值</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house"></i> 首页</a></li>
+                <li><a href="#"><i class="fa-solid fa-bolt"></i> 一键升级</a></li>
+                <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex额度</a></li>
+                <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini等</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+            <div class="more-services">
+                <div class="more-services-btn">
+                    更多服务 <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content">
+                    <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888</span></p>
+                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="welcome-section">
+            <h1>AI模型服务 一站式自助解决方案</h1>
+            <p>为您提供快速、安全、便捷的 GPT Plus, Claude Pro, Gemini Pro, Super Grok 等主流AI模型升级与代充值服务，如需其它产品请添加客服微信咨询：aicygg888。</p>
+        </section>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon"><i class="fa-brands fa-superpowers"></i></div>
+                <h2>GPT</h2>
+                <p>体验最前沿的通用人工智能，解锁 GPT-5 codex的强大能力。</p>
+                <a href="purchase-gpt.html" class="btn">立即充值</a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fa-solid fa-c"></i></div>
+                <h2>Claude</h2>
+                <p>Anthropic 出品的强大对话模型，擅长长文本处理和深度对话。</p>
+                <a href="purchase-claude.html" class="btn">立即充值</a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fa-solid fa-gem"></i></div>
+                <h2>Gemini</h2>
+                <p>Google 推出的新一代多模态大模型，原生支持文本、图片和视频。</p>
+                <a href="purchase-gemini.html" class="btn">立即充值</a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+                <h2>Grok</h2>
+                <p>xAI 打造的AI模型，以实时信息获取和独特的成人幽默感为特色。</p>
+                <a href="purchase-grok.html" class="btn">立即充值</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
