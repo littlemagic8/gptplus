@@ -7,23 +7,74 @@
     <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CSS 基础重置和通用样式 */
-        body, h1, h2, h3, h4, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.7; }
+        /* 1. CSS 进行了大幅增强 */
+        
+        /* 基础重置 */
+        :root { --header-height: 71px; }
+        body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .main-header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; justify-content: space-between; }
-        .logo-container { display: flex; align-items: center; }
+        a { text-decoration: none; }
+
+        /* --- 响应式导航栏核心样式 (新增/修改) --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid #e9ecef;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+        .logo-container { display: flex; align-items: center; flex-shrink: 0; }
         .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
         .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
         .logo-text .subtitle { font-size: 12px; color: #6c757d; }
-        .main-nav ul { list-style: none; display: flex; gap: 25px; }
-        .main-nav ul li a { text-decoration: none; color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
-        .main-nav ul li a:hover { color: #6f42c1; }
+
+        /* 桌面导航容器 */
+        .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; /* 移除了 overflow: hidden; */ }
+        .main-nav ul { list-style: none; display: flex; align-items: center; }
+        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
+        .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; }
         .main-nav ul li a i { color: #888; }
-        .user-actions { display: flex; align-items: center; gap: 15px; }
-        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
+
+        /* “更多”下拉菜单 */
+        .nav-more-item { position: relative; }
+        .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .nav-more-item:hover .nav-more-list { display: block; }
+
+        .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
+        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
         .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
-        .more-services { font-size: 16px; color: #495057; cursor: pointer; }
+
+        /* 更多服务下拉菜单 */
+        .more-services { position: relative; }
+        .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 1; text-align: center; }
+        .more-services:hover .dropdown-content { display: block; }
+        .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;}
+        .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
+        .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
+
+        /* 移动端菜单 */
+        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+        .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .mobile-nav-menu.active { display: flex; }
+        .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
+        .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
+        .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        
+        /* 响应式断点 */
+        @media (max-width: 1024px) {
+            .desktop-nav { display: none; }
+            .mobile-nav-toggle { display: block; }
+        }
         
         /* 页面主体 */
         .main-content { padding: 40px 0; }
@@ -74,29 +125,55 @@
 </head>
 <body>
 
-    <!-- 头部导航栏 -->
-    <header class="main-header container">
-        <div class="logo-container">
-            <div class="logo">G</div>
-            <div class="logo-text">
-                <h1>AI Pro Service</h1>
-                <span class="subtitle">GPT/Claude/Gemini 充值</span>
+    <!-- 2. HTML 结构已重组 -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo">AI</div>
+                <div class="logo-text">
+                    <h1>AI Pro Service</h1>
+                    <span class="subtitle">GPT/Claude/Gemini 充值</span>
+                </div>
+            </a>
+
+            <!-- 桌面导航 (JS会控制) -->
+            <div class="desktop-nav">
+                <nav class="main-nav">
+                    <ul>
+                        <!-- 使用了您提供的最新文本 -->
+                        <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
+                        <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex</a></li>
+                        <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                        <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
+                        <!-- “更多”下拉菜单的占位符 -->
+                        <li class="nav-more-item" style="display: none;">
+                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
+                            <ul class="nav-more-list"></ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+                    <div class="more-services">
+                        <div class="more-services-btn">
+                            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888</span></p>
+                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="./index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
-                <li><a href="#"><i class="fa-solid fa-bolt"></i> 一键升级</a></li>
-                <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex额度</a></li>
-                <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini等</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
-            <button class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</button>
-            <div class="more-services">
-                更多服务 <i class="fa-solid fa-chevron-down"></i>
-            </div>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <!-- 移动端展开的菜单 (JS会填充) -->
+            <div class="mobile-nav-menu"></div>
         </div>
     </header>
 
@@ -135,6 +212,93 @@
             </aside>
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+            const desktopNav = document.querySelector('.desktop-nav');
 
+            const populateMobileMenu = () => {
+                if (!desktopNav || !mobileNavMenu) return;
+                const navContent = desktopNav.innerHTML;
+                mobileNavMenu.innerHTML = navContent;
+                const mobileUserActions = mobileNavMenu.querySelector('.user-actions');
+                const mobileNavList = mobileNavMenu.querySelector('.main-nav ul');
+                if (mobileUserActions && mobileNavList) {
+                    const actionsClone = mobileUserActions.cloneNode(true);
+                    actionsClone.classList.add('user-actions-mobile');
+                    mobileNavList.appendChild(actionsClone);
+                    mobileUserActions.remove();
+                }
+            };
+            
+            populateMobileMenu();
+
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', () => {
+                    mobileNavMenu.classList.toggle('active');
+                });
+            }
+
+            const mainNavList = document.querySelector('.main-nav > ul');
+            if (!mainNavList) return;
+
+            const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
+            const moreItem = document.querySelector('.nav-more-item');
+            const moreList = document.querySelector('.nav-more-list');
+
+            function updateDesktopNav() {
+                if (!moreItem || !moreList || !desktopNav) return;
+
+                if (window.innerWidth <= 1024) {
+                    moreItem.style.display = 'none';
+                    return;
+                }
+
+                moreList.innerHTML = '';
+                allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem));
+                moreItem.style.display = 'none';
+
+                let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
+
+                if (isOverflowing) {
+                    moreItem.style.display = 'flex';
+                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
+                }
+
+                let i = allNavItems.length - 1;
+                while (isOverflowing && i >= 0) {
+                    const itemToMove = allNavItems[i];
+                    if (itemToMove.parentNode === mainNavList) {
+                        moreList.prepend(itemToMove);
+                    }
+                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
+                    i--;
+                }
+            }
+
+             // --- 核心修改点在这里 ---
+             function handleResize() {
+                // 1. 运行桌面菜单的折叠逻辑
+                updateDesktopNav();
+
+                // 2. 新增：检查并关闭移动菜单
+                // 如果窗口宽度大于1024px（即进入桌面视图）
+                if (window.innerWidth > 1024) {
+                    // 强制移除移动菜单的 'active' 类，使其隐藏
+                    mobileNavMenu.classList.remove('active');
+                }
+            }
+
+            // 初始加载时运行
+            handleResize();
+
+            // 监听窗口大小变化
+            window.addEventListener('resize', handleResize);
+
+            // updateDesktopNav();
+            // window.addEventListener('resize', updateDesktopNav);
+        });
+    </script>
 </body>
 </html>
