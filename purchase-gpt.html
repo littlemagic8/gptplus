@@ -6,134 +6,43 @@
     <title>GPT 充值 - AI模型服务</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 1. CSS 进行了大幅增强 */
+        /* 粘贴 index.html 的全部 CSS 样式到这里 */
+        :root { --header-height: 71px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+
+        /* --- purchase-gpt.html 专属样式 --- */
+        .main-content { padding: 40px 20px; } 
+        .purchase-layout { display: flex; gap: 30px; } 
+        .iframe-container { flex-grow: 1; height: 85vh; } 
+        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; } 
+        .sidebar { width: 280px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; } 
+        .sidebar h3 { font-size: 20px; color: #343a40; margin-bottom: 15px; text-align: center; } 
+        .sidebar p { color: #6c757d; margin-bottom: 25px; font-size: 15px; text-align: center; } 
+        .channel-btn { display: block; background-color: #f8f9fa; color: #495057; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; text-align: center; margin-bottom: 15px; border: 1px solid #dee2e6; cursor: pointer; } 
+        .channel-btn:hover { border-color: #6f42c1; color: #6f42c1; } 
+        .channel-btn.active { background-color: #6f42c1; color: #fff; border-color: #6f42c1; box-shadow: 0 4px 8px rgba(111, 66, 193, 0.2); transform: translateY(-2px); } 
+        .purchase-link { font-size: 14px; text-align: center; margin-top: -10px; margin-bottom: 20px; } 
+        .purchase-link a { color: #6f42c1; text-decoration: none; font-weight: 500; } 
+        .purchase-link a:hover { text-decoration: underline; } 
+        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; }
         
-        /* 基础重置 */
-        :root { --header-height: 71px; }
-        body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; }
-
-        /* --- 响应式导航栏核心样式 (新增/修改) --- */
-        .main-header {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid #e9ecef;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: box-shadow 0.3s ease;
+        /* --- 核心修改点：添加移动端响应式布局 --- */
+        @media (max-width: 768px) {
+            .purchase-layout {
+                flex-direction: column; /* 1. 将布局从横向变为垂直堆叠 */
+            }
+            .sidebar {
+                width: 100%; /* 2. 让侧边栏宽度占满整个屏幕 */
+                margin-top: 30px; /* 3. 在iframe和侧边栏之间增加一些间距 */
+            }
+            .iframe-container {
+                height: 70vh; /* 4. 适当调整iframe的高度，以在手机上获得更好的浏览体验 */
+            }
         }
-
-        .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-        .logo-container { display: flex; align-items: center; flex-shrink: 0; }
-        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
-        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
-        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
-
-        /* 桌面导航容器 */
-        .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; /* 移除了 overflow: hidden; */ }
-        .main-nav ul { list-style: none; display: flex; align-items: center; }
-        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
-        .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; }
-        .main-nav ul li a i { color: #888; }
-
-        /* “更多”下拉菜单 */
-        .nav-more-item { position: relative; }
-        .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-        .nav-more-item:hover .nav-more-list { display: block; }
-
-        .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
-        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
-        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
-
-        /* 更多服务下拉菜单 */
-        .more-services { position: relative; }
-        .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-        .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 1; text-align: center; }
-        .more-services:hover .dropdown-content { display: block; }
-        .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;}
-        .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
-        .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
-
-        /* 移动端菜单 */
-        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
-        .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .mobile-nav-menu.active { display: flex; }
-        .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
-        .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
-        .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        
-        /* 响应式断点 */
-        @media (max-width: 1024px) {
-            .desktop-nav { display: none; }
-            .mobile-nav-toggle { display: block; }
-        }
-        
-        /* 主体内容 */
-        .main-content { padding: 40px 0; }
-        .purchase-layout { display: flex; gap: 30px; }
-        .iframe-container { flex-grow: 1; height: 85vh; }
-        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; }
-
-        /* 右侧边栏 */
-        .sidebar { width: 280px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; }
-        .sidebar h3 { font-size: 20px; color: #343a40; margin-bottom: 15px; text-align: center; }
-        .sidebar p { color: #6c757d; margin-bottom: 25px; font-size: 15px; text-align: center; }
-        
-        /* 渠道按钮 */
-        .channel-btn { 
-            display: block; 
-            background-color: #f8f9fa; 
-            color: #495057; 
-            padding: 12px 24px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: 500; 
-            transition: all 0.3s ease; 
-            text-align: center; 
-            margin-bottom: 15px;
-            border: 1px solid #dee2e6;
-            cursor: pointer;
-        }
-        .channel-btn:hover { 
-            border-color: #6f42c1;
-            color: #6f42c1;
-        }
-        /* 选中状态的按钮 */
-        .channel-btn.active {
-            background-color: #6f42c1;
-            color: #fff;
-            border-color: #6f42c1;
-            box-shadow: 0 4px 8px rgba(111, 66, 193, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .purchase-link {
-            font-size: 14px;
-            text-align: center;
-            margin-top: -10px;
-            margin-bottom: 20px;
-        }
-        .purchase-link a {
-            color: #6f42c1;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .purchase-link a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- 2. HTML 结构已重组 -->
+    <!-- 标准化 Header -->
     <header class="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo-container">
@@ -143,8 +52,6 @@
                     <span class="subtitle">GPT/Claude/Gemini 充值</span>
                 </div>
             </a>
-
-            <!-- 桌面导航 (JS会控制) -->
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
@@ -174,155 +81,69 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 移动端汉堡菜单按钮 -->
             <button class="mobile-nav-toggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            
-            <!-- 移动端展开的菜单 (JS会填充) -->
             <div class="mobile-nav-menu"></div>
         </div>
     </header>
 
+    <!-- 专属主体内容 -->
     <main class="main-content container">
         <div class="purchase-layout">
-            <!-- 左侧 iframe，默认加载渠道一的系统 -->
             <div class="iframe-container">
                 <iframe id="recharge-iframe" src="https://9977ai.vip/" title="充值网站"></iframe>
             </div>
-
-            <!-- 右侧边栏 -->
             <aside class="sidebar">
                 <h3>GPT 充值</h3>
-                <p>请先选择充值系统，然后点击对应渠道购买卡密。</p>
-                <p></p>
-                <p>*卡密购买成功后回到本页面充值即可*</p>
-
-                <!-- 渠道一 -->
-                <div id="btn-ch1" class="channel-btn active" data-target-url="https://9977ai.vip/">充值系统：渠道一</div>
-                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/item/l8fpil" target="_blank">购买 “渠道一” 卡密 &raquo;</a></p>
-
-                <!-- 渠道二 -->
-                <div id="btn-ch2" class="channel-btn" data-target-url="https://gptget.pro/">充值系统：渠道二</div>
-                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/2tnsn1" target="_blank">购买 “渠道二” 卡密 &raquo;</a></p>
-
-                <!-- 渠道三 -->
-                <div id="btn-ch3" class="channel-btn" data-target-url="https://plus.aicheap.vip/">充值系统：渠道三</div>
-                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/txa6nx" target="_blank">购买 “渠道三” 卡密 &raquo;</a></p>
+                <p>请先选择充值系统，然后点击购买卡密。</p>
+                <div id="btn-ch1" class="channel-btn active" data-target-url="https://9977ai.vip/">选择：渠道一</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/item/l8fpil" target="_blank">购买渠道一卡密 &raquo;</a></p>
+                <div id="btn-ch2" class="channel-btn" data-target-url="https://gptget.pro/">选择：渠道二</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/2tnsn1" target="_blank">购买渠道二卡密 &raquo;</a></p>
+                <div id="btn-ch3" class="channel-btn" data-target-url="https://plus.aicheap.vip/">选择：渠道三</div>
+                <p class="purchase-link"><a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/txa6nx" target="_blank">购买渠道三卡密 &raquo;</a></p>
             </aside>
         </div>
     </main>
 
-    <script>
-        // 获取 iframe 元素
-        const iframe = document.getElementById('recharge-iframe');
-        // 获取所有渠道按钮
-        const channelButtons = document.querySelectorAll('.channel-btn');
+    <!-- 标准化 Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
+    </footer>
 
-        // 为每个按钮添加点击事件
-        channelButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // 移除所有按钮的 'active' 状态
-                channelButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // 为当前点击的按钮添加 'active' 状态
-                this.classList.add('active');
-                
-                // 获取该按钮绑定的目标 URL
-                const targetUrl = this.getAttribute('data-target-url');
-                
-                // 将 iframe 的 src 更新为目标 URL
-                iframe.src = targetUrl;
-            });
-        });
+    <!-- 标准化 Script + 页面专属 Script -->
+    <script>
+        // --- 导航栏通用逻辑 ---
         document.addEventListener('DOMContentLoaded', () => {
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
             const mobileNavMenu = document.querySelector('.mobile-nav-menu');
             const desktopNav = document.querySelector('.desktop-nav');
-
-            const populateMobileMenu = () => {
-                if (!desktopNav || !mobileNavMenu) return;
-                const navContent = desktopNav.innerHTML;
-                mobileNavMenu.innerHTML = navContent;
-                const mobileUserActions = mobileNavMenu.querySelector('.user-actions');
-                const mobileNavList = mobileNavMenu.querySelector('.main-nav ul');
-                if (mobileUserActions && mobileNavList) {
-                    const actionsClone = mobileUserActions.cloneNode(true);
-                    actionsClone.classList.add('user-actions-mobile');
-                    mobileNavList.appendChild(actionsClone);
-                    mobileUserActions.remove();
-                }
-            };
-            
+            const populateMobileMenu = () => { if (!desktopNav || !mobileNavMenu) return; const navContent = desktopNav.innerHTML; mobileNavMenu.innerHTML = navContent; const mobileUserActions = mobileNavMenu.querySelector('.user-actions'); const mobileNavList = mobileNavMenu.querySelector('.main-nav ul'); if (mobileUserActions && mobileNavList) { const actionsClone = mobileUserActions.cloneNode(true); actionsClone.classList.add('user-actions-mobile'); mobileNavList.appendChild(actionsClone); mobileUserActions.remove(); } };
             populateMobileMenu();
-
-            if (mobileNavToggle) {
-                mobileNavToggle.addEventListener('click', () => {
-                    mobileNavMenu.classList.toggle('active');
-                });
-            }
-
+            if (mobileNavToggle) { mobileNavToggle.addEventListener('click', () => { mobileNavMenu.classList.toggle('active'); }); }
             const mainNavList = document.querySelector('.main-nav > ul');
             if (!mainNavList) return;
-
             const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
             const moreItem = document.querySelector('.nav-more-item');
             const moreList = document.querySelector('.nav-more-list');
-
-            function updateDesktopNav() {
-                if (!moreItem || !moreList || !desktopNav) return;
-
-                if (window.innerWidth <= 1024) {
-                    moreItem.style.display = 'none';
-                    return;
-                }
-
-                moreList.innerHTML = '';
-                allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem));
-                moreItem.style.display = 'none';
-
-                let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-
-                if (isOverflowing) {
-                    moreItem.style.display = 'flex';
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                }
-
-                let i = allNavItems.length - 1;
-                while (isOverflowing && i >= 0) {
-                    const itemToMove = allNavItems[i];
-                    if (itemToMove.parentNode === mainNavList) {
-                        moreList.prepend(itemToMove);
-                    }
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                    i--;
-                }
-            }
-
-             // --- 核心修改点在这里 ---
-             function handleResize() {
-                // 1. 运行桌面菜单的折叠逻辑
-                updateDesktopNav();
-
-                // 2. 新增：检查并关闭移动菜单
-                // 如果窗口宽度大于1024px（即进入桌面视图）
-                if (window.innerWidth > 1024) {
-                    // 强制移除移动菜单的 'active' 类，使其隐藏
-                    mobileNavMenu.classList.remove('active');
-                }
-            }
-
-            // 初始加载时运行
+            function updateDesktopNav() { if (!moreItem || !moreList || !desktopNav) return; if (window.innerWidth <= 1024) { moreItem.style.display = 'none'; return; } moreList.innerHTML = ''; allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem)); moreItem.style.display = 'none'; let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; if (isOverflowing) { moreItem.style.display = 'flex'; isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; } let i = allNavItems.length - 1; while (isOverflowing && i >= 0) { const itemToMove = allNavItems[i]; if (itemToMove.parentNode === mainNavList) { moreList.prepend(itemToMove); } isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; i--; } }
+            function handleResize() { updateDesktopNav(); if (window.innerWidth > 1024) { mobileNavMenu.classList.remove('active'); } }
             handleResize();
-
-            // 监听窗口大小变化
             window.addEventListener('resize', handleResize);
+        });
 
-            // updateDesktopNav();
-            // window.addEventListener('resize', updateDesktopNav);
+        // --- GPT 页面专属逻辑 ---
+        const iframe = document.getElementById('recharge-iframe');
+        const channelButtons = document.querySelectorAll('.channel-btn');
+        channelButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                channelButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const targetUrl = this.getAttribute('data-target-url');
+                iframe.src = targetUrl;
+            });
         });
     </script>
-
 </body>
 </html>
