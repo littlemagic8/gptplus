@@ -114,6 +114,11 @@
 
     <!-- 标准化 Script + 页面专属 Script -->
     <script>
+        document.querySelectorAll('.channel-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.open(btn.dataset.targetUrl, '_blank');
+            });
+        });
         // --- 导航栏通用逻辑 ---
         document.addEventListener('DOMContentLoaded', () => {
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
