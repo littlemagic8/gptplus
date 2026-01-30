@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude 充值 - AI模型服务</title>
+    <title>Claude Pro 代充服务 | 安全可信的一站式充值</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 1. 完整的、最新的 CSS 样式 */
-        :root { --header-height: 71px; }
+        :root { --header-height: 71px; --primary-color: #6f42c1; --primary-dark: #59359d; }
         body, h1, h2, h3, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -46,32 +46,259 @@
         .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
         @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
 
-        /* --- purchase-claude.html 专属样式 --- */
-        .main-content { padding: 40px 20px; }
-        .purchase-layout { display: flex; gap: 30px; } 
-        .iframe-container { flex-grow: 1; height: 85vh; } 
-        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; } 
-        .sidebar { width: 280px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; } 
-        .sidebar h3 { font-size: 20px; color: #343a40; margin-bottom: 15px; text-align: center; } 
-        .sidebar p { color: #6c757d; margin-bottom: 25px; font-size: 15px; text-align: center; } 
-        .btn { display: block; background-color: #6f42c1; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.3s ease; text-align: center; } 
-        .btn:hover { background-color: #59369a; }
-        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; }
-        
-        /* --- 响应式布局 --- */
+        /* --- Claude 充值页面专属样式 --- */
+        .main-content { padding: 60px 20px 40px; }
+        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; background-color: #fff; }
+
+        /* Hero Section */
+        .hero-section { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; margin-bottom: 60px; color: #fff; }
+        .hero-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+        .hero-badge.secure { background: rgba(16, 185, 129, 0.3); border-color: rgba(16, 185, 129, 0.5); }
+        .hero-badge.instant { background: rgba(59, 130, 246, 0.3); border-color: rgba(59, 130, 246, 0.5); }
+        .hero-section h2 { font-size: 42px; font-weight: 700; margin-bottom: 15px; }
+        .hero-section p { font-size: 20px; opacity: 0.95; margin-bottom: 30px; line-height: 1.6; }
+        .hero-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
+        .hero-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; transition: all 0.3s ease; text-align: center; min-width: 160px; max-width: 280px; flex: 1 1 auto; }
+        .hero-btn.primary { background: #1e293b; color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+        .hero-btn.primary:hover { background: #334155; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+        .hero-btn.secondary { background: #fff; color: #6f42c1; border: 2px solid rgba(255, 255, 255, 0.5); }
+        .hero-btn.secondary:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-2px); }
+        .hero-btn i { transition: transform 0.3s ease; }
+        .hero-btn:hover i { transform: translateX(4px); }
+        .hero-features { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; font-size: 14px; opacity: 0.9; }
+        .hero-feature { display: flex; align-items: center; gap: 6px; }
+        .hero-feature i { color: #10b981; }
+        .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 32px; font-weight: 700; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+
+        /* Section Styles */
+        .section-title { text-align: center; font-size: 32px; font-weight: 700; color: #2d3748; margin-bottom: 15px; }
+        .section-subtitle { text-align: center; font-size: 18px; color: #6c757d; margin-bottom: 50px; }
+        .section { margin-bottom: 80px; }
+
+        /* Advantages Section */
+        .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 800px; margin: 0 auto; }
+        .advantage-card { background: #fff; padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .advantage-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .advantage-icon { width: 70px; height: 70px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #fff; font-size: 32px; }
+        .advantage-card h3 { font-size: 22px; color: #2d3748; margin-bottom: 12px; }
+        .advantage-card p { color: #6c757d; font-size: 16px; line-height: 1.6; }
+
+        /* Process Section */
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .step-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; }
+        .step-number { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+        .step-card h3 { font-size: 20px; color: #2d3748; margin-bottom: 12px; }
+        .step-card p { color: #6c757d; font-size: 15px; line-height: 1.6; }
+
+        /* Pricing Section */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
+        .pricing-card { background: #fff; padding: 32px; border-radius: 32px; box-shadow: 0 8px 16px rgba(0,0,0,0.08); position: relative; border: 2px solid transparent; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .pricing-card:hover { transform: translateY(-5px); }
+        .pricing-card.featured { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .pricing-card.highlight { border-color: #6f42c1; box-shadow: 0 20px 40px rgba(111, 66, 193, 0.15); z-index: 10; transform: scale(1.02); }
+        @media (min-width: 768px) { .pricing-card.highlight { transform: scale(1.05); } }
+        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; background: #1e293b; color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); white-space: nowrap; }
+
+        /* 套餐卡片内容区域 */
+        .pricing-header { margin-bottom: 24px; text-align: center; }
+        .pricing-card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+        .pricing-description { color: #64748b; font-size: 14px; line-height: 1.6; margin-top: 8px; }
+
+        .pricing-price-box { margin-bottom: 32px; text-align: center; }
+        .pricing-card .price { font-size: 36px; font-weight: 700; color: #6f42c1; display: inline-flex; align-items: baseline; gap: 4px; }
+        .pricing-card.featured .price { color: #94a3b8; }
+        .pricing-card .price span { font-size: 14px; font-weight: 600; color: #6c757d; }
+
+        .pricing-features { list-style: none; margin-bottom: 32px; flex: 1; }
+        .pricing-features li { padding: 16px 0; color: #334155; font-size: 14px; display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; border-bottom: 1px solid #f1f5f9; }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features li i { color: #6f42c1; flex-shrink: 0; margin-top: 2px; }
+        .pricing-card.featured .pricing-features li i { color: #94a3b8; }
+
+        .pricing-btn-container { text-align: center; margin-top: auto; }
+        .pricing-btn { display: block; width: 100%; max-width: 100%; padding: 14px 5%; border-radius: 12px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; box-shadow: 0 10px 20px rgba(111, 66, 193, 0.3); text-decoration: none; text-align: center; box-sizing: border-box; }
+        .pricing-btn:hover { background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(111, 66, 193, 0.4); }
+
+        .important-note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px; margin-top: 40px; color: #856404; font-size: 15px; line-height: 1.6; text-align: left; }
+        .important-note strong { color: #856404; }
+
+        /* Reviews Section */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .review-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .review-text { color: #4a5568; font-size: 16px; line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+        .review-author { display: flex; align-items: center; gap: 12px; }
+        .review-avatar { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: 600; }
+        .review-info h4 { color: #2d3748; font-size: 16px; margin-bottom: 4px; }
+        .review-info p { color: #6c757d; font-size: 13px; }
+        .review-tag { display: inline-block; background: #f1f3f5; color: #6c757d; padding: 4px 10px; border-radius: 4px; font-size: 12px; margin-top: 5px; }
+
+        /* FAQ Section */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+        .faq-question { color: #2d3748; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .faq-answer { color: #6c757d; font-size: 15px; line-height: 1.6; }
+
+        /* Contact Section */
+        .contact-section { background: #fff; padding: 50px; border-radius: 16px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .contact-section h3 { font-size: 24px; color: #2d3748; margin-bottom: 15px; }
+        .contact-section p { color: #6c757d; font-size: 16px; margin-bottom: 25px; }
+        .wechat-info { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .wechat-text { text-align: left; }
+        .wechat-text .label { color: #6c757d; font-size: 14px; margin-bottom: 8px; }
+        .wechat-text .id { font-size: 28px; font-weight: 700; color: #6f42c1; }
+        .wechat-qr img { width: 180px; height: 180px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* Responsive - Tablet (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .hero-section { padding: 50px 25px; }
+            .hero-section h2 { font-size: 36px; }
+            .hero-section p { font-size: 18px; }
+            .hero-btn { min-width: 140px; max-width: 240px; padding: 13px 28px; font-size: 15px; }
+            .section-title { font-size: 28px; }
+            .section-subtitle { font-size: 17px; }
+            .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 100%; }
+            .advantages-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 100%; }
+            .process-steps { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+            .reviews-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .pricing-card { padding: 28px; }
+            .advantage-card { padding: 35px 25px; }
+            .step-card { padding: 28px; }
+            .review-card { padding: 28px; }
+            .faq-item { padding: 22px 25px; }
+            .contact-section { padding: 40px 30px; }
+        }
+
+        /* Responsive - Mobile (max-width: 768px) */
         @media (max-width: 768px) {
-            .purchase-layout {
-                flex-direction: column;
-            }
-            .iframe-container,
-            .sidebar {
-                width: 100%;
-                max-width: 100%;
-                flex-shrink: 1;
-            }
-            .sidebar {
-                margin-top: 30px;
-            }
+            .hero-section { padding: 40px 20px; }
+            .hero-section h2 { font-size: 32px; }
+            .hero-section p { font-size: 16px; }
+            .hero-badges { gap: 8px; }
+            .hero-badge { font-size: 10px; padding: 5px 10px; }
+            .hero-buttons { flex-direction: column; gap: 12px; }
+            .hero-btn { width: 100%; max-width: 100%; min-width: unset; justify-content: center; padding: 12px 24px; font-size: 15px; }
+            .hero-features { flex-direction: column; gap: 12px; align-items: flex-start; font-size: 13px; }
+            .hero-stats { gap: 20px; }
+            .stat-value { font-size: 24px; }
+            .stat-label { font-size: 13px; }
+
+            .section-title { font-size: 26px; }
+            .section-subtitle { font-size: 16px; margin-bottom: 40px; }
+            .section { margin-bottom: 60px; }
+
+            /* Grid 响应式 */
+            .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 100%; }
+            .advantages-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 100%; }
+            .process-steps { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .reviews-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .faq-list { max-width: 100%; }
+
+            /* Pricing Card Mobile */
+            .pricing-card { padding: 24px 20px; }
+            .pricing-card.highlight { transform: none !important; }
+            .pricing-card h3 { font-size: 18px; }
+            .pricing-card .price { font-size: 32px; }
+            .pricing-description { font-size: 14px; line-height: 1.6; }
+            .pricing-features { font-size: 14px; gap: 10px; }
+            .pricing-features li { gap: 8px; }
+            .pricing-features i { font-size: 14px; }
+            .pricing-btn { padding: 12px 8%; font-size: 15px; }
+            .pricing-btn-container { margin-top: 20px; }
+
+            /* Advantages Mobile */
+            .advantage-card { padding: 30px 20px; }
+            .advantage-icon { width: 60px; height: 60px; font-size: 28px; margin-bottom: 16px; }
+            .advantage-card h3 { font-size: 20px; margin-bottom: 10px; }
+            .advantage-card p { font-size: 15px; }
+
+            /* Process Steps Mobile */
+            .step-card { padding: 24px 20px; }
+            .step-number { width: 45px; height: 45px; font-size: 20px; margin-bottom: 16px; }
+            .step-card h3 { font-size: 18px; margin-bottom: 10px; }
+            .step-card p { font-size: 14px; }
+
+            /* Reviews Mobile */
+            .review-card { padding: 24px 20px; }
+            .review-text { font-size: 15px; margin-bottom: 16px; }
+            .review-avatar { width: 45px; height: 45px; font-size: 18px; }
+            .review-info h4 { font-size: 15px; }
+            .review-info p { font-size: 12px; }
+            .review-tag { font-size: 11px; padding: 3px 8px; }
+
+            /* FAQ Mobile */
+            .faq-item { padding: 20px; margin-bottom: 12px; }
+            .faq-question { font-size: 16px; margin-bottom: 8px; }
+            .faq-answer { font-size: 14px; line-height: 1.6; }
+
+            /* Contact Mobile */
+            .contact-section { padding: 30px 20px; }
+            .contact-section h3 { font-size: 20px; margin-bottom: 12px; }
+            .contact-section p { font-size: 15px; margin-bottom: 20px; }
+            .wechat-info { gap: 20px; }
+            .wechat-text .label { font-size: 13px; margin-bottom: 6px; }
+            .wechat-text .id { font-size: 24px; }
+            .wechat-text p { font-size: 13px; }
+            .wechat-qr img { width: 150px; height: 150px; }
+        }
+
+        /* Responsive - Small Mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+            .hero-section h2 { font-size: 28px; }
+            .hero-section p { font-size: 15px; }
+            .hero-btn { padding: 11px 20px; font-size: 14px; }
+            .hero-stats { gap: 15px; }
+            .stat-value { font-size: 20px; }
+            .stat-label { font-size: 12px; }
+
+            .section-title { font-size: 24px; }
+            .section-subtitle { font-size: 15px; }
+
+            /* 强制单列布局 */
+            .pricing-grid { grid-template-columns: 1fr; }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+
+            .pricing-card { padding: 20px 16px; }
+            .pricing-card h3 { font-size: 17px; }
+            .pricing-card .price { font-size: 28px; }
+            .pricing-description { font-size: 13px; }
+            .pricing-features { font-size: 13px; }
+            .pricing-features i { font-size: 12px; }
+            .pricing-btn { padding: 11px 10%; font-size: 14px; }
+
+            .advantage-card { padding: 24px 16px; }
+            .advantage-icon { width: 55px; height: 55px; font-size: 24px; }
+            .advantage-card h3 { font-size: 19px; }
+            .advantage-card p { font-size: 14px; }
+
+            .step-card { padding: 20px 16px; }
+            .step-number { width: 42px; height: 42px; font-size: 18px; }
+            .step-card h3 { font-size: 17px; }
+            .step-card p { font-size: 13px; }
+
+            .review-card { padding: 20px 16px; }
+            .review-text { font-size: 14px; }
+            .review-avatar { width: 42px; height: 42px; font-size: 16px; }
+            .review-info h4 { font-size: 14px; }
+            .review-info p { font-size: 11px; }
+
+            .faq-item { padding: 18px 16px; }
+            .faq-question { font-size: 15px; }
+            .faq-answer { font-size: 13px; }
+
+            .contact-section { padding: 24px 16px; }
+            .contact-section h3 { font-size: 19px; }
+            .contact-section p { font-size: 14px; }
+            .wechat-text .id { font-size: 22px; }
+            .wechat-qr img { width: 130px; height: 130px; }
+
+            .wechat-info { flex-direction: column; }
+            .wechat-text { text-align: center; }
         }
     </style>
 </head>
@@ -96,7 +323,7 @@
                         <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
                         <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
                         <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
-                        <!-- “更多”下拉菜单的占位符 -->
+                        <!-- "更多"下拉菜单的占位符 -->
                         <li class="nav-more-item" style="display: none;">
                             <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="nav-more-list"></ul>
@@ -123,21 +350,210 @@
         </div>
     </header>
 
-    <!-- Claude 页面专属主体内容 -->
+    <!-- Claude Pro 充值页面主体内容 -->
     <main class="main-content container">
-        <div class="purchase-layout">
-            <div class="iframe-container">
-                <iframe src="https://quickplus.vip/" title="Claude 充值网站"></iframe>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badges">
+                <span class="hero-badge">Claude Pro</span>
+                <span class="hero-badge secure">100% Secure</span>
+                <span class="hero-badge instant">Instant Delivery</span>
             </div>
-            <aside class="sidebar">
-                <h3>没有卡密？</h3>
-                <p>请先购买卡密，再到左侧网站进行充值。</p>
-                <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/w7vxwg" target="_blank" class="btn">前往购买</a>
-            </aside>
-        </div>
+            <h2>Claude Pro 专业代充服务</h2>
+            <p>无需境外信用卡，1 分钟极速开通。支持支付宝、微信支付。<br>官方正规渠道，安全稳定，售后无忧。</p>
+            <div class="hero-buttons">
+                <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/w7vxwg" target="_blank" class="hero-btn primary">
+                    立即前往购买 <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#pricing" class="hero-btn secondary">
+                    查看套餐价格
+                </a>
+            </div>
+            <div class="hero-features">
+                <span class="hero-feature"><i class="fa-solid fa-check"></i> 6:00-24:00 人工客服随时在</span>
+                <span class="hero-feature"><i class="fa-solid fa-check"></i> 支持支付宝 / 微信 / 对公转账</span>
+                <span class="hero-feature"><i class="fa-solid fa-check"></i> 充值失败原路退</span>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">1,000+</div>
+                    <div class="stat-label">历史用户</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">约 5 分钟</div>
+                    <div class="stat-label">平均到账</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">充值成功率</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 套餐选择 -->
+        <section class="section" id="pricing">
+            <h2 class="section-title">选择适合你的套餐</h2>
+            <p class="section-subtitle">根据您的需求选择是否有质保的服务。价格可能随汇率微调。</p>
+
+            <div class="pricing-grid">
+                <!-- 无质保套餐 -->
+                <div class="pricing-card highlight">
+                    <div class="pricing-badge">默认推荐</div>
+                    <div class="pricing-header">
+                        <h3>无质保 Claude Pro</h3>
+                        <p class="pricing-description">充值方式与有质保套餐完全一致。充值成功后，因大陆地区 Claude 风控导致的封号或限制，风险由用户自行承担，不提供售后或退款。</p>
+                    </div>
+                    <div class="pricing-price-box">
+                        <div class="price">¥169<span>/月</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-circle-check"></i> 官方 Claude Pro 月度套餐</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 风险自担，价格更低</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 支持支付宝/微信/对公</li>
+                    </ul>
+                    <div class="pricing-btn-container">
+                        <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/w7vxwg" target="_blank" class="pricing-btn">
+                            前往下单购买
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 有质保套餐 -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">质保</div>
+                    <div class="pricing-header">
+                        <h3>有质保 Claude Pro</h3>
+                        <p class="pricing-description">充值方式与无质保套餐完全一致。30 天质保期内，因 Claude 风控导致封号，平台承担风险，可按剩余天数退款或补单。</p>
+                    </div>
+                    <div class="pricing-price-box">
+                        <div class="price">¥219<span>/月</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-circle-check"></i> 官方 Claude Pro 月度套餐</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 风险由平台承担（30 天内）</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 异常时按天退款或补单</li>
+                    </ul>
+                    <div class="pricing-btn-container">
+                        <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/w7vxwg" target="_blank" class="pricing-btn">
+                            前往下单购买
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>重要提示：</strong>Claude 风控严格，选择<strong>无质保套餐</strong>充值成功后不提供售后。若需要售后保障，请务必选择有质保套餐。请确认您的账号处于 Free 状态再下单。
+            </div>
+        </section>
+
+        <!-- 优势展示 -->
+        <section class="section">
+            <h2 class="section-title">为什么选择我们？</h2>
+            <p class="section-subtitle">针对国内用户痛点优化，把繁琐的开户支付流程简化为两步，让生产力触手可及。</p>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3>无需境外信用卡</h3>
+                    <p>直接人民币付款即可完成 Claude Pro 代充，免去开卡、绑卡流程。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>售后响应快速</h3>
+                    <p>充值不成功随时找客服协助，或直接选择退款。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 充值流程 -->
+        <section class="section">
+            <h2 class="section-title">充值流程，简单透明</h2>
+            <p class="section-subtitle">无需提供账号密码，购买卡密后自行前往充值网站核销，全程由你自己操作，安全放心。</p>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>下单购买卡密</h3>
+                    <p>点击"立即前往购买"跳转到下单页，选择套餐并完成付款获取充值卡密。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>核销卡密完成充值</h3>
+                    <p>进入充值网站输入卡密即可到账，全程无需提供 Claude 账号密码。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 客户评价 -->
+        <section class="section">
+            <h2 class="section-title">客户真实反馈</h2>
+            <p class="section-subtitle">看看其他用户怎么评价我们的服务。</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p class="review-text">"代充速度快，付款后一分钟就收到截图，账号一直很稳，用了两个月没有被封。"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">小</div>
+                        <div class="review-info">
+                            <h4>小胖</h4>
+                            <p>北京 · 产品经理</p>
+                            <span class="review-tag">Pro 续费</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">"需要多区账号做测试，客服全程很耐心，遇到风控也主动补单，体验不错。"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">s</div>
+                        <div class="review-info">
+                            <h4>sun</h4>
+                            <p>杭州 · 独立开发者</p>
+                            <span class="review-tag">多区开通</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2 class="section-title">常见问题解答</h2>
+            <p class="section-subtitle">为您解答关于充值、售后和安全的疑问。</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Q: 多久能完成充值？</div>
+                    <div class="faq-answer">常见订单 1-3 分钟即可完成，若遇到官方风控会第一时间同步进度，超过 30 分钟可选择退款。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 付款方式有哪些？</div>
+                    <div class="faq-answer">支持支付宝、微信与对公转账，到账后立刻开始充值。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 会不会影响我原有账号？</div>
+                    <div class="faq-answer">不会。我们仅在官方后台进行代充，不需要您的密码，只需提供登录邮箱用于定位。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="section">
+            <div class="contact-section">
+                <h3>需要更多帮助？</h3>
+                <p>无论是下单疑问，还是想要了解更多风控细节，<br>欢迎随时添加我们的微信客服。</p>
+                <div class="wechat-info">
+                    <div class="wechat-text">
+                        <div class="label">联系微信</div>
+                        <div class="id">aicygg888</div>
+                        <p style="margin-top: 10px; font-size: 14px; color: #6c757d;">工作时间：9:00 - 24:00 (节假日不休)</p>
+                    </div>
+                    <div class="wechat-qr">
+                        <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- 您的页脚 (保持不变) -->
+    <!-- 页脚 -->
     <footer class="main-footer">
         <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
     </footer>
