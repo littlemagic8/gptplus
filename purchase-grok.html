@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grok 手动代充 - AI模型服务</title>
+    <title>Grok SuperGrok 自助充值 - AI模型服务</title>
     <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 1. CSS 进行了大幅增强 */
-        
         /* 基础重置 */
         :root { --header-height: 71px; }
         body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +14,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; }
 
-        /* --- 响应式导航栏核心样式 (新增/修改) --- */
+        /* --- 响应式导航栏核心样式 --- */
         .main-header {
             background-color: rgba(255, 255, 255, 0.9);
             border-bottom: 1px solid #e9ecef;
@@ -38,13 +36,13 @@
         .logo-text .subtitle { font-size: 12px; color: #6c757d; }
 
         /* 桌面导航容器 */
-        .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; /* 移除了 overflow: hidden; */ }
+        .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; }
         .main-nav ul { list-style: none; display: flex; align-items: center; }
         .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
         .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; }
         .main-nav ul li a i { color: #888; }
 
-        /* “更多”下拉菜单 */
+        /* "更多"下拉菜单 */
         .nav-more-item { position: relative; }
         .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
         .nav-more-item:hover .nav-more-list { display: block; }
@@ -69,56 +67,858 @@
         .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
         .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
         .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        
+
         /* 响应式断点 */
         @media (max-width: 1024px) {
             .desktop-nav { display: none; }
             .mobile-nav-toggle { display: block; }
         }
-        
-        /* 页面主体 */
+
+        /* --- 页面主体 --- */
         .main-content { padding: 40px 0; }
-        
-        /* Grok 专属介绍卡片 */
-        .grok-info-card {
+
+        /* --- 页面标题区域 --- */
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(111, 66, 193, 0.2);
+        }
+
+        .page-header h2 {
+            font-size: 2.2em;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .process-flow {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 40px 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-flow-title {
+            font-size: 1.3em;
+            color: #212529;
+            margin-bottom: 20px;
+            font-weight: 700;
             text-align: center;
         }
-        .grok-info-card .icon { font-size: 48px; color: #6f42c1; margin-bottom: 20px; }
-        .grok-info-card h2 { font-size: 32px; color: #343a40; margin-bottom: 15px; }
-        .grok-info-card .tagline { font-size: 18px; color: #6c757d; margin-bottom: 30px; }
-        
-        .features { list-style: none; display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
-        .features li { font-size: 15px; color: #495057; background-color: #f8f9fa; padding: 8px 15px; border-radius: 20px; }
-        
-        .process-title { font-size: 20px; color: #343a40; margin-top: 30px; margin-bottom: 20px; }
-        
-        /* 联系方式区域 */
-        .contact-section {
+
+        .flow-steps {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, #6f42c1 0%, #9b75d6 100%);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flow-step-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(111, 66, 193, 0.5);
+        }
+
+        .flow-arrow {
+            font-size: 2em;
+            color: #6f42c1;
+            font-weight: bold;
+        }
+
+        .detailed-steps {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .detailed-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .detailed-step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
-            background-color: #f8f9fa;
-            padding: 30px;
+            min-width: 36px;
+            height: 36px;
+            background: #6f42c1;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            font-size: 1.1em;
+            color: #212529;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            font-size: 0.95em;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .note-warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
             border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .note-warning p {
+            color: #856404;
+            font-size: 0.95em;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .cta-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: #6f42c1;
+            font-weight: 600;
+        }
+
+        /* --- SuperGrok 订阅卡片 --- */
+        .subscription-section {
+            margin-bottom: 50px;
+        }
+
+        .subscription-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(111, 66, 193, 0.3);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscription-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .sub-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subscription-card h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-tagline {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-price {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-period {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            text-align: left;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-features li {
+            padding: 12px 0;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sub-features li i {
+            color: #fbbf24;
+            font-size: 1.2em;
+        }
+
+        .sub-cta {
+            background: #fff;
+            color: #6f42c1;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- 左右分栏布局 --- */
+        .channels-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            align-items: start;
+        }
+
+        /* --- 左侧：渠道列表 --- */
+        .channels-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: sticky;
+            top: calc(var(--header-height) + 20px);
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .channel-item:hover {
+            border-color: #6f42c1;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.1);
+        }
+
+        .channel-item.active {
+            background: linear-gradient(135deg, #6f42c1 0%, #9b75d6 100%);
+            border-color: #6f42c1;
+            color: #fff;
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
+        }
+
+        .channel-item-icon {
+            font-size: 2em;
+            flex-shrink: 0;
+        }
+
+        .channel-item-info {
+            flex: 1;
+        }
+
+        .channel-item-info h4 {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            color: inherit;
+        }
+
+        .recommended-tag {
+            display: inline-block;
+            background-color: #ffe484;
+            color: #495057;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        .channel-item.active .recommended-tag {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .channel-item-name {
+            font-size: 0.9em;
+            color: #868e96;
+        }
+
+        .channel-item.active .channel-item-name {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .channel-item-arrow {
+            font-size: 1.5em;
+            opacity: 0.5;
+            transition: transform 0.3s ease;
+        }
+
+        .channel-item:hover .channel-item-arrow,
+        .channel-item.active .channel-item-arrow {
+            opacity: 1;
+        }
+
+        /* --- 右侧：渠道详情 --- */
+        .channel-detail {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .detail-content {
+            display: none;
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .detail-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f1f3f5;
+        }
+
+        .detail-header h3 {
+            font-size: 1.5em;
+            color: #212529;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .detail-section {
+            margin-bottom: 28px;
+        }
+
+        .detail-section h4 {
+            font-size: 1.1em;
+            color: #495057;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            color: #495057;
+            font-size: 0.95em;
+            line-height: 1.6;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .process-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .process-list li {
+            padding: 10px 0;
+            color: #495057;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .faq-item {
+            padding: 12px 0;
+        }
+
+        .faq-q {
+            color: #495057;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            font-size: 0.95em;
+        }
+
+        .faq-a {
+            color: #868e96;
+            margin: 0;
+            font-size: 0.9em;
+            padding-left: 10px;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #f1f3f5;
+        }
+
+        /* 顶部按钮样式 - 更醒目 */
+        .detail-actions-top {
+            margin-top: 0;
+            margin-bottom: 30px;
+            padding: 0;
+            border-top: none;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .detail-actions .btn {
+            flex: 1;
+            height: 52px;
+            font-size: 1em;
+            padding: 0 24px;
+        }
+
+        .detail-actions-top .btn {
+            height: 60px;
+            font-size: 1.1em;
+            font-weight: 700;
+            padding: 0 28px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-actions-top .btn-primary {
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+            background: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 100%);
+        }
+
+        .detail-actions-top .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.5);
+        }
+
+        .detail-actions-top .btn-secondary {
+            background-color: #fff;
+            border: 2px solid #6f42c1;
+            color: #6f42c1;
+        }
+
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #6f42c1;
+            border: 1px solid #6f42c1;
+        }
+
+        .detail-actions-top .btn-secondary:hover {
+            background-color: #6f42c1;
+            color: #fff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: #6f42c1;
+            color: #fff;
+            border-color: #6f42c1;
+        }
+
+        .detail-support {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .detail-support p {
+            margin: 0;
+            color: #495057;
+            font-size: 0.95em;
+        }
+
+        .detail-support strong {
+            color: #6f42c1;
+        }
+
+        /* --- 按钮样式 --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6f42c1 0%, #9b75d6 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(111, 66, 193, 0.4);
+        }
+
+        /* --- 说明区域 --- */
+        .tips-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 28px 32px;
             border: 1px solid #e9ecef;
         }
-        .contact-info p { margin-bottom: 10px; font-size: 16px; color: #333; }
-        .contact-info .wechat-id { font-weight: bold; font-size: 20px; color: #6f42c1; background-color: #fff; padding: 5px 10px; border-radius: 6px; }
-        .qr-code img { width: 160px; height: 160px; border-radius: 8px; border: 1px solid #ddd; }
-        
-        .security-note { margin-top: 30px; font-size: 14px; color: #888; }
+
+        .tips-section h3 {
+            color: #212529;
+            margin-bottom: 16px;
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+
+        .tips-section p {
+            color: #495057;
+            line-height: 1.8;
+            margin: 8px 0;
+        }
+
+        .main-footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #e9ecef;
+            color: #868e96;
+            font-size: 14px;
+        }
+
+        /* --- 移动端响应式 --- */
+        @media (max-width: 1024px) {
+            .channels-layout {
+                grid-template-columns: 280px 1fr;
+                gap: 24px;
+            }
+
+            .detail-content {
+                padding: 32px;
+            }
+
+            .detail-header h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h2 {
+                font-size: 1.6em;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .subscription-card {
+                padding: 40px 30px;
+            }
+
+            .sub-price {
+                font-size: 2.5em;
+            }
+
+            /* 移动端：垂直堆叠布局 */
+            .channels-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 35px;
+            }
+
+            /* 左侧渠道列表变成卡片 */
+            .channels-sidebar {
+                position: static;
+            }
+
+            .channel-item {
+                padding: 18px;
+            }
+
+            .channel-item:hover {
+                transform: none;
+            }
+
+            /* 隐藏右侧详情，使用模态弹窗替代 */
+            .channel-detail {
+                display: none;
+            }
+
+            /* 移动端：添加"查看详情"按钮 */
+            .channel-item::after {
+                content: '查看详情 →';
+                font-size: 0.9em;
+                font-weight: 600;
+            }
+
+            .channel-item-arrow {
+                display: none;
+            }
+
+            /* --- 模态弹窗样式 --- */
+            .modal-overlay {
+                display: none !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(4px);
+                z-index: 2000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .modal-overlay.active {
+                display: block !important;
+                opacity: 1;
+            }
+
+            .modal-content {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                max-height: 85vh;
+                background-color: #fff;
+                border-radius: 20px 20px 0 0;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+                z-index: 2001;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                transform: translateY(100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .modal-overlay.active .modal-content {
+                transform: translateY(0);
+            }
+
+            .modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 1px solid #e9ecef;
+                position: sticky;
+                top: 0;
+                background-color: #fff;
+                z-index: 10;
+            }
+
+            .modal-header h3 {
+                font-size: 1.2em;
+                font-weight: 700;
+                margin: 0;
+                color: #212529;
+            }
+
+            .modal-close {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: #f8f9fa;
+                border: none;
+                font-size: 1.3em;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+            }
+
+            .modal-close:hover {
+                background-color: #e9ecef;
+            }
+
+            .modal-body {
+                padding: 24px 20px;
+            }
+
+            .modal-body .detail-header {
+                display: none;
+            }
+
+            .modal-body .detail-section {
+                margin-bottom: 24px;
+            }
+
+            .modal-body .detail-section h4 {
+                font-size: 1em;
+            }
+
+            .modal-body .feature-list li,
+            .modal-body .process-list li {
+                font-size: 0.9em;
+            }
+
+            .modal-body .detail-actions {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 24px;
+                padding-top: 20px;
+            }
+
+            .modal-body .detail-actions-top {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                border: 2px solid #e9ecef;
+                padding: 18px;
+                margin-bottom: 24px;
+                margin-top: 0;
+            }
+
+            .modal-body .btn {
+                width: 100%;
+                height: 50px;
+                font-size: 0.95em;
+            }
+
+            .modal-body .detail-actions-top .btn {
+                height: 56px;
+                font-size: 1.05em;
+                font-weight: 700;
+            }
+
+            .modal-body .detail-support {
+                margin-top: 20px;
+                padding: 16px;
+            }
+
+            .modal-body .detail-support p {
+                font-size: 0.9em;
+            }
+
+            .tips-section {
+                padding: 24px 20px;
+            }
+
+            .tips-section h3 {
+                font-size: 1.05em;
+            }
+
+            .tips-section p {
+                font-size: 0.9em;
+            }
+        }
+
+        /* --- 模态弹窗默认隐藏（桌面端） --- */
+        .modal-overlay {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 2. HTML 结构已重组 -->
+    <!-- Header -->
     <header class="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo-container">
@@ -129,17 +929,15 @@
                 </div>
             </a>
 
-            <!-- 桌面导航 (JS会控制) -->
+            <!-- 桌面导航 -->
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
-                        <!-- 使用了您提供的最新文本 -->
                         <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
                         <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex</a></li>
                         <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
                         <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
                         <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
-                        <!-- “更多”下拉菜单的占位符 -->
                         <li class="nav-more-item" style="display: none;">
                             <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="nav-more-list"></ul>
@@ -164,48 +962,266 @@
             <button class="mobile-nav-toggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            
-            <!-- 移动端展开的菜单 (JS会填充) -->
+
+            <!-- 移动端展开的菜单 -->
             <div class="mobile-nav-menu"></div>
         </div>
     </header>
 
     <!-- 主体内容 -->
     <main class="main-content container">
-        <div class="grok-info-card">
-            <div class="icon"><i class="fa-solid fa-rocket"></i></div>
-            <h2>Grok Premium 手动代充服务</h2>
-            <p class="tagline">解锁 xAI 的前沿模型，体验实时、幽默、无限制的 AI 对话。</p>
-            
-            <ul class="features">
-                <li><i class="fa-solid fa-bolt"></i> 实时联网</li>
-                <li><i class="fa-solid fa-face-grin-wink"></i> 独特个性</li>
-                <li><i class="fa-solid fa-infinity"></i> 更少限制</li>
-            </ul>
 
-            <p>由于 Grok 官方充值渠道限制，我们为您提供专业、安全的人工代充值服务。</p>
-            
-            <h3 class="process-title">代充流程</h3>
+        <!-- 页面标题区域 -->
+        <div class="page-header">
+            <h2>📣📣 Grok 自助充值系统来啦 🎆🎆</h2>
 
-            <div class="contact-section">
-                <div class="qr-code">
-                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+            <div class="process-flow">
+                <div class="process-flow-title">SuperGrok 充值流程</div>
+
+                <div class="flow-steps">
+                    <a href="https://fe.dtyuedan.cn/item/ohx07g" target="_blank" class="flow-step flow-step-link">
+                        <i class="fa-solid fa-ticket"></i> 第一步：购买充值码
+                    </a>
+                    <div class="flow-arrow">→</div>
+                    <a href="https://quickplus.vip/public/grok/" target="_blank" class="flow-step flow-step-link">
+                        <i class="fa-solid fa-rocket"></i> 第二步：系统充值
+                    </a>
                 </div>
-                <div class="contact-info">
-                    <p><strong>第一步：</strong>请扫描左侧二维码<br>或搜索微信号添加客服：</p>
-                    <p class="wechat-id">aicygg888</p>
-                    <p><strong>第二步：</strong>请提供您的账号和密码，<br>我们的客服将引导您完成支付和充值。</p>
+
+                <div class="detailed-steps">
+                    <div class="detailed-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <h4>第一步：购买充值码</h4>
+                            <p>点击上方「购买充值码」按钮，购买后会立即收到充值码</p>
+                        </div>
+                    </div>
+
+                    <div class="detailed-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <h4>第二步：验证充值码</h4>
+                            <p>进入充值系统，输入您购买的充值码进行验证</p>
+                        </div>
+                    </div>
+
+                    <div class="detailed-step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <h4>第三步：绑定 Grok 账号</h4>
+                            <p>输入您的 Grok 用户 ID（在 <a href="https://grok.com/?_s=account" target="_blank" style="color: #6f42c1; text-decoration: underline;">grok.com 账号页面</a> 获取）</p>
+                        </div>
+                    </div>
+
+                    <div class="detailed-step">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <h4>第四步：激活充值</h4>
+                            <p>确认信息无误后，点击「立即激活 SuperGrok」按钮完成充值</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-warning">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>注：</strong>到期才可续</p>
+                </div>
+
+                <div class="cta-text">
+                    需要的童鞋看过来 🤝🤝
+                </div>
+            </div>
+        </div>
+
+        <!-- SuperGrok 订阅方案 -->
+        <section class="subscription-section">
+            <div class="subscription-card">
+                <div class="sub-icon">🚀</div>
+                <h3>SuperGrok</h3>
+                <p class="sub-tagline">年度超值订阅套餐</p>
+                <div class="sub-price">$30</div>
+                <div class="sub-period">/ 月</div>
+
+                <ul class="sub-features">
+                    <li><i class="fa-solid fa-check-circle"></i> 实时联网能力 - 获取最新信息</li>
+                    <li><i class="fa-solid fa-check-circle"></i> 独特个性 - 幽默风趣的对话风格</li>
+                    <li><i class="fa-solid fa-check-circle"></i> 更少限制 - 更开放的交互体验</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Grok-2 最强模型访问</li>
+                    <li><i class="fa-solid fa-check-circle"></i> 全部 Premium 功能解锁</li>
+                </ul>
+
+                <div class="sub-cta" onclick="scrollToChannels()">
+                    选择下方渠道开始充值
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 左右分栏布局 -->
+        <div class="channels-layout">
+            <!-- 左侧：渠道列表 -->
+            <div class="channels-sidebar">
+                <div class="channel-item active" data-channel="1">
+                    <div class="channel-item-icon">🏪</div>
+                    <div class="channel-item-info">
+                        <h4>渠道一 <span class="recommended-tag">推荐</span></h4>
+                        <span class="channel-item-name">SuperGrok</span>
+                    </div>
+                    <div class="channel-item-arrow">›</div>
+                </div>
+
+                <div class="channel-item" data-channel="2">
+                    <div class="channel-item-icon">🏪</div>
+                    <div class="channel-item-info">
+                        <h4>渠道二</h4>
+                        <span class="channel-item-name">SuperGrok</span>
+                    </div>
+                    <div class="channel-item-arrow">›</div>
                 </div>
             </div>
 
-            <p class="security-note">
-                <strong>安全提示：</strong>我们承诺全程保障您的账号信息安全。充值成功后，建议您立即修改密码。
-            </p>
+            <!-- 右侧：渠道详情 -->
+            <div class="channel-detail">
+                <!-- 渠道一详情 -->
+                <div class="detail-content active" id="detail-1">
+                    <div class="detail-header">
+                        <h3>🎯 渠道一 (推荐) - SuperGrok</h3>
+                    </div>
+
+                    <!-- 操作按钮移到顶部 -->
+                    <div class="detail-actions detail-actions-top">
+                        <a href="https://fe.dtyuedan.cn/item/ohx07g" target="_blank" class="btn btn-secondary">
+                            📝 购买充值码
+                        </a>
+                        <a href="https://quickplus.vip/public/grok/" target="_blank" class="btn btn-primary">
+                            🚀 前往系统充值 →
+                        </a>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📌 渠道特点</h4>
+                        <ul class="feature-list">
+                            <li>✓ 正规官方通道充值</li>
+                            <li>✓ 支持支付宝/微信支付</li>
+                            <li>✓ 自助操作，快速到账</li>
+                            <li>✓ 到账时间：5-10分钟</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📝 充值流程（4步）</h4>
+                        <ol class="process-list">
+                            <li>点击「购买充值码」购买充值码</li>
+                            <li>点击「前往系统充值」，输入充值码进行验证</li>
+                            <li>输入您的 Grok 用户 ID（在 <a href="https://grok.com/?_s=account" target="_blank" style="color: #6f42c1;">grok.com 账号页面</a> 获取）</li>
+                            <li>点击「立即激活 SuperGrok」完成充值</li>
+                        </ol>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💡 常见问题</h4>
+                        <div class="faq-item">
+                            <p class="faq-q">• Q：什么时候可以续费？</p>
+                            <p class="faq-a">A：到期后才可续费</p>
+                        </div>
+                        <div class="faq-item">
+                            <p class="faq-q">• Q：充值失败怎么办？</p>
+                            <p class="faq-a">A：联系客服 aicygg888</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-support">
+                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
+                    </div>
+                </div>
+
+                <!-- 渠道二详情 -->
+                <div class="detail-content" id="detail-2">
+                    <div class="detail-header">
+                        <h3>🎯 渠道二 - SuperGrok</h3>
+                    </div>
+
+                    <!-- 操作按钮移到顶部 -->
+                    <div class="detail-actions detail-actions-top">
+                        <a href="https://fe.dtyuedan.cn/item/ohx07g" target="_blank" class="btn btn-secondary">
+                            📝 购买充值码
+                        </a>
+                        <a href="https://quickplus.vip/public/grok/" target="_blank" class="btn btn-primary">
+                            🚀 前往系统充值 →
+                        </a>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📌 渠道特点</h4>
+                        <ul class="feature-list">
+                            <li>✓ 正规官方通道充值</li>
+                            <li>✓ 支持支付宝/微信支付</li>
+                            <li>✓ 自助操作，快速到账</li>
+                            <li>✓ 到账时间：5-10分钟</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📝 充值流程（4步）</h4>
+                        <ol class="process-list">
+                            <li>点击「购买充值码」购买充值码</li>
+                            <li>点击「前往系统充值」，输入充值码进行验证</li>
+                            <li>输入您的 Grok 用户 ID（在 <a href="https://grok.com/?_s=account" target="_blank" style="color: #6f42c1;">grok.com 账号页面</a> 获取）</li>
+                            <li>点击「立即激活 SuperGrok」完成充值</li>
+                        </ol>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💡 常见问题</h4>
+                        <div class="faq-item">
+                            <p class="faq-q">• Q：什么时候可以续费？</p>
+                            <p class="faq-a">A：到期后才可续费</p>
+                        </div>
+                        <div class="faq-item">
+                            <p class="faq-q">• Q：充值失败怎么办？</p>
+                            <p class="faq-a">A：联系客服 aicygg888</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-support">
+                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- 底部说明区域 -->
+        <div class="tips-section">
+            <h3>💡 重要说明</h3>
+            <p>• 新窗口打开的充值网站可以正常登录和支付，无任何限制</p>
+            <p>• 充值完成后可返回此页面查看其他渠道或进行其他操作</p>
+            <p>• 如遇问题请联系客服：<strong>aicygg888</strong></p>
+            <p>• ⚠️ <strong>到期才可续费</strong></p>
+        </div>
+
     </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 移动端模态弹窗 -->
+    <div class="modal-overlay" id="channelModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">渠道详情</h3>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- 导航栏通用逻辑 ---
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
             const mobileNavMenu = document.querySelector('.mobile-nav-menu');
             const desktopNav = document.querySelector('.desktop-nav');
@@ -223,7 +1239,7 @@
                     mobileUserActions.remove();
                 }
             };
-            
+
             populateMobileMenu();
 
             if (mobileNavToggle) {
@@ -269,27 +1285,92 @@
                 }
             }
 
-             // --- 核心修改点在这里 ---
-             function handleResize() {
-                // 1. 运行桌面菜单的折叠逻辑
+            function handleResize() {
                 updateDesktopNav();
-
-                // 2. 新增：检查并关闭移动菜单
-                // 如果窗口宽度大于1024px（即进入桌面视图）
                 if (window.innerWidth > 1024) {
-                    // 强制移除移动菜单的 'active' 类，使其隐藏
                     mobileNavMenu.classList.remove('active');
                 }
             }
 
-            // 初始加载时运行
             handleResize();
-
-            // 监听窗口大小变化
             window.addEventListener('resize', handleResize);
 
-            // updateDesktopNav();
-            // window.addEventListener('resize', updateDesktopNav);
+            // --- 渠道切换逻辑 ---
+            const channelItems = document.querySelectorAll('.channel-item');
+            const detailContents = document.querySelectorAll('.detail-content');
+
+            channelItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const channelId = this.getAttribute('data-channel');
+
+                    // 检查是否是移动端
+                    if (window.innerWidth <= 768) {
+                        // 移动端：打开模态弹窗
+                        openModal(channelId);
+                    } else {
+                        // 网页端：切换详情显示
+                        switchChannel(channelId);
+                    }
+                });
+            });
+
+            function switchChannel(channelId) {
+                // 移除所有active状态
+                channelItems.forEach(item => item.classList.remove('active'));
+                detailContents.forEach(content => content.classList.remove('active'));
+
+                // 添加active状态到当前选中的渠道
+                document.querySelector(`.channel-item[data-channel="${channelId}"]`).classList.add('active');
+                document.querySelector(`#detail-${channelId}`).classList.add('active');
+            }
+
+            // --- 移动端模态弹窗逻辑 ---
+            const modal = document.getElementById('channelModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const modalClose = document.getElementById('modalClose');
+
+            function openModal(channelId) {
+                const detailContent = document.querySelector(`#detail-${channelId}`);
+                const title = detailContent.querySelector('.detail-header h3').textContent;
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = detailContent.innerHTML;
+                modal.classList.add('active');
+
+                // 阻止背景滚动
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // 点击关闭按钮
+            modalClose.addEventListener('click', closeModal);
+
+            // 点击遮罩层关闭
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // --- 滚动到渠道区域 ---
+            window.scrollToChannels = function() {
+                const channelsSection = document.querySelector('.channels-layout');
+                if (channelsSection) {
+                    channelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
         });
     </script>
 
