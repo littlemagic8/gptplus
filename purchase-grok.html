@@ -77,6 +77,146 @@
         /* --- 页面主体 --- */
         .main-content { padding: 40px 0; }
 
+        /* --- 公告横幅样式 --- */
+        .announcement-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            border-radius: 16px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-text {
+            flex: 1;
+        }
+
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .announcement-badge {
+            background-color: #fff;
+            color: #ff6b6b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .announcement-date {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .announcement-title {
+            color: #fff;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .announcement-message {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .announcement-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+        }
+
+        .announcement-contact i {
+            font-size: 1.2em;
+        }
+
+        .announcement-qr {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .announcement-qr img {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+
+        .announcement-qr-caption {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.85em;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-banner {
+                padding: 25px 20px;
+            }
+
+            .announcement-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .announcement-title {
+                font-size: 1.4em;
+            }
+
+            .announcement-message {
+                font-size: 0.95em;
+            }
+
+            .announcement-contact {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .announcement-qr img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
         /* --- 页面标题区域 --- */
         .page-header {
             text-align: center;
@@ -971,9 +1111,39 @@
     <!-- 主体内容 -->
     <main class="main-content container">
 
+        <!-- ============================================================ -->
+        <!-- 【维护公告区域】需要隐藏时，请注释掉以下整个 announcement-banner 区域 -->
+        <!-- ============================================================ -->
+        <div class="announcement-banner">
+            <div class="announcement-content">
+                <div class="announcement-text">
+                    <div class="announcement-header">
+                        <div class="announcement-badge">📢 最新公告</div>
+                        <div class="announcement-date">📅 2026/05/04</div>
+                    </div>
+                    <div class="announcement-title">⚠️ SuperGrok 自助维护通知</div>
+                    <div class="announcement-message">
+                        尊敬的用户，SuperGrok 自助充值系统正在维护升级中，暂时无法使用。<br>
+                        期间仅支持<strong>手动代充服务</strong>，给您带来的不便敬请谅解！
+                    </div>
+                    <div class="announcement-contact">
+                        <i class="fa-brands fa-weixin"></i>
+                        <span>请联系微信：aicygg888</span>
+                    </div>
+                </div>
+                <div class="announcement-qr">
+                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                    <div class="announcement-qr-caption">扫码联系客服</div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================ -->
+        <!-- 【维护公告区域结束】 -->
+        <!-- ============================================================ -->
+
         <!-- 页面标题区域 -->
         <div class="page-header">
-            <h2> SuperGrok 自助充值系统来啦 </h2>
+            <h2> SuperGrok 自助代充值系统上线 </h2>
 
             <div class="process-flow">
                 <div class="process-flow-title">SuperGrok 充值流程</div>
