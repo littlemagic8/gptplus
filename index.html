@@ -273,6 +273,133 @@
             // updateDesktopNav();
             // window.addEventListener('resize', updateDesktopNav);
         });
+
+        // 显示客服悬浮窗
+        function showCustomerService() {
+            const modal = document.createElement('div');
+            modal.className = 'customer-service-modal active';
+            modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center; padding: 16px; animation: fadeIn 0.2s ease;';
+            modal.innerHTML = `
+                <div style="max-width: 320px; width: 100%;">
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); width: 100%; padding: 24px; position: relative; animation: zoomIn 0.2s ease;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                            <h3 style="font-size: 18px; font-weight: 600; color: #1f2937;">联系客服</h3>
+                            <button onclick="this.closest('.customer-service-modal').remove(); document.body.style.overflow = '';" style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; transition: color 0.2s ease;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <!-- 服务说明卡片 -->
+                            <div style="background: linear-gradient(to right, #eff6ff, #faf5ff); border-radius: 12px; padding: 16px; border: 1px solid #dbeafe;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                    <div style="width: 24px; height: 24px; background: linear-gradient(to right, #3b82f6, #9333ea); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;">
+                                            <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+                                            <path d="M20 2v4"></path>
+                                            <path d="M22 4h-4"></path>
+                                            <circle cx="4" cy="20" r="2"></circle>
+                                        </svg>
+                                    </div>
+                                    <h4 style="font-size: 14px; font-weight: 700; color: #111827;">AI 工具充值服务</h4>
+                                </div>
+                                <p style="font-size: 12px; color: #4b5563; margin-bottom: 12px;">支持充值多种 AI 工具，让您畅享智能体验：</p>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">ChatGPT Pro</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">Cursor</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">Claude Max</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #ec4899; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">Gemini Pro</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #8b5cf6; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">Grok</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <div style="width: 6px; height: 6px; background: #14b8a6; border-radius: 50%;"></div>
+                                        <span style="color: #374151;">更多服务</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 微信二维码 -->
+                            <div style="text-align: center;">
+                                <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码" style="width: 200px; height: 200px; border-radius: 12px; border: 1px solid #e5e7eb; margin: 0 auto 12px; display: block;">
+                                <div style="background: #f3f4f6; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <p style="color: #374151; font-size: 14px; font-weight: 600; margin: 0;">微信号：<span style="color: #4f46e5;">aicygg888</span></p>
+                                </div>
+                                <p style="color: #6b7280; font-size: 12px; margin: 0;">工作时间：9:00 - 22:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            // 点击背景关闭
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                }
+            });
+        }
     </script>
+
+    <!-- 悬浮客服按钮 -->
+    <div style="position: fixed; bottom: 24px; right: 24px; z-index: 1000;">
+        <div style="position: relative;">
+            <button onclick="showCustomerService()" style="width: 64px; height: 64px; background: linear-gradient(to right, #4f46e5, #7c3aed); border-radius: 50%; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); cursor: pointer; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s ease; position: relative; overflow: hidden;">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to right, #818cf8, #a78bfa); opacity: 0; transition: opacity 0.3s ease;" class="hover-bg"></div>
+                <div style="position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #fff; margin-bottom: 4px;">
+                        <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
+                    </svg>
+                    <span style="color: #fff; font-size: 12px; font-weight: 500;">客服</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        button:hover .hover-bg {
+            opacity: 1 !important;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.6) !important;
+        }
+    </style>
 </body>
 </html>
