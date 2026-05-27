@@ -1054,6 +1054,152 @@
         .modal-overlay {
             display: none !important;
         }
+
+        /* --- 选择弹窗样式 --- */
+        .selection-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .selection-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .selection-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 3001;
+            min-width: 320px;
+            max-width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .selection-overlay.active .selection-dialog {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .selection-dialog h3 {
+            font-size: 1.3em;
+            color: #212529;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+
+        .selection-option {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .selection-option:hover {
+            border-color: #6f42c1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.2);
+        }
+
+        .selection-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .selection-option-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .selection-option-price {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #6f42c1;
+        }
+
+        .selection-option-period {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .selection-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .selection-close:hover {
+            background-color: #e9ecef;
+        }
+
+        /* --- 选择弹窗移动端适配 --- */
+        @media (max-width: 768px) {
+            .selection-dialog {
+                min-width: 280px;
+                max-width: 85%;
+                padding: 30px 24px;
+            }
+
+            .selection-dialog h3 {
+                font-size: 1.15em;
+                margin-bottom: 16px;
+            }
+
+            .selection-option {
+                padding: 16px 20px;
+                margin-bottom: 10px;
+            }
+
+            .selection-option-title {
+                font-size: 1em;
+            }
+
+            .selection-option-price {
+                font-size: 1.3em;
+            }
+
+            .selection-option-period {
+                font-size: 0.85em;
+            }
+
+            .selection-close {
+                width: 28px;
+                height: 28px;
+                font-size: 1.1em;
+                top: 12px;
+                right: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1152,7 +1298,7 @@
                 </div>
 
                 <div class="flow-steps">
-                    <a href="https://fe.dtyuedan.cn/item/uw3qi6" target="_blank" class="flow-step flow-step-link">
+                    <a href="javascript:void(0)" onclick="openSelectionModal()" class="flow-step flow-step-link">
                         <i class="fa-solid fa-ticket"></i> 第一步：购买充值码（点击直达）
                     </a>
                     <div class="flow-arrow">→</div>
@@ -1419,6 +1565,24 @@
         </div>
     </div>
 
+    <!-- 选择弹窗 -->
+    <div class="selection-overlay" id="selectionModal">
+        <div class="selection-dialog">
+            <button class="selection-close" onclick="closeSelectionModal()">✕</button>
+            <h3>选择充值时长</h3>
+            <div class="selection-option" onclick="goToPurchase('px6b4g')">
+                <div class="selection-option-title">SuperGrok</div>
+                <div class="selection-option-price">$30（￥230）</div>
+                <div class="selection-option-period">一个月</div>
+            </div>
+            <div class="selection-option" onclick="goToPurchase('uw3qi6')">
+                <div class="selection-option-title">SuperGrok</div>
+                <div class="selection-option-price">$60（￥329）</div>
+                <div class="selection-option-period">两个月</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1572,6 +1736,38 @@
                     channelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             };
+
+            // --- 选择弹窗逻辑 ---
+            const selectionModal = document.getElementById('selectionModal');
+
+            window.openSelectionModal = function() {
+                selectionModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeSelectionModal = function() {
+                selectionModal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            window.goToPurchase = function(itemId) {
+                window.open('https://fe.dtyuedan.cn/item/' + itemId, '_blank');
+                closeSelectionModal();
+            };
+
+            // 点击遮罩层关闭
+            selectionModal.addEventListener('click', function(e) {
+                if (e.target === selectionModal) {
+                    closeSelectionModal();
+                }
+            });
+
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && selectionModal.classList.contains('active')) {
+                    closeSelectionModal();
+                }
+            });
         });
     </script>
 
