@@ -48,294 +48,6 @@
             display: none !important;
         }
 
-        /* --- 左右分栏布局 --- */
-        .channels-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            align-items: start;
-        }
-
-        /* --- 左侧：渠道列表 --- */
-        .channels-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            position: sticky;
-            top: calc(var(--header-height) + 20px);
-        }
-
-        .channel-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 12px;
-            border: 2px solid #e9ecef;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .channel-item:hover {
-            border-color: #6f42c1;
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.1);
-        }
-
-        .channel-item.active {
-            background: linear-gradient(135deg, #6f42c1 0%, #9b75d6 100%);
-            border-color: #6f42c1;
-            color: #fff;
-            transform: translateX(5px);
-            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
-        }
-
-        .channel-item-icon {
-            font-size: 2em;
-            flex-shrink: 0;
-        }
-
-        .channel-item-info {
-            flex: 1;
-        }
-
-        .channel-item-info h4 {
-            font-size: 1.05em;
-            font-weight: 600;
-            margin: 0 0 4px 0;
-            color: inherit;
-        }
-
-        .recommended-tag {
-            display: inline-block;
-            background-color: #ffe484;
-            color: #495057;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 6px;
-            font-weight: 600;
-        }
-
-        .channel-item.active .recommended-tag {
-            background-color: rgba(255, 255, 255, 0.25);
-            color: #fff;
-        }
-
-        .channel-item-name {
-            font-size: 0.9em;
-            color: #868e96;
-        }
-
-        .channel-item.active .channel-item-name {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .channel-item-arrow {
-            font-size: 1.5em;
-            opacity: 0.5;
-            transition: transform 0.3s ease;
-        }
-
-        .channel-item:hover .channel-item-arrow,
-        .channel-item.active .channel-item-arrow {
-            opacity: 1;
-        }
-
-        /* --- 右侧：渠道详情 --- */
-        .channel-detail {
-            position: relative;
-            min-height: 500px;
-        }
-
-        .detail-content {
-            display: none;
-            background-color: #fff;
-            border-radius: 16px;
-            padding: 40px;
-            border: 1px solid #e9ecef;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .detail-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .detail-header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f1f3f5;
-        }
-
-        .detail-header h3 {
-            font-size: 1.5em;
-            color: #212529;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .detail-section {
-            margin-bottom: 28px;
-        }
-
-        .detail-section h4 {
-            font-size: 1.1em;
-            color: #495057;
-            font-weight: 600;
-            margin: 0 0 16px 0;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .feature-list li {
-            padding: 10px 0;
-            color: #495057;
-            font-size: 0.95em;
-            line-height: 1.6;
-            border-bottom: 1px solid #f8f9fa;
-        }
-
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-
-        .process-list {
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .process-list li {
-            padding: 10px 0;
-            color: #495057;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-
-        .faq-item {
-            padding: 12px 0;
-        }
-
-        .faq-q {
-            color: #495057;
-            font-weight: 600;
-            margin: 0 0 4px 0;
-            font-size: 0.95em;
-        }
-
-        .faq-a {
-            color: #868e96;
-            margin: 0;
-            font-size: 0.9em;
-            padding-left: 10px;
-        }
-
-        .detail-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 2px solid #f1f3f5;
-        }
-
-        /* 顶部按钮样式 - 更醒目 */
-        .detail-actions-top {
-            margin-top: 0;
-            margin-bottom: 30px;
-            padding: 0;
-            border-top: none;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #e9ecef;
-        }
-
-        .detail-actions .btn {
-            flex: 1;
-            height: 52px;
-            font-size: 1em;
-            padding: 0 24px;
-        }
-
-        .detail-actions-top .btn {
-            height: 60px;
-            font-size: 1.1em;
-            font-weight: 700;
-            padding: 0 28px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .detail-actions-top .btn-primary {
-            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
-            background: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 100%);
-        }
-
-        .detail-actions-top .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.5);
-        }
-
-        .detail-actions-top .btn-secondary {
-            background-color: #fff;
-            border: 2px solid #6f42c1;
-            color: #6f42c1;
-        }
-
-        .btn-secondary {
-            background-color: #f8f9fa;
-            color: #6f42c1;
-            border: 1px solid #6f42c1;
-        }
-
-        .detail-actions-top .btn-secondary:hover {
-            background-color: #6f42c1;
-            color: #fff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background-color: #6f42c1;
-            color: #fff;
-            border-color: #6f42c1;
-        }
-
-        .detail-support {
-            margin-top: 25px;
-            padding: 18px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .detail-support p {
-            margin: 0;
-            color: #495057;
-            font-size: 0.95em;
-        }
-
-        .detail-support strong {
-            color: #6f42c1;
-        }
-
         /* --- 按钮样式 --- */
         .btn {
             display: inline-flex;
@@ -407,22 +119,6 @@
             font-size: 14px;
         }
 
-        /* --- 平板端响应式 (1024px - 768px) --- */
-        @media (max-width: 1024px) {
-            .channels-layout {
-                grid-template-columns: 280px 1fr;
-                gap: 24px;
-            }
-
-            .detail-content {
-                padding: 32px;
-            }
-
-            .detail-header h3 {
-                font-size: 1.3em;
-            }
-        }
-
         /* --- 移动端响应式 (< 768px) --- */
         @media (max-width: 768px) {
             .main-content {
@@ -439,188 +135,6 @@
 
             .page-header .subtitle {
                 font-size: 0.95em;
-            }
-
-            /* 移动端：垂直堆叠布局 */
-            .channels-layout {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                margin-bottom: 35px;
-            }
-
-            /* 左侧渠道列表变成卡片 */
-            .channels-sidebar {
-                position: static;
-            }
-
-            .channel-item {
-                padding: 18px;
-            }
-
-            .channel-item:hover {
-                transform: none;
-            }
-
-            /* 隐藏右侧详情，使用模态弹窗替代 */
-            .channel-detail {
-                display: none;
-            }
-
-            /* 移动端：添加"查看详情"按钮 */
-            .channel-item::after {
-                content: '查看详情 →';
-                font-size: 0.9em;
-                font-weight: 600;
-            }
-
-            .channel-item-arrow {
-                display: none;
-            }
-
-            /* --- 模态弹窗样式 --- */
-            .modal-overlay {
-                display: none !important;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.6);
-                backdrop-filter: blur(4px);
-                z-index: 2000;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .modal-overlay.active {
-                display: block !important;
-                opacity: 1;
-            }
-
-            .modal-content {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                max-height: 85vh;
-                background-color: #fff;
-                border-radius: 20px 20px 0 0;
-                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-                z-index: 2001;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                transform: translateY(100%);
-                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .modal-overlay.active .modal-content {
-                transform: translateY(0);
-            }
-
-            .modal-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 20px;
-                border-bottom: 1px solid #e9ecef;
-                position: sticky;
-                top: 0;
-                background-color: #fff;
-                z-index: 10;
-            }
-
-            .modal-header h3 {
-                font-size: 1.2em;
-                font-weight: 700;
-                margin: 0;
-                color: #212529;
-            }
-
-            .modal-close {
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background-color: #f8f9fa;
-                border: none;
-                font-size: 1.3em;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.2s ease;
-            }
-
-            .modal-close:hover {
-                background-color: #e9ecef;
-            }
-
-            .modal-body {
-                padding: 24px 20px;
-            }
-
-            .modal-body .detail-header {
-                display: none;
-            }
-
-            .modal-body .detail-section {
-                margin-bottom: 24px;
-            }
-
-            .modal-body .detail-section h4 {
-                font-size: 1em;
-            }
-
-            .modal-body .feature-list li,
-            .modal-body .process-list li {
-                font-size: 0.9em;
-            }
-
-            .modal-body .detail-actions {
-                flex-direction: column;
-                gap: 12px;
-                margin-top: 24px;
-                padding-top: 20px;
-            }
-
-            .modal-body .detail-actions-top {
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                border: 2px solid #e9ecef;
-                padding: 18px;
-                margin-bottom: 24px;
-                margin-top: 0;
-            }
-
-            .modal-body .btn {
-                width: 100%;
-                height: 50px;
-                font-size: 0.95em;
-            }
-
-            .modal-body .detail-actions-top .btn {
-                height: 56px;
-                font-size: 1.05em;
-                font-weight: 700;
-            }
-
-            .modal-body .detail-support {
-                margin-top: 20px;
-                padding: 16px;
-            }
-
-            .modal-body .detail-support p {
-                font-size: 0.9em;
-            }
-
-            .tips-section {
-                padding: 24px 20px;
-            }
-
-            .tips-section h3 {
-                font-size: 1.05em;
-            }
-
-            .tips-section p {
-                font-size: 0.9em;
             }
         }
 
@@ -644,6 +158,690 @@
 
             .modal-body {
                 padding: 20px 18px;
+            }
+        }
+
+        /* --- 两栏卡片布局样式（套餐选择）--- */
+        .pricing-section {
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            position: relative;
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Plus 卡片样式 */
+        .plus-card {
+            border-color: #6f42c1;
+            box-shadow: 0 20px 40px rgba(111, 66, 193, 0.15);
+        }
+
+        .plus-card:hover {
+            box-shadow: 0 25px 50px rgba(111, 66, 193, 0.25);
+        }
+
+        /* 推荐徽章 */
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: linear-gradient(135deg, #6f42c1 0%, #9b75d6 100%);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 卡片头部 */
+        .pricing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .pricing-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .pricing-tag {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 价格区域 */
+        .pricing-price {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .price-current {
+            font-size: 48px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .price-original {
+            font-size: 16px;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .price-period {
+            font-size: 14px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        /* 描述 */
+        .pricing-desc {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* 内联特性标签 */
+        .pricing-features-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .feature-tag {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        .plus-tag {
+            background: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+            border-color: rgba(111, 66, 193, 0.2);
+        }
+
+        /* 功能列表 */
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 14px;
+            color: #0f172a;
+            line-height: 1.6;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: #e0e7ff;
+            color: #6366f1;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* 按钮 */
+        .pricing-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-plus {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(111, 66, 193, 0.3);
+        }
+
+        .btn-plus:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(111, 66, 193, 0.4);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card {
+                padding: 24px 20px;
+            }
+
+            .pricing-header h2 {
+                font-size: 20px;
+            }
+
+            .price-current {
+                font-size: 36px;
+            }
+
+            .pricing-features-inline {
+                flex-direction: column;
+            }
+
+            .feature-tag {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-card {
+                padding: 20px 16px;
+            }
+
+            .pricing-header h2 {
+                font-size: 18px;
+            }
+
+            .price-current {
+                font-size: 32px;
+            }
+
+            .pricing-btn {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .faq-header h2 {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .faq-header p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 24px;
+            background: #f8fafc;
+        }
+
+        .faq-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: #6f42c1;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-question h4 {
+            font-size: 16px;
+            color: #0f172a;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+
+        .faq-answer {
+            padding: 20px 24px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .faq-note {
+            margin-top: 16px;
+            padding: 16px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .faq-note-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .faq-note img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- 自定义弹窗样式 --- */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .custom-modal.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            margin: 5vh auto;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #0f172a;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        /* --- Plus方案链接按钮样式 --- */
+        .plus-options-link {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 16px;
+            margin-top: 16px;
+            background: linear-gradient(to right, #eef2ff 0%, #f3e8ff 100%);
+            border: 1px solid #e0e7ff;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plus-options-link:hover {
+            background: linear-gradient(to right, #e0e7ff 0%, #f3e8ff 100%);
+            border-color: #c7d2fe;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 装饰性背景模糊圆圈 */
+        .plus-options-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(199, 210, 254, 0.3);
+            border-radius: 50%;
+            filter: blur(20px);
+            transform: translateY(-50%) translateX(50%);
+            transition: background 0.2s ease;
+        }
+
+        .plus-options-link:hover::before {
+            background: rgba(199, 210, 254, 0.4);
+        }
+
+        /* 内容容器 */
+        .plus-options-link-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* 图标容器 */
+        .plus-options-link-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .plus-options-link:hover .plus-options-link-icon {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .plus-options-link-icon svg {
+            width: 16px;
+            height: 16px;
+            color: #6f42c1;
+        }
+
+        /* 文字容器 */
+        .plus-options-link-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .plus-options-link-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6f42c1;
+            margin: 0 0 2px 0;
+            transition: color 0.2s ease;
+        }
+
+        .plus-options-link:hover .plus-options-link-title {
+            color: #5b21b6;
+        }
+
+        .plus-options-link-desc {
+            font-size: 12px;
+            color: rgba(99, 102, 241, 0.8);
+            margin: 2px 0 0 0;
+        }
+
+        .plus-options-link-option {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .plus-options-link-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .dot-indigo {
+            background: #818cf8;
+        }
+
+        .dot-purple {
+            background: #a78bfa;
+        }
+
+        .plus-options-link-divider {
+            margin: 0 6px;
+            color: #c4b5fd;
+        }
+
+        /* 微信号复制样式 */
+        .wechat-copy {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .wechat-copy:hover {
+            background-color: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+        }
+
+        .wechat-copy.copied::after {
+            content: '已复制！';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            animation: fadeInOut 2s ease;
+            margin-bottom: 8px;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* 微信号复制提示样式 */
+        .wechat-copy-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 10000;
+            animation: hintFadeIn 0.3s ease, hintFadeOut 0.3s ease 1.7s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes hintFadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes hintFadeOut {
+            from {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .faq-header h2 {
+                font-size: 24px;
+            }
+
+            .faq-item {
+                margin-bottom: 12px;
+            }
+
+            .faq-question {
+                padding: 16px 20px;
+            }
+
+            .faq-answer {
+                padding: 16px 20px;
+            }
+
+            .confirm-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -681,7 +879,7 @@
                             <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888</span></p>
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span></p>
                             <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
                         </div>
                     </div>
@@ -697,198 +895,96 @@
     <!-- 主体内容 -->
     <main class="main-content container">
         <div class="page-header">
-            <h2>GPT Plus 充值</h2>
-            <p class="subtitle">选择任意渠道，先点击<span class="highlight-text">"购买卡密"</span>，再点击<span class="highlight-text">"前往充值"</span>，可根据充值系统教程自助完成GPTPlus升级订阅(<span class="highlight-text">需要订阅代充GPTPro可以联系我：aicygg888</span>)</p>
+            <h2>GPT Plus/Pro 充值</h2>
+            <p class="subtitle">点击下方<span class="highlight-text">"立即购买"</span>按钮，查看详细充值方式(<span class="highlight-text">需要订阅代充GPTPro可以联系我：<span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></span>)</p>
         </div>
 
-        <!-- 左右分栏布局 -->
-        <div class="channels-layout">
-            <!-- 左侧：渠道列表 -->
-            <div class="channels-sidebar">
-                <div class="channel-item active" data-channel="1">
-                    <div class="channel-item-icon">🏪</div>
-                    <div class="channel-item-info">
-                        <h4>渠道一 <span class="recommended-tag">推荐</span></h4>
-                        <span class="channel-item-name">ChatGPTPlus</span>
+        <!-- 两栏卡片布局：套餐选择 -->
+        <section class="pricing-section">
+            <div class="pricing-grid">
+                <!-- ChatGPT Plus 卡片 -->
+                <div class="pricing-card plus-card">
+                    <span class="pricing-badge">推荐</span>
+                    <div class="pricing-header">
+                        <h2>ChatGPT Plus / Pro</h2>
+                        <span class="pricing-tag">个人 Plus</span>
                     </div>
-                    <div class="channel-item-arrow">›</div>
-                </div>
+                    <div class="pricing-price">
+                        <div class="price-current">¥178</div>
+                        <div class="price-original">¥189</div>
+                        <div class="price-period">/ 月</div>
+                    </div>
+                    <p class="pricing-desc">正规官方通道充值，个人账号一键升级，不成功全额退款</p>
+                    <div class="pricing-features-inline">
+                        <span class="feature-tag plus-tag">给你充值</span>
+                        <span class="feature-tag plus-tag">无需账密</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            访问 GPT‑5 / o1 等最新模型能力
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            支持 Codex 代码理解与生成、GPT Image 2 图像生成
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            Canvas、Projects、GPTs、Memory 等高级能力
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            充值 / 成品账号两种方案可选
+                        </li>
+                    </ul>
+                    <a href="purchase-gpt-plus.html" class="plus-options-link">
+                        <div class="plus-options-link-content">
+                            <div class="plus-options-link-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="plus-options-link-text">
+                                <p class="plus-options-link-title">充值（给您的账号）</p>
+                                <p class="plus-options-link-desc">
+                                    点击查看充值详情，给您的账号升级
+                                </p>
+                            </div>
+                        </div>
+                    </a>
 
-                <div class="channel-item" data-channel="2">
-                    <div class="channel-item-icon">🏪</div>
-                    <div class="channel-item-info">
-                        <h4>渠道二</h4>
-                        <span class="channel-item-name">ChatGPTPlus</span>
+                    <div style="display: block; width: 100%; padding: 12px 20px; margin-bottom: 16px; margin-top: 16px; background: linear-gradient(to right, #eef2ff 0%, #f3e8ff 100%); border: 1px solid #e0e7ff; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden;" onclick="copyWechatFromOption(event)" data-wechat="aicygg888">
+                        <div style="position: relative; display: flex; align-items: center; gap: 12px;">
+                            <div style="flex-shrink: 0; width: 32px; height: 32px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); display: flex; align-items: center; justify-content: center;">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16" color="#6f42c1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                                </svg>
+                            </div>
+                            <div style="flex: 1; min-width: 0;">
+                                <p style="font-size: 12px; font-weight: 600; color: #6f42c1; margin: 0 0 2px 0;">成品账号（无需自备账号）</p>
+                                <p style="font-size: 12px; color: rgba(99, 102, 241, 0.8); margin: 2px 0 0 0;">请联系客服：<span style="font-weight: 600; color: #6f42c1;">aicygg888</span>（点击复制微信号）</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="channel-item-arrow">›</div>
-                </div>
-
-                <div class="channel-item" data-channel="3">
-                    <div class="channel-item-icon">🏪</div>
-                    <div class="channel-item-info">
-                        <h4>渠道三</h4>
-                        <span class="channel-item-name">ChatGPTPlus</span>
-                    </div>
-                    <div class="channel-item-arrow">›</div>
+                    <a href="purchase-gpt-plus.html" class="pricing-btn btn-plus">
+                        立即购买
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
                 </div>
             </div>
-
-            <!-- 右侧：渠道详情 -->
-            <div class="channel-detail">
-                <!-- 渠道一详情 -->
-                <div class="detail-content active" id="detail-1">
-                    <div class="detail-header">
-                        <h3>🎯 渠道一 (推荐) - ChatGPTPlus</h3>
-                    </div>
-
-                    <!-- 操作按钮移到顶部 -->
-                    <div class="detail-actions detail-actions-top">
-                        <a href="https://fe.dtyuedan.cn/item/l8fpil" target="_blank" class="btn btn-secondary">
-                            📝 购买卡密
-                        </a>
-                        <a href="https://9977ai.vip/" target="_blank" class="btn btn-primary">
-                            🚀 前往充值 →
-                        </a>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📌 渠道特点</h4>
-                        <ul class="feature-list">
-                            <li>✓ 稳定快速，充值成功率高</li>
-                            <li>✓ 支持支付宝/微信支付</li>
-                            <li>✓ 24小时客服支持</li>
-                            <li>✓ 到账时间：5-10分钟</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📝 充值流程（3步完成）</h4>
-                        <ol class="process-list">
-                            <li>点击上方"购买卡密"按钮</li>
-                            <li>获取激活码（复制保存）</li>
-                            <li>点击"前往充值"，在新页面输入激活码</li>
-                        </ol>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>💡 常见问题</h4>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：激活码有效期多久？</p>
-                            <p class="faq-a">A：只有充值成功才会失效，有问题招客服 aicygg888</p>
-                        </div>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 aicygg888</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
-                    </div>
-                </div>
-
-                <!-- 渠道二详情 -->
-                <div class="detail-content" id="detail-2">
-                    <div class="detail-header">
-                        <h3>🎯 渠道二 - ChatGPTPlus</h3>
-                    </div>
-
-                    <!-- 操作按钮移到顶部 -->
-                    <div class="detail-actions detail-actions-top">
-                        <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/2tnsn1" target="_blank" class="btn btn-secondary">
-                            📝 购买卡密
-                        </a>
-                        <a href="https://gptget.pro/" target="_blank" class="btn btn-primary">
-                            🚀 前往充值 →
-                        </a>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📌 渠道特点</h4>
-                        <ul class="feature-list">
-                            <li>✓ 充值速度快</li>
-                            <li>✓ 服务稳定可靠</li>
-                            <li>✓ 操作简单便捷</li>
-                            <li>✓ 到账时间：3-8分钟</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📝 充值流程（3步完成）</h4>
-                        <ol class="process-list">
-                            <li>点击上方"购买卡密"按钮</li>
-                            <li>获取激活码（复制保存）</li>
-                            <li>点击"前往充值"，在新页面输入激活码</li>
-                        </ol>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>💡 常见问题</h4>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：支持哪些支付方式？</p>
-                            <p class="faq-a">A：支持支付宝、微信等多种支付方式</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
-                    </div>
-                </div>
-
-                <!-- 渠道三详情 -->
-                <div class="detail-content" id="detail-3">
-                    <div class="detail-header">
-                        <h3>🎯 渠道三 - ChatGPTPlus</h3>
-                    </div>
-
-                    <!-- 操作按钮移到顶部 -->
-                    <div class="detail-actions detail-actions-top">
-                        <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/txa6nx" target="_blank" class="btn btn-secondary">
-                            📝 购买卡密 (本渠道以购买卡密对应的充值系统为准)
-                        </a>
-                        <a href="https://shop.gptai.vip/" target="_blank" class="btn btn-primary">
-                            🚀 前往充值 →
-                        </a>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📌 渠道特点</h4>
-                        <ul class="feature-list">
-                            <li>✓ 价格优惠</li>
-                            <li>✓ 性价比高</li>
-                            <li>✓ 老用户口碑好</li>
-                            <li>✓ 到账时间：5-15分钟</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📝 充值流程（3步完成）</h4>
-                        <ol class="process-list">
-                            <li>点击上方"购买卡密"按钮</li>
-                            <li>获取激活码（复制保存）</li>
-                            <li>点击"前往充值"，在新页面输入激活码</li>
-                        </ol>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>💡 常见问题</h4>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：为什么价格更低？</p>
-                            <p class="faq-a">A：批量采购渠道，成本优势回馈用户</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <div class="tips-section">
             <h3>💡 重要说明</h3>
             <p>• 新窗口打开的充值网站可以正常登录和支付，无任何限制</p>
-            <p>• 充值完成后可返回此页面查看其他渠道或进行其他操作</p>
         </div>
     </main>
 
@@ -896,19 +992,6 @@
     <footer class="main-footer">
         <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
     </footer>
-
-    <!-- 移动端模态弹窗 -->
-    <div class="modal-overlay" id="channelModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">渠道详情</h3>
-                <button class="modal-close" id="modalClose">✕</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- 动态内容 -->
-            </div>
-        </div>
-    </div>
 
     <!-- Script -->
     <script>
@@ -930,74 +1013,131 @@
             handleResize();
             window.addEventListener('resize', handleResize);
 
-            // --- 渠道切换逻辑 ---
-            const channelItems = document.querySelectorAll('.channel-item');
-            const detailContents = document.querySelectorAll('.detail-content');
+            // --- 全局微信号复制功能 ---
+            // 使用事件委托，为所有现有和未来的微信号添加点击事件
+            document.addEventListener('click', function(e) {
+                // 检查点击的是否是微信号或其子元素
+                const wechatElement = e.target.closest('.wechat-copy');
+                if (wechatElement) {
+                    copyWechatId(wechatElement);
+                }
+            });
 
-            channelItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const channelId = this.getAttribute('data-channel');
+            function copyWechatId(element) {
+                const wechatId = element.getAttribute('data-wechat');
 
-                    // 检查是否是移动端
-                    if (window.innerWidth <= 768) {
-                        // 移动端：打开模态弹窗
-                        openModal(channelId);
-                    } else {
-                        // 网页端：切换详情显示
-                        switchChannel(channelId);
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    // 添加已复制样式
+                    element.classList.add('copied');
+
+                    // 显示提示
+                    showCopyHint('已复制微信号：' + wechatId);
+
+                    // 2秒后移除已复制样式
+                    setTimeout(() => {
+                        element.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    // 如果clipboard API失败，使用传统方法
+                    const textArea = document.createElement('textarea');
+                    textArea.value = wechatId;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+
+                    try {
+                        document.execCommand('copy');
+                        element.classList.add('copied');
+                        showCopyHint('已复制微信号：' + wechatId);
+                        setTimeout(() => {
+                            element.classList.remove('copied');
+                        }, 2000);
+                    } catch (e) {
+                        showCopyHint('复制失败，请手动复制：' + wechatId);
+                    } finally {
+                        document.body.removeChild(textArea);
                     }
                 });
-            });
-
-            function switchChannel(channelId) {
-                // 移除所有active状态
-                channelItems.forEach(item => item.classList.remove('active'));
-                detailContents.forEach(content => content.classList.remove('active'));
-
-                // 添加active状态到当前选中的渠道
-                document.querySelector(`.channel-item[data-channel="${channelId}"]`).classList.add('active');
-                document.querySelector(`#detail-${channelId}`).classList.add('active');
             }
 
-            // --- 移动端模态弹窗逻辑 ---
-            const modal = document.getElementById('channelModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-            const modalClose = document.getElementById('modalClose');
+            // --- 微信号复制功能（用于链接点击） ---
+            window.copyWechatFromLink = function(event) {
+                event.preventDefault();
+                const wechatId = event.currentTarget.getAttribute('data-wechat');
 
-            function openModal(channelId) {
-                const detailContent = document.querySelector(`#detail-${channelId}`);
-                const title = detailContent.querySelector('.detail-header h3').textContent;
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    // 显示复制成功提示
+                    showCopyHint('已复制微信号：' + wechatId);
+                }).catch(err => {
+                    // 如果clipboard API失败，使用传统方法
+                    const textArea = document.createElement('textarea');
+                    textArea.value = wechatId;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
 
-                modalTitle.textContent = title;
-                modalBody.innerHTML = detailContent.innerHTML;
-                modal.classList.add('active');
+                    try {
+                        document.execCommand('copy');
+                        showCopyHint('已复制微信号：' + wechatId);
+                    } catch (e) {
+                        showCopyHint('复制失败，请手动复制：' + wechatId);
+                    } finally {
+                        document.body.removeChild(textArea);
+                    }
+                });
+            };
 
-                // 阻止背景滚动
-                document.body.style.overflow = 'hidden';
-            }
+            // --- 微信号复制功能（用于选项点击） ---
+            window.copyWechatFromOption = function(event) {
+                event.stopPropagation();
+                const wechatId = event.currentTarget.getAttribute('data-wechat');
 
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    // 显示复制成功提示
+                    showCopyHint('已复制微信号：' + wechatId + '，请联系客服');
+                }).catch(err => {
+                    // 如果clipboard API失败，使用传统方法
+                    const textArea = document.createElement('textarea');
+                    textArea.value = wechatId;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
 
-            // 点击关闭按钮
-            modalClose.addEventListener('click', closeModal);
+                    try {
+                        document.execCommand('copy');
+                        showCopyHint('已复制微信号：' + wechatId + '，请联系客服');
+                    } catch (e) {
+                        showCopyHint('复制失败，请手动复制：' + wechatId);
+                    } finally {
+                        document.body.removeChild(textArea);
+                    }
+                });
+            };
 
-            // 点击遮罩层关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
+            // 显示复制提示
+            function showCopyHint(message) {
+                // 移除已存在的提示
+                const existingHint = document.querySelector('.wechat-copy-hint');
+                if (existingHint) {
+                    existingHint.remove();
                 }
-            });
 
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
+                // 创建新提示
+                const hint = document.createElement('div');
+                hint.className = 'wechat-copy-hint';
+                hint.textContent = message;
+                document.body.appendChild(hint);
+
+                // 2秒后自动移除
+                setTimeout(() => {
+                    if (hint && hint.parentNode) {
+                        hint.remove();
+                    }
+                }, 2000);
+            }
         });
     </script>
 </body>
