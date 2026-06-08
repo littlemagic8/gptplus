@@ -1298,11 +1298,11 @@
                 </div>
 
                 <div class="flow-steps">
-                    <a href="javascript:void(0)" onclick="openSelectionModal()" class="flow-step flow-step-link">
+                    <a href="javascript:void(0)" onclick="openPurchaseModal()" class="flow-step flow-step-link">
                         <i class="fa-solid fa-ticket"></i> 第一步：购买充值码（点击直达）
                     </a>
                     <div class="flow-arrow">→</div>
-                    <a href="https://quickplus.vip/public/grok/" target="_blank" class="flow-step flow-step-link">
+                    <a href="javascript:void(0)" onclick="openRechargeModal()" class="flow-step flow-step-link">
                         <i class="fa-solid fa-rocket"></i> 第二步：系统充值（点击直达）
                     </a>
                 </div>
@@ -1436,10 +1436,10 @@
 
                     <!-- 操作按钮移到顶部 -->
                     <div class="detail-actions detail-actions-top">
-                        <a href="https://fe.dtyuedan.cn/item/uw3qi6" target="_blank" class="btn btn-secondary">
+                        <a href="javascript:void(0)" onclick="openPurchaseModal()" class="btn btn-secondary">
                             📝 购买充值码
                         </a>
-                        <a href="https://quickplus.vip/public/grok/" target="_blank" class="btn btn-primary">
+                        <a href="javascript:void(0)" onclick="openRechargeModal()" class="btn btn-primary">
                             🚀 前往系统充值 →
                         </a>
                     </div>
@@ -1565,20 +1565,40 @@
         </div>
     </div>
 
-    <!-- 选择弹窗 -->
-    <div class="selection-overlay" id="selectionModal">
+    <!-- 第一步：购买充值码选择弹窗 -->
+    <div class="selection-overlay" id="purchaseModal">
         <div class="selection-dialog">
-            <button class="selection-close" onclick="closeSelectionModal()">✕</button>
-            <h3>选择充值时长</h3>
-            <div class="selection-option" onclick="goToPurchase('px6b4g')">
-                <div class="selection-option-title">SuperGrok</div>
-                <div class="selection-option-price">$30（￥230）</div>
-                <div class="selection-option-period">一个月</div>
+            <button class="selection-close" onclick="closePurchaseModal()">✕</button>
+            <h3>购买充值码</h3>
+            <p style="text-align: center; color: #6c757d; font-size: 0.9em; margin-bottom: 16px;">请选择要购买的充值时长</p>
+            <div class="selection-option" onclick="goToPurchase('1month')">
+                <div class="selection-option-title">一个月</div>
+                <div class="selection-option-price">$30（￥220）</div>
+                <div class="selection-option-period">购买一个月充值码</div>
             </div>
-            <div class="selection-option" onclick="goToPurchase('uw3qi6')">
-                <div class="selection-option-title">SuperGrok</div>
+            <div class="selection-option" onclick="goToPurchase('2months')">
+                <div class="selection-option-title">两个月</div>
                 <div class="selection-option-price">$60（￥329）</div>
-                <div class="selection-option-period">两个月</div>
+                <div class="selection-option-period">购买两个月充值码</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二步：系统充值选择弹窗 -->
+    <div class="selection-overlay" id="rechargeModal">
+        <div class="selection-dialog">
+            <button class="selection-close" onclick="closeRechargeModal()">✕</button>
+            <h3>系统充值</h3>
+            <p style="text-align: center; color: #6c757d; font-size: 0.9em; margin-bottom: 16px;">请选择您购买的充值时长，系统将跳转到对应的充值地址</p>
+            <div class="selection-option" onclick="goToRecharge('1month')">
+                <div class="selection-option-title">一个月</div>
+                <div class="selection-option-price">$30（￥220）</div>
+                <div class="selection-option-period">充值系统：chong.aishopstore.com</div>
+            </div>
+            <div class="selection-option" onclick="goToRecharge('2months')">
+                <div class="selection-option-title">两个月</div>
+                <div class="selection-option-price">$60（￥329）</div>
+                <div class="selection-option-period">充值系统：quickplus.vip</div>
             </div>
         </div>
     </div>
@@ -1737,35 +1757,89 @@
                 }
             };
 
-            // --- 选择弹窗逻辑 ---
-            const selectionModal = document.getElementById('selectionModal');
+            // --- 第一步：购买充值码弹窗逻辑 ---
+            const purchaseModal = document.getElementById('purchaseModal');
 
-            window.openSelectionModal = function() {
-                selectionModal.classList.add('active');
+            window.openPurchaseModal = function() {
+                purchaseModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             };
 
-            window.closeSelectionModal = function() {
-                selectionModal.classList.remove('active');
+            window.closePurchaseModal = function() {
+                purchaseModal.classList.remove('active');
                 document.body.style.overflow = '';
             };
 
-            window.goToPurchase = function(itemId) {
-                window.open('https://fe.dtyuedan.cn/item/' + itemId, '_blank');
-                closeSelectionModal();
+            window.goToPurchase = function(duration) {
+                // 根据时长打开对应的购买页面
+                let purchaseUrl = '';
+                if (duration === '1month') {
+                    purchaseUrl = 'https://fe.dtyuedan.cn/item/ohx07g';
+                } else if (duration === '2months') {
+                    purchaseUrl = 'https://fe.dtyuedan.cn/item/uw3qi6';
+                }
+
+                if (purchaseUrl) {
+                    window.open(purchaseUrl, '_blank');
+                }
+
+                closePurchaseModal();
             };
 
             // 点击遮罩层关闭
-            selectionModal.addEventListener('click', function(e) {
-                if (e.target === selectionModal) {
-                    closeSelectionModal();
+            purchaseModal.addEventListener('click', function(e) {
+                if (e.target === purchaseModal) {
+                    closePurchaseModal();
                 }
             });
 
             // ESC键关闭
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && selectionModal.classList.contains('active')) {
-                    closeSelectionModal();
+                if (e.key === 'Escape' && purchaseModal.classList.contains('active')) {
+                    closePurchaseModal();
+                }
+            });
+
+            // --- 第二步：系统充值弹窗逻辑 ---
+            const rechargeModal = document.getElementById('rechargeModal');
+
+            window.openRechargeModal = function() {
+                rechargeModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeRechargeModal = function() {
+                rechargeModal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            window.goToRecharge = function(duration) {
+                // 根据时长打开对应的充值地址
+                let rechargeUrl = '';
+                if (duration === '1month') {
+                    rechargeUrl = 'https://chong.aishopstore.com/grok';
+                } else if (duration === '2months') {
+                    rechargeUrl = 'https://quickplus.vip/public/grok/';
+                }
+
+                if (rechargeUrl) {
+                    window.open(rechargeUrl, '_blank');
+                }
+
+                closeRechargeModal();
+            };
+
+            // 点击遮罩层关闭
+            rechargeModal.addEventListener('click', function(e) {
+                if (e.target === rechargeModal) {
+                    closeRechargeModal();
+                }
+            });
+
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && rechargeModal.classList.contains('active')) {
+                    closeRechargeModal();
                 }
             });
         });
