@@ -9,6 +9,32 @@
         /* 粘贴 index.html 的全部 CSS 样式到这里 */
         :root { --header-height: 71px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
 
+        /* --- 提示框样式 --- */
+        .stock-alert-wrapper { background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); border: 3px solid #ff8c00; border-radius: 16px; margin: 20px 0 30px; position: relative; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.25); }
+        .stock-alert { padding: 24px 30px; display: flex; align-items: center; justify-content: center; gap: 20px; position: relative; }
+        .stock-alert-content { display: flex; flex-direction: column; align-items: center; gap: 16px; flex: 1; justify-content: center; text-align: center; }
+        .stock-alert-icon { font-size: 48px; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .stock-alert-text { font-size: 18px; color: #856404; line-height: 1.8; font-weight: 600; }
+        .stock-alert-text .highlight-line { display: block; margin: 8px 0; color: #ff4d4f; font-weight: 700; }
+        .stock-alert-text .wechat-highlight { color: #ff0000; font-weight: 800; font-size: 20px; text-shadow: 0 1px 2px rgba(255, 0, 0, 0.2); }
+        .stock-alert-copy-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #ff7a00 0%, #ff5500 100%); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; border: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.4); flex-shrink: 0; margin-top: 8px; }
+        .stock-alert-copy-btn:hover { background: linear-gradient(135deg, #ff8800 0%, #ff6600 100%); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255, 122, 0, 0.5); }
+        .stock-alert-copy-btn:active { transform: translateY(0); }
+        .stock-alert-copy-btn.copied { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); }
+        .stock-alert-close { position: absolute; right: 15px; top: 15px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.6); border: 2px solid #ffa940; border-radius: 50%; cursor: pointer; font-size: 22px; color: #856404; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; line-height: 1; padding: 0; }
+        .stock-alert-close:hover { background: rgba(255, 255, 255, 0.9); color: #ff4d4f; border-color: #ff4d4f; transform: rotate(90deg); }
+        .stock-alert-wrapper.hidden { display: none; }
+        @media (max-width: 768px) {
+            .stock-alert-wrapper { margin: 15px 0 20px; }
+            .stock-alert { flex-direction: column; gap: 16px; padding: 20px; }
+            .stock-alert-icon { font-size: 42px; }
+            .stock-alert-text { font-size: 16px; }
+            .stock-alert-text .wechat-highlight { font-size: 18px; }
+            .stock-alert-copy-btn { padding: 11px 20px; font-size: 15px; }
+            .stock-alert-close { position: static; transform: none; align-self: flex-end; margin-top: 0; }
+        }
+
         /* 全局盒模型设置 */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -894,6 +920,29 @@
 
     <!-- 主体内容 -->
     <main class="main-content container">
+
+        <!-- ==================== 提示框 ==================== -->
+        <!-- 如需隐藏此提示框，注释掉以下 div 标签即可 -->
+        <div class="stock-alert-wrapper" id="stockAlert">
+            <div class="stock-alert">
+                <div class="stock-alert-content">
+                    <div class="stock-alert-icon">⚠️</div>
+                    <div class="stock-alert-text">
+                        当前 GPT Plus 官方限购中，ChatGPTPlus自助充值入口暂时关闭！<br>
+                        解除限购后，会第一时间恢复开放自动充值。<br>
+                        期间可以先选择使用ChatGPTPro、Claude、Gemini、SuperGrok等产品使用！<br>
+                        <span class="highlight-line">💡💡如着急使用gpt plus，可联系客服：<span class="wechat-highlight">aicygg888</span>，进行手动代充（可能较慢，请理解）</span>
+                    </div>
+                    <button class="stock-alert-copy-btn" onclick="copyWechatId(this)" data-wechat="aicygg888">
+                        <i class="fa-regular fa-copy"></i>
+                        复制微信号
+                    </button>
+                </div>
+                <button class="stock-alert-close" onclick="closeStockAlert()" aria-label="关闭提示">×</button>
+            </div>
+        </div>
+        <!-- ==================== 提示框结束 ==================== -->
+
         <div class="page-header">
             <h2>GPT Plus/Pro 充值</h2>
             <p class="subtitle">点击下方<span class="highlight-text">"立即购买"</span>按钮，查看详细充值方式(<span class="highlight-text">需要订阅代充GPTPro可以联系我：<span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></span>)</p>
@@ -910,8 +959,8 @@
                         <span class="pricing-tag">个人 Plus</span>
                     </div>
                     <div class="pricing-price">
-                        <div class="price-current">¥178</div>
-                        <div class="price-original">¥189</div>
+                        <div class="price-current">¥188</div>
+                        <div class="price-original">¥199</div>
                         <div class="price-period">/ 月</div>
                     </div>
                     <p class="pricing-desc">正规官方通道充值，个人账号一键升级，不成功全额退款</p>
@@ -1138,6 +1187,34 @@
                     }
                 }, 2000);
             }
+
+            // --- 提示框复制微信号函数 ---
+            window.copyWechatId = function(button) {
+                const wechatId = button.getAttribute('data-wechat');
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    // 更改按钮样式显示复制成功
+                    const originalHTML = button.innerHTML;
+                    button.classList.add('copied');
+                    button.innerHTML = '<i class="fa-solid fa-check"></i> 已复制';
+
+                    // 2秒后恢复原状
+                    setTimeout(() => {
+                        button.classList.remove('copied');
+                        button.innerHTML = originalHTML;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制微信号：' + wechatId);
+                });
+            };
+
+            // --- 关闭提示框函数 ---
+            window.closeStockAlert = function() {
+                const alertWrapper = document.getElementById('stockAlert');
+                if (alertWrapper) {
+                    alertWrapper.classList.add('hidden');
+                }
+            };
         });
     </script>
 </body>

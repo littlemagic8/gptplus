@@ -126,6 +126,32 @@
         .important-note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px; margin-top: 40px; color: #856404; font-size: 15px; line-height: 1.6; text-align: left; }
         .important-note strong { color: #856404; }
 
+        /* 缺货提示框样式 */
+        .stock-alert-wrapper { background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); border: 3px solid #ff8c00; border-radius: 16px; margin: 20px 0 30px; position: relative; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.25); }
+        .stock-alert { padding: 24px 30px; display: flex; align-items: center; justify-content: center; gap: 20px; position: relative; }
+        .stock-alert-content { display: flex; align-items: center; gap: 16px; flex: 1; justify-content: center; flex-wrap: wrap; }
+        .stock-alert-icon { font-size: 42px; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .stock-alert-text { font-size: 19px; color: #856404; line-height: 1.7; font-weight: 600; }
+        .stock-alert-text .wechat-highlight { color: #ff0000; font-weight: 800; font-size: 22px; text-shadow: 0 1px 2px rgba(255, 0, 0, 0.2); }
+        .stock-alert-copy-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #ff7a00 0%, #ff5500 100%); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 17px; font-weight: 700; cursor: pointer; border: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.4); flex-shrink: 0; }
+        .stock-alert-copy-btn:hover { background: linear-gradient(135deg, #ff8800 0%, #ff6600 100%); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255, 122, 0, 0.5); }
+        .stock-alert-copy-btn:active { transform: translateY(0); }
+        .stock-alert-copy-btn.copied { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); }
+        .stock-alert-close { position: absolute; right: 15px; top: 15px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.6); border: 2px solid #ffa940; border-radius: 50%; cursor: pointer; font-size: 22px; color: #856404; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; line-height: 1; padding: 0; }
+        .stock-alert-close:hover { background: rgba(255, 255, 255, 0.9); color: #ff4d4f; border-color: #ff4d4f; transform: rotate(90deg); }
+        .stock-alert-wrapper.hidden { display: none; }
+        @media (max-width: 768px) {
+            .stock-alert-wrapper { margin: 15px 0 20px; }
+            .stock-alert { flex-direction: column; gap: 16px; padding: 20px; }
+            .stock-alert-content { flex-direction: column; text-align: center; }
+            .stock-alert-icon { font-size: 36px; }
+            .stock-alert-text { font-size: 17px; }
+            .stock-alert-text .wechat-highlight { font-size: 19px; }
+            .stock-alert-copy-btn { padding: 11px 20px; font-size: 16px; }
+            .stock-alert-close { position: static; transform: none; align-self: flex-end; margin-top: 0; }
+        }
+
         /* Reviews Section */
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .review-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
@@ -353,6 +379,25 @@
     <!-- Claude Pro 充值页面主体内容 -->
     <main class="main-content container">
 
+        <!-- ==================== 缺货提示框 ==================== -->
+        <!-- 如需隐藏此提示框，注释掉以下 div 标签即可 -->
+        <div class="stock-alert-wrapper" id="stockAlert">
+            <div class="stock-alert">
+                <div class="stock-alert-content">
+                    <div class="stock-alert-icon">⚠️</div>
+                    <div class="stock-alert-text">
+                        目前ClaudePro比较缺货，暂时卡网不上货，需要充值可以添加微信：<span class="wechat-highlight">aicygg888</span> 手动现开卡密
+                    </div>
+                    <button class="stock-alert-copy-btn" onclick="copyWechatId(this)" data-wechat="aicygg888">
+                        <i class="fa-regular fa-copy"></i>
+                        复制微信号
+                    </button>
+                </div>
+                <button class="stock-alert-close" onclick="closeStockAlert()" aria-label="关闭提示">×</button>
+            </div>
+        </div>
+        <!-- ==================== 缺货提示框结束 ==================== -->
+
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-badges">
@@ -577,6 +622,34 @@
             handleResize();
             window.addEventListener('resize', handleResize);
         });
+
+        // 复制微信号函数
+        function copyWechatId(button) {
+            const wechatId = button.getAttribute('data-wechat');
+            navigator.clipboard.writeText(wechatId).then(() => {
+                // 更改按钮样式显示复制成功
+                const originalHTML = button.innerHTML;
+                button.classList.add('copied');
+                button.innerHTML = '<i class="fa-solid fa-check"></i> 已复制';
+
+                // 2秒后恢复原状
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                alert('复制失败，请手动复制微信号：' + wechatId);
+            });
+        }
+
+        // 关闭提示框函数
+        function closeStockAlert() {
+            const alertWrapper = document.getElementById('stockAlert');
+            if (alertWrapper) {
+                alertWrapper.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
