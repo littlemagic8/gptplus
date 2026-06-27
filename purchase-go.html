@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Go 充值 - 预算之选</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 粘贴 index.html 的全部 CSS 样式到这里 */
+        :root { --header-height: 71px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+
+        /* 全局盒模型设置 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* --- purchase-go.html 专属样式 --- */
+        .main-content {
+            padding: 50px 20px;
+            min-height: calc(100vh - var(--header-height) - 100px);
+        }
+
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h2 {
+            font-size: 2em;
+            color: #212529;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .page-header .subtitle {
+            font-size: 1.05em;
+            color: #868e96;
+            font-weight: 400;
+        }
+
+        .highlight-text {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        /* 模态弹窗默认隐藏（桌面端） */
+        .modal-overlay {
+            display: none !important;
+        }
+
+        /* --- 按钮样式 --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+            border-color: #ced4da;
+        }
+
+        /* --- 说明区域 --- */
+        .tips-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 28px 32px;
+            border: 1px solid #e9ecef;
+        }
+
+        .tips-section h3 {
+            color: #212529;
+            margin-bottom: 16px;
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+
+        .tips-section p {
+            color: #495057;
+            line-height: 1.8;
+            margin: 8px 0;
+        }
+
+        .main-footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #e9ecef;
+            color: #868e96;
+            font-size: 14px;
+        }
+
+        /* --- 移动端响应式 (< 768px) --- */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 30px 16px;
+            }
+
+            .page-header {
+                margin-bottom: 30px;
+            }
+
+            .page-header h2 {
+                font-size: 1.6em;
+            }
+
+            .page-header .subtitle {
+                font-size: 0.95em;
+            }
+        }
+
+        /* --- 小屏移动端 (< 480px) --- */
+        @media (max-width: 480px) {
+            .page-header h2 {
+                font-size: 1.4em;
+            }
+
+            .modal-content {
+                max-height: 90vh;
+            }
+
+            .modal-header {
+                padding: 18px;
+            }
+
+            .modal-header h3 {
+                font-size: 1.1em;
+            }
+
+            .modal-body {
+                padding: 20px 18px;
+            }
+        }
+
+        /* --- 重要提示框样式 --- */
+        .warning-alert {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+        }
+
+        .warning-alert-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .warning-alert-icon {
+            width: 32px;
+            height: 32px;
+            background: #fee2e2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .warning-alert-icon svg {
+            width: 18px;
+            height: 18px;
+            color: #dc2626;
+        }
+
+        .warning-alert-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        .warning-alert-content {
+            padding-left: 44px;
+        }
+
+        .warning-alert-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .warning-alert-content li {
+            font-size: 13px;
+            color: #b91c1c;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .warning-alert-content li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- 流程进度条样式 --- */
+        .progress-section {
+            margin-bottom: 24px;
+        }
+
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .progress-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .progress-number.active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .progress-number.inactive {
+            background: #f3f4f6;
+            color: #9ca3af;
+        }
+
+        .progress-text {
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .progress-text.active {
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        .progress-text.inactive {
+            color: #9ca3af;
+        }
+
+        .progress-line {
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+            min-width: 12px;
+        }
+
+        /* --- 产品特性徽章样式 --- */
+        .product-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ecfdf5;
+            color: #10b981;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .product-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* --- 产品特点网格样式 --- */
+        .product-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        @media (max-width: 640px) {
+            .product-features-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .product-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+        }
+
+        .product-feature-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .product-feature-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .product-feature-icon.indigo {
+            background: #eef2ff;
+        }
+
+        .product-feature-icon.indigo svg {
+            color: #6366f1;
+        }
+
+        .product-feature-icon.emerald {
+            background: #ecfdf5;
+        }
+
+        .product-feature-icon.emerald svg {
+            color: #10b981;
+        }
+
+        .product-feature-icon.purple {
+            background: #f3e8ff;
+        }
+
+        .product-feature-icon.purple svg {
+            color: #a855f7;
+        }
+
+        .product-feature-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .product-feature-desc {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* --- 购买表单样式 --- */
+        .purchase-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 0 16px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-hint {
+            display: flex;
+            align-items: start;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 12px;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #4338ca;
+            line-height: 1.5;
+        }
+
+        .form-hint svg {
+            width: 16px;
+            height: 16px;
+            color: #6366f1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .form-hint strong {
+            font-weight: 600;
+            color: #4338ca;
+        }
+
+        .price-summary {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .price-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .price-label.discount {
+            color: #10b981;
+        }
+
+        .price-value {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .price-value.discount {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px dashed #e5e7eb;
+            margin-top: 16px;
+        }
+
+        .price-total-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .price-total-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .discount-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            color: #6366f1;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .discount-badge svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .terms-checkbox input {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .terms-checkbox label {
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .terms-checkbox a {
+            color: #10b981;
+            text-decoration: underline;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .form-footer-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .form-footer-note svg {
+            width: 14px;
+            height: 14px;
+            color: #10b981;
+        }
+
+        .form-tip {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            color: #92400e;
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        /* --- FAQ 样式 --- */
+        .faq-section {
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+
+        .faq-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .faq-item summary:hover {
+            background: #f9fafb;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .faq-q-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .faq-q-icon svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .faq-q-text {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .faq-toggle-icon {
+            width: 16px;
+            height: 16px;
+            color: #9ca3af;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] .faq-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.7;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .faq-answer p {
+            margin: 0;
+        }
+
+        .faq-answer strong {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        /* --- 悬浮客服按钮样式 --- */
+        .customer-service-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 99999;
+            pointer-events: auto;
+        }
+
+        .customer-service-btn {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(to right, #10b981, #059669);
+            border-radius: 50%;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
+            cursor: pointer;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            pointer-events: auto;
+        }
+
+        .customer-service-btn:hover {
+            box-shadow: 0 15px 20px -3px rgba(16, 185, 129, 0.5);
+            transform: scale(1.05);
+        }
+
+        .customer-service-btn:active {
+            transform: scale(0.98);
+        }
+
+        .customer-service-btn svg {
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .customer-service-btn span {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .customer-service-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .customer-service-btn {
+                width: 56px;
+                height: 56px;
+            }
+
+            .customer-service-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .customer-service-btn span {
+                font-size: 11px;
+            }
+        }
+
+        /* --- 产品展示卡片样式 --- */
+        .product-section {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 2px solid #10b981;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 70px rgba(16, 185, 129, 0.25);
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .product-header h3 {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .product-header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .product-header .card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .product-header .card-tags .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #ecfdf5;
+            color: #059669;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #10b981;
+        }
+
+        .product-price {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: linear-gradient(to right, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: 16px;
+            border: 1px solid #10b981;
+        }
+
+        .price-current {
+            font-size: 56px;
+            font-weight: 700;
+            color: #10b981;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .price-original {
+            font-size: 18px;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .price-period {
+            font-size: 16px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* --- 功能列表样式 --- */
+        .features-section {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+        }
+
+        .feature-item h4 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* --- 购买按钮区域 --- */
+        .purchase-section {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .purchase-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 20px 40px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .purchase-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .purchase-note {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* --- 微信号复制样式 --- */
+        .wechat-copy {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .wechat-copy:hover {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .wechat-copy.copied::after {
+            content: '已复制！';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #10b981;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            animation: fadeInOut 2s ease;
+            margin-bottom: 8px;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* 微信号复制提示样式 */
+        .wechat-copy-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 10000;
+            animation: hintFadeIn 0.3s ease, hintFadeOut 0.3s ease 1.7s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes hintFadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes hintFadeOut {
+            from {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+
+        /* --- 返回链接样式 --- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #10b981;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .product-card {
+                padding: 28px 20px;
+            }
+
+            .product-header h3 {
+                font-size: 24px;
+            }
+
+            .price-current {
+                font-size: 42px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .purchase-btn {
+                padding: 18px 32px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                padding: 24px 16px;
+            }
+
+            .price-current {
+                font-size: 36px;
+            }
+
+            .purchase-btn {
+                padding: 16px 24px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 标准化 Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo">AI</div>
+                <div class="logo-text">
+                    <h1>AI Pro Service</h1>
+                    <span class="subtitle">GPT/Claude/Gemini 充值</span>
+                </div>
+            </a>
+            <div class="desktop-nav">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
+                        <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Pro/Codex</a></li>
+                        <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                        <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
+                        <li class="nav-more-item" style="display: none;">
+                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
+                            <ul class="nav-more-list"></ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
+                    <div class="more-services">
+                        <div class="more-services-btn">
+                            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span></p>
+                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="mobile-nav-menu"></div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="main-content container">
+
+        <!-- 返回链接 -->
+        <a href="purchase-gpt.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            返回套餐选择
+        </a>
+
+        <!-- 流程进度条 -->
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-step">
+                    <div class="progress-number active">1</div>
+                    <span class="progress-text active">填写信息</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="progress-number inactive">2</div>
+                    <span class="progress-text inactive">扫码支付</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="progress-number inactive">3</div>
+                    <span class="progress-text inactive">填写账户信息</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="progress-number inactive">4</div>
+                    <span class="progress-text inactive">升级完成</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重要提示框 -->
+        <div class="warning-alert">
+            <div class="warning-alert-header">
+                <div class="warning-alert-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-3.75h.008M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="warning-alert-title">下单前必读（重要）</h3>
+            </div>
+            <div class="warning-alert-content">
+                <ul>
+                    <li>ChatGPT Go 的 <strong>Codex（编程）额度与免费版 Free 完全一致</strong>，不会提升。</li>
+                    <li>Go <strong>包含推理模型（“Thinking”）的使用权限</strong>。</li>
+                    <li>登录 Codex 时 <strong>基本 100% 需要验证手机号</strong>（极大概率必验），请确认账号可接收验证码。</li>
+                    <li><strong>如果你有 Codex 使用需求，请勿购买 Go</strong>，请选择其它套餐。</li>
+                    <li><strong>需当前为 Free 账号才能充值 Go</strong>；如果账号已是 Plus、Pro 等付费订阅，请勿下单，否则会被覆盖为 Go。</li>
+                    <li>所有权益以官方说明为准，请自行确认 Go 符合自己的需求（相比 Plus 可能在不少地方有缩减，具体以官方为准；本站只负责开通 Go 权益）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-header">
+            <h2>ChatGPT Go 充值</h2>
+            <p class="subtitle">经济实惠的<span class="highlight-text">预算之选</span>，满足日常 AI 使用需求</p>
+        </div>
+
+        <!-- 产品卡片 -->
+        <section class="product-section">
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="badge">轻度使用 · 官方权益为准</span>
+                    <h3>ChatGPT Go 会员</h3>
+                    <p style="color: #64748b; font-size: 16px;">适合日常轻度使用用户；Go 会员不支持 Codex，一切权益以 ChatGPT 官方实际开通为准。</p>
+                </div>
+
+                <div class="product-price">
+                    <div class="price-current">¥89</div>
+                    <div class="price-original">¥99</div>
+                    <div class="price-period">每月</div>
+                    <div style="margin-top: 8px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #10b981;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
+                        </svg>
+                        <span>24 小时自动化充值</span>
+                        <span style="color: #d1d5db;">|</span>
+                        <span>最快 1 分钟到账</span>
+                    </div>
+                </div>
+
+                <!-- 产品特点网格 -->
+                <div class="product-features-grid">
+                    <div class="product-feature-item">
+                        <div class="product-feature-icon indigo">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 16.5l3-3m6 6l-7.5-7.5m12-1.5L9 18l-3-3 9.75-9.75a4.5 4.5 0 016.36 6.36L18 12.75M14.25 6L18 9.75"></path>
+                            </svg>
+                        </div>
+                        <div class="product-feature-text">
+                            <div class="product-feature-title">极速到账</div>
+                            <div class="product-feature-desc">自动化处理，快速开通</div>
+                        </div>
+                    </div>
+                    <div class="product-feature-item">
+                        <div class="product-feature-icon emerald">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.97-3.79 9-9 9s-9-4.03-9-9 3.79-9 9-9 9 4.03 9 9z"></path>
+                            </svg>
+                        </div>
+                        <div class="product-feature-text">
+                            <div class="product-feature-title">官方直充</div>
+                            <div class="product-feature-desc">正品保障，稳定可靠</div>
+                        </div>
+                    </div>
+                    <div class="product-feature-item">
+                        <div class="product-feature-icon purple">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 10-14 0v3a2 2 0 002 2h1v-5H5m12 0h2a2 2 0 012 2v3a2 2 0 01-2 2h-1m-2-7v7a3 3 0 01-3 3h-1"></path>
+                            </svg>
+                        </div>
+                        <div class="product-feature-text">
+                            <div class="product-feature-title">真人售后</div>
+                            <div class="product-feature-desc">7×16 小时真人服务</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能列表 -->
+                <div class="features-section">
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <h4>更多消息和上传限额</h4>
+                            <p>相比免费版提供更多消息和文件上传限额，满足日常使用需求</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h4>更多图片生成限额</h4>
+                            <p>适合日常创作和轻办公，图像生成功能相比免费版更多</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <h4>更多记忆内容</h4>
+                            <p>适合低频但稳定的个人使用，提供更长久的记忆功能</p>
+                        </div>
+
+                        <div class="feature-item" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                            <div class="feature-icon" style="background: #f59e0b;">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #fff;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                            </div>
+                            <h4 style="color: #92400e;">重要提示</h4>
+                            <p style="color: #78350f;">不包含 Codex 权益；需要 Codex 请优先选择 Plus、Pro 或成品号。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 购买区域 -->
+        <section class="purchase-section">
+            <div class="purchase-form">
+                <!-- 价格汇总 -->
+                <div class="price-summary">
+                    <div style="padding-bottom: 12px; border-bottom: 1px solid #e5e7eb; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="color: #6b7280; font-size: 14px;">ChatGPT Go 官方直充 / 月</span>
+                            <span style="color: #1f2937; font-size: 14px; font-weight: 500; white-space: nowrap;">¥99</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #6b7280; font-size: 13px;">商品小计</span>
+                            <span style="color: #374151; font-size: 14px;">¥99</span>
+                        </div>
+                    </div>
+                    <div style="padding-bottom: 12px; border-bottom: 1px dashed #e5e7eb; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="color: #6b7280; font-size: 13px;">商品小计</span>
+                            <span style="color: #374151; font-size: 14px;">¥99</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #10b981; font-size: 14px;">限时优惠</span>
+                            <span style="color: #10b981; font-size: 14px; font-weight: 600;">-¥10</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px dashed #e5e7eb; margin-top: 16px;">
+                        <span style="font-size: 15px; font-weight: 600; color: #1f2937;">实付金额</span>
+                        <span style="font-size: 28px; font-weight: 700; color: #10b981;">¥89</span>
+                    </div>
+                </div>
+
+                <div class="discount-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                    </svg>
+                    限时优惠，已省 ¥10
+                </div>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" checked>
+                    <label for="terms">我已阅读并同意<a href="#" target="_blank">《隐私政策》</a>和<a href="#" target="_blank">《服务条款》</a></label>
+                </div>
+
+                <a href="http://i8c.cn/zWy1E" target="_blank" class="purchase-btn" style="width: 100%; text-align: center;">
+                    立即购买
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </a>
+
+                <div class="form-footer">
+                    <p class="form-footer-note">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+                        </svg>
+                        下单即进入支付，支付成功填写账户信息后自动完成 GPT 升级
+                    </p>
+                </div>
+
+                <div class="form-tip">
+                    💡 温馨提示：本站充值为覆盖式——无论当前是 Plus 还是 Free，充值后均只有一个月会员。建议临期或到期后再来，避免浪费剩余天数；如有不中断需求，可自行决定提前充值。
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ 常见问题 -->
+        <section class="faq-section">
+            <h2>常见问题</h2>
+
+            <details class="faq-item">
+                <summary>
+                    <div class="faq-question">
+                        <span class="faq-q-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01"></path>
+                            </svg>
+                        </span>
+                        <span class="faq-q-text">为什么不在下单时填写 GPT 账号？怎么充值到我的号里？</span>
+                    </div>
+                    <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>支付完成后，系统会引导您输入 GPT 账户信息，验证通过后自动开始升级，全程通常 2 分钟左右完成。</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <div class="faq-question">
+                        <span class="faq-q-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01"></path>
+                            </svg>
+                        </span>
+                        <span class="faq-q-text">充值一般多久可以到账？</span>
+                    </div>
+                    <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>支付成功后通常 1-5 分钟内即可自动到账，绝大多数订单可在 1 分钟内完成。</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <div class="faq-question">
+                        <span class="faq-q-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01"></path>
+                            </svg>
+                        </span>
+                        <span class="faq-q-text">退款与售后保障</span>
+                    </div>
+                    <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p><strong>充值失败：</strong>所有失败订单 <strong>100% 当天原路退款</strong>。您也可以联系客服协助处理，全程 7×16 小时响应。</p>
+                    <p style="margin-top: 8px;"><strong>充值成功后：</strong><strong>正规渠道充值</strong>，我们承诺 <strong>30 天不掉订阅</strong>（即 Go 账号不会被回退为免费版）。若在此期间发生掉订阅情况，则<strong>按订阅剩余有效期折算退款</strong>。</p>
+                </div>
+            </details>
+        </section>
+
+        <div class="tips-section">
+            <h3>💡 重要说明</h3>
+            <p>• ChatGPT Go 是经济实惠的入门方案，提供完整的 ChatGPT 基础功能</p>
+            <p>• 给您充值：无需提供账号密码，安全可靠</p>
+            <p>• 正规官方通道充值，不成功全额退款</p>
+            <p>• 如有疑问，请联系客服：<span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 悬浮客服按钮 -->
+    <div class="customer-service-float" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; pointer-events: auto !important;">
+        <button class="customer-service-btn" onclick="showCustomerService()" style="position: relative !important; z-index: 99999 !important; pointer-events: auto !important; width: 64px; height: 64px; background: linear-gradient(to right, #10b981, #059669); border-radius: 50%; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4); cursor: pointer; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0; transition: all 0.2s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #fff; margin-bottom: 4px;">
+                <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
+            </svg>
+            <span style="color: #fff; font-size: 12px; font-weight: 500;">客服</span>
+        </button>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 导航栏通用逻辑 ---
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+            const desktopNav = document.querySelector('.desktop-nav');
+            const populateMobileMenu = () => { if (!desktopNav || !mobileNavMenu) return; const navContent = desktopNav.innerHTML; mobileNavMenu.innerHTML = navContent; const mobileUserActions = mobileNavMenu.querySelector('.user-actions'); const mobileNavList = mobileNavMenu.querySelector('.main-nav ul'); if (mobileUserActions && mobileNavList) { const actionsClone = mobileUserActions.cloneNode(true); actionsClone.classList.add('user-actions-mobile'); mobileNavList.appendChild(actionsClone); mobileUserActions.remove(); } };
+            populateMobileMenu();
+            if (mobileNavToggle) { mobileNavToggle.addEventListener('click', () => { mobileNavMenu.classList.toggle('active'); }); }
+            const mainNavList = document.querySelector('.main-nav > ul');
+            if (!mainNavList) return;
+            const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
+            const moreItem = document.querySelector('.nav-more-item');
+            const moreList = document.querySelector('.nav-more-list');
+            function updateDesktopNav() { if (!moreItem || !moreList || !desktopNav) return; if (window.innerWidth <= 1024) { moreItem.style.display = 'none'; return; } moreList.innerHTML = ''; allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem)); moreItem.style.display = 'none'; let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; if (isOverflowing) { moreItem.style.display = 'flex'; isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; } let i = allNavItems.length - 1; while (isOverflowing && i >= 0) { const itemToMove = allNavItems[i]; if (itemToMove.parentNode === mainNavList) { moreList.prepend(itemToMove); } isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; i--; } }
+            function handleResize() { updateDesktopNav(); if (window.innerWidth > 1024) { mobileNavMenu.classList.remove('active'); } }
+            handleResize();
+            window.addEventListener('resize', handleResize);
+
+            // --- 全局微信号复制功能 ---
+            // 使用事件委托，为所有现有和未来的微信号添加点击事件
+            document.addEventListener('click', function(e) {
+                // 检查点击的是否是微信号或其子元素
+                const wechatElement = e.target.closest('.wechat-copy');
+                if (wechatElement) {
+                    copyWechatId(wechatElement);
+                }
+            });
+
+            function copyWechatId(element) {
+                const wechatId = element.getAttribute('data-wechat');
+
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    // 添加已复制样式
+                    element.classList.add('copied');
+
+                    // 显示提示
+                    showCopyHint('已复制微信号：' + wechatId);
+
+                    // 2秒后移除已复制样式
+                    setTimeout(() => {
+                        element.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    // 如果clipboard API失败，使用传统方法
+                    const textArea = document.createElement('textarea');
+                    textArea.value = wechatId;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+
+                    try {
+                        document.execCommand('copy');
+                        element.classList.add('copied');
+                        showCopyHint('已复制微信号：' + wechatId);
+                        setTimeout(() => {
+                            element.classList.remove('copied');
+                        }, 2000);
+                    } catch (e) {
+                        showCopyHint('复制失败，请手动复制：' + wechatId);
+                    } finally {
+                        document.body.removeChild(textArea);
+                    }
+                });
+            }
+
+            // 显示客服悬浮窗
+            window.showCustomerService = function() {
+                const modal = document.createElement('div');
+                modal.className = 'customer-service-modal active';
+                modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center; padding: 16px; animation: fadeIn 0.2s ease;';
+                modal.innerHTML = `
+                    <div style="max-width: 320px; width: 100%;">
+                        <div style="background: #fff; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); width: 100%; padding: 24px; position: relative; animation: zoomIn 0.2s ease;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                <h3 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">联系客服</h3>
+                                <button onclick="this.closest('.customer-service-modal').remove(); document.body.style.overflow = '';" style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; transition: color 0.2s ease;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 6 6 18"></path>
+                                        <path d="m6 6 12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 16px;">
+                                <!-- 服务说明卡片 -->
+                                <div style="background: linear-gradient(to right, #eff6ff, #faf5ff); border-radius: 12px; padding: 16px; border: 1px solid #dbeafe;">
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                        <div style="width: 24px; height: 24px; background: linear-gradient(to right, #3b82f6, #9333ea); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;">
+                                                <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+                                                <path d="M20 2v4"></path>
+                                                <path d="M22 4h-4"></path>
+                                                <circle cx="4" cy="20" r="2"></circle>
+                                            </svg>
+                                        </div>
+                                        <h4 style="font-size: 14px; font-weight: 700; color: #111827; margin: 0;">AI 工具充值服务</h4>
+                                    </div>
+                                    <p style="font-size: 12px; color: #4b5563; margin-bottom: 12px;">支持充值多种 AI 工具，让您畅享智能体验：</p>
+                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 12px;">
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">ChatGPT Pro</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">Cursor</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">Claude Max</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #ec4899; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">Gemini Pro</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #8b5cf6; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">Grok</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 4px;">
+                                            <div style="width: 6px; height: 6px; background: #14b8a6; border-radius: 50%;"></div>
+                                            <span style="color: #374151;">更多服务</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 微信二维码 -->
+                                <div style="text-align: center;">
+                                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码" style="width: 200px; height: 200px; border-radius: 12px; border: 1px solid #e5e7eb; margin: 0 auto 12px; display: block;">
+                                    <div style="background: #f3f4f6; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                        <p style="color: #374151; font-size: 14px; font-weight: 600; margin: 0;">微信号：<span style="color: #10b981;">aicygg888</span></p>
+                                    </div>
+                                    <p style="color: #6b7280; font-size: 12px; margin: 0;">工作时间：9:00 - 22:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+
+                // 点击背景关闭
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                        document.body.style.overflow = '';
+                    }
+                });
+            };
+
+            // 显示复制提示
+            function showCopyHint(message) {
+                // 移除已存在的提示
+                const existingHint = document.querySelector('.wechat-copy-hint');
+                if (existingHint) {
+                    existingHint.remove();
+                }
+
+                // 创建新提示
+                const hint = document.createElement('div');
+                hint.className = 'wechat-copy-hint';
+                hint.textContent = message;
+                document.body.appendChild(hint);
+
+                // 2秒后自动移除
+                setTimeout(() => {
+                    if (hint && hint.parentNode) {
+                        hint.remove();
+                    }
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

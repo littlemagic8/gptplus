@@ -227,6 +227,22 @@
             box-shadow: 0 25px 50px rgba(111, 66, 193, 0.25);
         }
 
+        /* Go 卡片样式 */
+        .go-card {
+            border-color: #10b981;
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .go-card:hover {
+            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
+        }
+
+        .go-tag {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
         /* 推荐徽章 */
         .pricing-badge {
             position: absolute;
@@ -951,6 +967,54 @@
         <!-- 两栏卡片布局：套餐选择 -->
         <section class="pricing-section">
             <div class="pricing-grid">
+                <!-- ChatGPT Go 卡片 -->
+                <div class="pricing-card go-card">
+                    <div class="pricing-header">
+                        <h2>ChatGPT Go 会员</h2>
+                        <span class="pricing-tag">轻度使用 · 官方权益为准</span>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="price-current">¥89</div>
+                        <div class="price-original">¥99</div>
+                        <div class="price-period">/ 月</div>
+                    </div>
+                    <p class="pricing-desc">适合日常轻度使用用户；Go 会员不支持 Codex，一切权益以 ChatGPT 官方实际开通为准。</p>
+                    <div class="pricing-features-inline">
+                        <span class="feature-tag go-tag">轻度使用</span>
+                        <span class="feature-tag go-tag">更多消息和上传</span>
+                        <span class="feature-tag go-tag" style="background: #fef3c7; color: #92400e; border-color: #f59e0b;">不支持 Codex</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            相比免费版提供更多消息和文件上传限额
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            更多图片生成限额，适合日常创作和轻办公
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            更多记忆内容，适合低频但稳定的个人使用
+                        </li>
+                        <li style="color: #92400e; background: #fef3c7;">
+                            <span class="check-icon" style="color: #f59e0b;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </span>
+                            不包含 Codex 权益；需要 Codex 请优先选择 Plus、Pro 或成品号。
+                        </li>
+                    </ul>
+                    <a href="purchase-go.html" class="pricing-btn btn-plus" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);">
+                        立即购买
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                </div>
                 <!-- ChatGPT Plus 卡片 -->
                 <div class="pricing-card plus-card">
                     <span class="pricing-badge">推荐</span>
@@ -963,7 +1027,7 @@
                         <div class="price-original">¥209</div>
                         <div class="price-period">/ 月</div>
                     </div>
-                    <p class="pricing-desc">正规官方通道充值，个人账号一键升级，不成功全额退款</p>
+                    <p class="pricing-desc">正规官方通道充值，个人版 Plus 一键升级，不成功全额退款</p>
                     <div class="pricing-features-inline">
                         <span class="feature-tag plus-tag">给你充值</span>
                         <span class="feature-tag plus-tag">无需账密</span>
