@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 粘贴 index.html 的全部 CSS 样式到这里 */
-        :root { --header-height: 71px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+        :root { --header-height: 71px; --notice-bar-height: 44px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; display: flex; flex-direction: column; } .header-container { display: flex; align-items: center; justify-content: space-between; height: var(--header-height); flex-shrink: 0; position: relative; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
 
         /* --- 提示框样式 --- */
         .stock-alert-wrapper { background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); border: 3px solid #ff8c00; border-radius: 16px; margin: 20px 0 30px; position: relative; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.25); }
@@ -25,8 +25,27 @@
         .stock-alert-close { position: absolute; right: 15px; top: 15px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.6); border: 2px solid #ffa940; border-radius: 50%; cursor: pointer; font-size: 22px; color: #856404; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; line-height: 1; padding: 0; }
         .stock-alert-close:hover { background: rgba(255, 255, 255, 0.9); color: #ff4d4f; border-color: #ff4d4f; transform: rotate(90deg); }
         .stock-alert-wrapper.hidden { display: none; }
+
+        /* 顶部公告栏 */
+        .top-notice-bar { background: linear-gradient(90deg, #fffaf5 0%, #fff4e6 50%, #fffaf5 100%); color: #c2410c; font-size: 13px; line-height: 1.45; flex-shrink: 0; border-bottom: 1px solid #fed7aa; }
+        .top-notice-bar.hidden { display: none; }
+        .top-notice-inner { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 36px 8px 12px; position: relative; min-height: 44px; }
+        .top-notice-badge { flex-shrink: 0; background: rgba(234, 88, 12, 0.12); color: #ea580c; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.03em; white-space: nowrap; }
+        .top-notice-text { margin: 0; text-align: center; color: #c2410c; }
+        .top-notice-text strong { color: #ea580c; font-weight: 700; }
+        .top-notice-text .notice-cta { color: #ff5500; font-weight: 700; }
+        .top-notice-models { color: #d97706; }
+        .top-notice-link { flex-shrink: 0; color: #ea580c; font-size: 12px; font-weight: 600; white-space: nowrap; transition: color 0.2s; }
+        .top-notice-link:hover { color: #c2410c; }
+        .top-notice-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: none; background: transparent; color: #fdba74; font-size: 18px; line-height: 1; cursor: pointer; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; padding: 0; }
+        .top-notice-close:hover { color: #ea580c; background: rgba(234, 88, 12, 0.1); }
+
         @media (max-width: 768px) {
             .stock-alert-wrapper { margin: 15px 0 20px; }
+            .top-notice-inner { flex-wrap: wrap; padding: 8px 32px 8px 10px; gap: 6px 8px; }
+            .top-notice-text { font-size: 12px; text-align: left; flex: 1 1 100%; }
+            .top-notice-link { font-size: 11px; }
+            .top-notice-models { display: block; margin-top: 2px; font-size: 11px; }
             .stock-alert { flex-direction: column; gap: 16px; padding: 20px; }
             .stock-alert-icon { font-size: 42px; }
             .stock-alert-text { font-size: 16px; }
@@ -67,6 +86,330 @@
         .highlight-text {
             color: #6f42c1;
             font-weight: 600;
+        }
+
+        /* 标题下方操作栏 */
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto 32px;
+        }
+
+        .header-actions-btn,
+        .header-actions-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            padding: 12px 16px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .header-actions-btn {
+            text-align: left;
+        }
+
+        .header-actions-btn:hover {
+            border-color: #fcd34d;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .header-actions-link:hover {
+            border-color: #a5b4fc;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .header-actions-btn svg:first-child {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: #f59e0b;
+        }
+
+        .header-actions-link svg:first-child {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: #6366f1;
+        }
+
+        .header-actions-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .header-actions-hint {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .header-actions-link .header-actions-hint {
+            color: #6366f1;
+        }
+
+        .header-actions-hint svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .header-actions-btn[aria-expanded="true"] .header-actions-hint svg {
+            transform: rotate(90deg);
+        }
+
+        .header-actions-btn.account-guide-btn svg:first-child {
+            color: #6366f1;
+        }
+
+        .header-actions-btn.account-guide-btn:hover {
+            border-color: #a5b4fc;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .header-actions-btn.account-guide-btn[aria-expanded="true"] {
+            border-color: #a5b4fc;
+        }
+
+        .account-guide-panel {
+            max-width: 720px;
+            margin: 0 auto 16px;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid #c7d2fe;
+            background: #f5f3ff;
+        }
+
+        .account-guide-panel[hidden] {
+            display: none;
+        }
+
+        .account-options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .account-option {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            min-width: 0;
+        }
+
+        .account-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .account-option-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1.5px solid #e0e7ff;
+            background: #fff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .account-option:hover .account-option-content {
+            border-color: #a5b4fc;
+        }
+
+        .account-option input:checked + .account-option-content {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+        }
+
+        .account-option-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .account-option-radio {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid #cbd5e1;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .account-option input:checked + .account-option-content .account-option-radio {
+            border-color: #6366f1;
+        }
+
+        .account-option input:checked + .account-option-content .account-option-radio::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+
+        .account-option-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            line-height: 1.3;
+        }
+
+        .account-option-desc {
+            font-size: 12px;
+            line-height: 1.45;
+            color: #64748b;
+            flex: 1;
+        }
+
+        .account-option-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            align-self: flex-start;
+            margin-top: 2px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .account-option-action--buy {
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+        }
+
+        .account-option-action--buy:hover {
+            background: rgba(59, 130, 246, 0.18);
+        }
+
+        .account-option-action--guide {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+        }
+
+        .account-option-action--guide:hover {
+            background: rgba(99, 102, 241, 0.18);
+        }
+
+        .price-adjust-panel {
+            max-width: 768px;
+            margin: 0 auto 20px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid #fde68a;
+            background: #fffbeb;
+        }
+
+        .price-adjust-panel[hidden] {
+            display: none;
+        }
+
+        .price-adjust-panel p {
+            margin: 0 0 10px;
+            font-size: 14px;
+            line-height: 1.625;
+            color: #92400e;
+        }
+
+        .price-adjust-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                margin-bottom: 24px;
+            }
+
+            .header-actions-hint {
+                display: none;
+            }
+
+            .account-guide-panel {
+                max-width: 100%;
+                padding: 8px;
+                margin-bottom: 12px;
+            }
+
+            .account-options {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 6px;
+            }
+
+            .account-option-content {
+                padding: 8px 10px;
+                gap: 4px;
+            }
+
+            .account-option-title {
+                font-size: 12px;
+            }
+
+            .account-option-desc {
+                font-size: 11px;
+                line-height: 1.4;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .account-option-action {
+                width: 100%;
+                justify-content: center;
+                font-size: 11px;
+                padding: 5px 6px;
+                margin-top: 0;
+            }
+
+            .account-option-radio {
+                width: 12px;
+                height: 12px;
+            }
+
+            .account-option input:checked + .account-option-content .account-option-radio::after {
+                width: 5px;
+                height: 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .account-options {
+                grid-template-columns: 1fr;
+            }
+
+            .account-option-desc {
+                -webkit-line-clamp: 2;
+            }
         }
 
         /* 模态弹窗默认隐藏（桌面端） */
@@ -196,7 +539,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -241,6 +584,27 @@
             background: rgba(16, 185, 129, 0.1);
             color: #10b981;
             border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        /* Free 卡片样式 */
+        .free-card {
+            border-color: #3b82f6;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .free-card:hover {
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25);
+        }
+
+        .free-card.free-card-highlight {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35), 0 20px 40px rgba(59, 130, 246, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .free-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border-color: rgba(59, 130, 246, 0.2);
         }
 
         /* 推荐徽章 */
@@ -892,6 +1256,18 @@
 
     <!-- 标准化 Header -->
     <header class="main-header">
+        <div id="gpt56NoticeBar" class="top-notice-bar">
+            <div class="container top-notice-inner">
+                <span class="top-notice-badge">OpenAI 官方</span>
+                <p class="top-notice-text">
+                    <strong>GPT-5.6 Sol</strong> 将于 <strong>7月9日（周四）</strong> 正式发布，Terra / Luna 同步上线；全球预览访问正在扩大。
+                    <span class="top-notice-models">Sol 为下一代前沿模型 · Terra 日常均衡 · Luna 高速实惠</span>
+                    <span class="notice-cta">建议提前充好 GPT Plus，Sol 发车后第一时间体验！</span>
+                </p>
+                <a href="https://x.com/OpenAI/status/2074704958419792299" target="_blank" rel="noopener noreferrer" class="top-notice-link">查看 @OpenAI 原文 →</a>
+                <button type="button" class="top-notice-close" onclick="closeGpt56Notice()" aria-label="关闭公告">×</button>
+            </div>
+        </div>
         <div class="container header-container">
             <a href="index.html" class="logo-container">
                 <div class="logo">AI</div>
@@ -937,36 +1313,104 @@
     <!-- 主体内容 -->
     <main class="main-content container">
 
-        <!-- ==================== 提示框 ==================== -->
-        <!-- 如需隐藏此提示框，注释掉以下 div 标签即可 -->
-        <!-- <div class="stock-alert-wrapper" id="stockAlert">
-            <div class="stock-alert">
-                <div class="stock-alert-content">
-                    <div class="stock-alert-icon">⚠️</div>
-                    <div class="stock-alert-text">
-                        当前 GPT Plus 官方限购中，ChatGPTPlus自助充值入口暂时关闭！<br>
-                        解除限购后，会第一时间恢复开放自动充值。<br>
-                        期间可以先选择使用ChatGPTPro、Claude、Gemini、SuperGrok等产品使用！<br>
-                        <span class="highlight-line">💡💡如着急使用gpt plus，可联系客服：<span class="wechat-highlight">aicygg888</span>，进行手动代充（可能较慢，请理解）</span>
-                    </div>
-                    <button class="stock-alert-copy-btn" onclick="copyWechatId(this)" data-wechat="aicygg888">
-                        <i class="fa-regular fa-copy"></i>
-                        复制微信号
-                    </button>
-                </div>
-                <button class="stock-alert-close" onclick="closeStockAlert()" aria-label="关闭提示">×</button>
-            </div>
-        </div> -->
-        <!-- ==================== 提示框结束 ==================== -->
-
         <div class="page-header">
             <h2>GPT Go/Plus/Pro 充值</h2>
             <p class="subtitle">点击下方<span class="highlight-text">"立即购买"</span>按钮，查看详细充值方式(<span class="highlight-text">需要订阅代充GPTPro（5x/20x)<span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></span>)</p>
         </div>
 
+        <div class="header-actions">
+            <button type="button" id="priceAdjustToggle" aria-expanded="false" aria-controls="priceAdjustPanel" class="header-actions-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                <span class="header-actions-title">价格调整说明</span>
+                <span class="header-actions-hint">了解本期价格调整原因<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+            </button>
+            <button type="button" id="noAccountToggle" aria-expanded="false" aria-controls="noAccountPanel" class="header-actions-btn account-guide-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span class="header-actions-title">没有 ChatGPT 账号？</span>
+                <span class="header-actions-hint">选择获取方式<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+            </button>
+        </div>
+        <div id="noAccountPanel" class="account-guide-panel" hidden>
+            <fieldset class="account-options">
+                <label class="account-option">
+                    <input type="radio" name="accountMethod" value="buy" checked>
+                    <div class="account-option-content">
+                        <div class="account-option-header">
+                            <span class="account-option-radio" aria-hidden="true"></span>
+                            <span class="account-option-title">直接购买成品号</span>
+                        </div>
+                        <span class="account-option-desc">GPT Free 成品号 ¥25/个，交付账密可直接登录。</span>
+                        <button type="button" class="account-option-action account-option-action--buy" data-action="buy">购买成品号 →</button>
+                    </div>
+                </label>
+                <label class="account-option">
+                    <input type="radio" name="accountMethod" value="guide">
+                    <div class="account-option-content">
+                        <div class="account-option-header">
+                            <span class="account-option-radio" aria-hidden="true"></span>
+                            <span class="account-option-title">自行注册教程</span>
+                        </div>
+                        <span class="account-option-desc">图文教程，在 chatgpt.com 免费自行注册。</span>
+                        <a href="blog/chatgpt-register-guide.html" target="_blank" rel="noopener noreferrer" class="account-option-action account-option-action--guide" data-action="guide">注册教程 →</a>
+                    </div>
+                </label>
+            </fieldset>
+        </div>
+        <div id="priceAdjustPanel" class="price-adjust-panel" hidden>
+            <p>近期 iOS 礼品卡限购非常严重，目前全网大部分卡密自助充值渠道已暂停或不稳定。</p>
+            <p>我们已额外投入设备和人力优化渠道，目前仍可保障大家正常充值，但由于渠道成本明显上涨，近期价格会有一些上调。后续供应恢复稳定后，价格也会同步下调，请您放心。</p>
+        </div>
+
         <!-- 两栏卡片布局：套餐选择 -->
         <section class="pricing-section">
             <div class="pricing-grid">
+                <!-- ChatGPT Free 卡片 -->
+                <div class="pricing-card free-card" id="freeAccountCard">
+                    <div class="pricing-header">
+                        <h2>ChatGPT Free 账号</h2>
+                        <span class="pricing-tag">独立账号 · 成品号</span>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="price-current">¥25</div>
+                        <div class="price-period">/ 个</div>
+                    </div>
+                    <p class="pricing-desc">独立 GPT Free 账号，可直接登录 GPT；注意 Codex 手机号验证需自行解决。</p>
+                    <div class="pricing-features-inline">
+                        <span class="feature-tag free-tag">独立账号</span>
+                        <span class="feature-tag free-tag">可直接登录</span>
+                        <span class="feature-tag free-tag" style="background: #fef3c7; color: #92400e; border-color: #f59e0b;">Codex 验证自理</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            独立 GPT Free 账号，交付账号密码
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            可直接登录 ChatGPT 官网使用
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            适合体验 GPT 或作为备用账号
+                        </li>
+                        <li style="color: #92400e; background: #fef3c7;">
+                            <span class="check-icon" style="color: #f59e0b;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </span>
+                            Codex 手机号验证需自行解决，购买前请确认能接受
+                        </li>
+                    </ul>
+                    <a href="#" class="pricing-btn btn-plus" id="freeAccountBuyBtn" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);" onclick="copyWechatForFreeAccount(event); return false;" data-wechat="aicygg888">
+                        立即购买
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                </div>
                 <!-- ChatGPT Go 卡片 -->
                 <div class="pricing-card go-card">
                     <div class="pricing-header">
@@ -1109,6 +1553,54 @@
     <!-- Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const priceAdjustToggle = document.getElementById('priceAdjustToggle');
+            const priceAdjustPanel = document.getElementById('priceAdjustPanel');
+            if (priceAdjustToggle && priceAdjustPanel) {
+                priceAdjustToggle.addEventListener('click', () => {
+                    const expanded = priceAdjustToggle.getAttribute('aria-expanded') === 'true';
+                    priceAdjustToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    priceAdjustPanel.hidden = expanded;
+                });
+            }
+
+            const noAccountToggle = document.getElementById('noAccountToggle');
+            const noAccountPanel = document.getElementById('noAccountPanel');
+            if (noAccountToggle && noAccountPanel) {
+                noAccountToggle.addEventListener('click', () => {
+                    const expanded = noAccountToggle.getAttribute('aria-expanded') === 'true';
+                    noAccountToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    noAccountPanel.hidden = expanded;
+                });
+
+                function scrollToFreeAccountCard() {
+                    const freeCard = document.getElementById('freeAccountCard');
+                    if (!freeCard) return;
+                    freeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    freeCard.classList.remove('free-card-highlight');
+                    void freeCard.offsetWidth;
+                    freeCard.classList.add('free-card-highlight');
+                    setTimeout(() => freeCard.classList.remove('free-card-highlight'), 1600);
+                }
+
+                const buyOption = noAccountPanel.querySelector('input[value="buy"]')?.closest('.account-option');
+                if (buyOption) {
+                    buyOption.addEventListener('click', () => {
+                        scrollToFreeAccountCard();
+                    });
+                }
+
+                const buyBtn = noAccountPanel.querySelector('[data-action="buy"]');
+                if (buyBtn) {
+                    buyBtn.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        const buyRadio = noAccountPanel.querySelector('input[value="buy"]');
+                        if (buyRadio) buyRadio.checked = true;
+                        scrollToFreeAccountCard();
+                    });
+                }
+            }
+
             // --- 导航栏通用逻辑 ---
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
             const mobileNavMenu = document.querySelector('.mobile-nav-menu');
@@ -1202,6 +1694,34 @@
                 });
             };
 
+            function copyTextWithHint(text, hint) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyHint(hint);
+                }).catch(() => {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        showCopyHint(hint);
+                    } catch (e) {
+                        showCopyHint('复制失败，请手动复制：' + text);
+                    } finally {
+                        document.body.removeChild(textArea);
+                    }
+                });
+            }
+
+            window.copyWechatForFreeAccount = function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                const wechatId = event.currentTarget.getAttribute('data-wechat') || 'aicygg888';
+                copyTextWithHint(wechatId, '请联系客服购买，已复制微信号：' + wechatId);
+            };
+
             // --- 微信号复制功能（用于选项点击） ---
             window.copyWechatFromOption = function(event) {
                 event.stopPropagation();
@@ -1277,6 +1797,25 @@
                 const alertWrapper = document.getElementById('stockAlert');
                 if (alertWrapper) {
                     alertWrapper.classList.add('hidden');
+                }
+            };
+
+            function updateNoticeBarHeight() {
+                const noticeBar = document.getElementById('gpt56NoticeBar');
+                const height = noticeBar && !noticeBar.classList.contains('hidden')
+                    ? (noticeBar.offsetHeight || 44)
+                    : 0;
+                document.documentElement.style.setProperty('--notice-bar-height', height + 'px');
+            }
+
+            updateNoticeBarHeight();
+            window.addEventListener('resize', updateNoticeBarHeight);
+
+            window.closeGpt56Notice = function() {
+                const noticeBar = document.getElementById('gpt56NoticeBar');
+                if (noticeBar) {
+                    noticeBar.classList.add('hidden');
+                    updateNoticeBarHeight();
                 }
             };
         });
