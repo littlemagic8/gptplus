@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 粘贴 index.html 的全部 CSS 样式到这里 */
-        :root { --header-height: 71px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 12px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+        :root { --header-height: 85px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; } .logo-container { display: flex; align-items: center; flex-shrink: 0; } .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 13px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: all 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; } .main-nav ul li a i { color: #888; font-size: 14px; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 26px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+        .nav-highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: #fff !important; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); animation: glow 2s ease-in-out infinite; }
+        .nav-highlight i { color: #ffd700 !important; }
+        .nav-highlight:hover { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important; box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); transform: translateY(-2px); }
+        @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } }
 
         /* 全局盒模型设置 */
         *, *::before, *::after {
@@ -332,6 +336,69 @@
             color: #212529;
             font-weight: 700;
             margin: 0;
+        }
+
+        /* 价格显示样式 */
+        .price-display {
+            margin-top: 16px;
+            padding: 16px;
+            background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+            border-radius: 12px;
+            border: 2px solid #fbbf24;
+        }
+
+        .limited-time-badge {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 8px rgba(238, 90, 111, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            margin-bottom: 8px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 2px 8px rgba(238, 90, 111, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(238, 90, 111, 0.5);
+            }
+        }
+
+        .price-info {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .price-current {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .price-original {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ef4444;
+            text-decoration: line-through;
+            opacity: 0.9;
+        }
+
+        .price-period {
+            font-size: 14px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .detail-section {
@@ -887,7 +954,7 @@
             justify-content: center;
             margin-bottom: 16px;
             color: #fff;
-            font-size: 24px;
+            font-size: 26px;
         }
 
         .feature-card h3 {
@@ -920,11 +987,11 @@
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
+                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
+                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
+                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
                         <li class="nav-more-item" style="display: none;">
                             <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="nav-more-list"></ul>
@@ -938,7 +1005,7 @@
                             <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span></p>
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span> / <span class="wechat-copy wechat-id" data-wechat="aicygg789">aicygg789</span></p>
                             <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
                         </div>
                     </div>
@@ -970,7 +1037,7 @@
                     </div>
                     <div class="announcement-contact">
                         <i class="fa-brands fa-weixin"></i>
-                        <span>请联系微信：</span><span class="wechat-copy" data-wechat="aicygg888">aicygg888</span>
+                        <span>请联系微信：</span><span class="wechat-copy" data-wechat="aicygg888">aicygg888</span> / <span class="wechat-copy" data-wechat="aicygg789">aicygg789</span>
                     </div>
                 </div>
                 <div class="announcement-qr">
@@ -1053,6 +1120,14 @@
                 <div class="detail-content active" id="detail-1">
                     <div class="detail-header">
                         <h3>🎯 渠道一 (推荐) - ChatGPTPlus/Pro</h3>
+                        <div class="price-display">
+                            <div class="limited-time-badge">限时特惠</div>
+                            <div class="price-info">
+                                <span class="price-current">¥195</span>
+                                <span class="price-original">原价¥209</span>
+                                <span class="price-period">/ 月</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 操作按钮移到顶部 -->
@@ -1088,16 +1163,16 @@
                         <h4>💡 常见问题</h4>
                         <div class="faq-item">
                             <p class="faq-q">• Q：激活码有效期多久？</p>
-                            <p class="faq-a">A：只有充值成功才会失效，有问题找客服 <span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></p>
+                            <p class="faq-a">A：只有充值成功才会失效，有问题找客服 <span class="wechat-copy" data-wechat="aicygg888">aicygg888</span> / <span class="wechat-copy" data-wechat="aicygg789">aicygg789</span></p>
                         </div>
                         <div class="faq-item">
                             <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 <span class="wechat-copy" data-wechat="aicygg888">aicygg888</span></p>
+                            <p class="faq-a">A：联系客服 <span class="wechat-copy" data-wechat="aicygg888">aicygg888</span> / <span class="wechat-copy" data-wechat="aicygg789">aicygg789</span></p>
                         </div>
                     </div>
 
                     <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<span class="wechat-copy" data-wechat="aicygg888"><strong>aicygg888</strong></span></p>
+                        <p>📞 需要帮助？联系客服：<span class="wechat-copy" data-wechat="aicygg888"><strong>aicygg888</strong></span> / <span class="wechat-copy" data-wechat="aicygg789"><strong>aicygg789</strong></span></p>
                     </div>
                 </div>
 
@@ -1105,6 +1180,14 @@
                 <div class="detail-content" id="detail-2">
                     <div class="detail-header">
                         <h3>🎯 渠道二 - ChatGPTPlus</h3>
+                        <div class="price-display">
+                            <div class="limited-time-badge">限时特惠</div>
+                            <div class="price-info">
+                                <span class="price-current">¥195</span>
+                                <span class="price-original">原价¥209</span>
+                                <span class="price-period">/ 月</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 操作按钮移到顶部 -->
@@ -1145,7 +1228,7 @@
                     </div>
 
                     <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<span class="wechat-copy" data-wechat="aicygg888"><strong>aicygg888</strong></span></p>
+                        <p>📞 需要帮助？联系客服：<span class="wechat-copy" data-wechat="aicygg888"><strong>aicygg888</strong></span> / <span class="wechat-copy" data-wechat="aicygg789"><strong>aicygg789</strong></span></p>
                     </div>
                 </div>
             </div>
