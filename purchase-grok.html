@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 基础重置 */
-        :root { --header-height: 71px; }
+        :root { --header-height: 85px; }
         body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -31,21 +31,25 @@
 
         .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
         .logo-container { display: flex; align-items: center; flex-shrink: 0; }
-        .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
-        .logo-text h1 { font-size: 22px; color: #495057; font-weight: 600; }
+        .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; }
         .logo-text .subtitle { font-size: 12px; color: #6c757d; }
 
         /* 桌面导航容器 */
-        .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; }
-        .main-nav ul { list-style: none; display: flex; align-items: center; }
-        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
+        .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; }
+        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; transition: all 0.3s ease; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
         .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; }
-        .main-nav ul li a i { color: #888; }
+        .main-nav ul li a i { color: #888; font-size: 14px; }
 
         /* "更多"下拉菜单 */
         .nav-more-item { position: relative; }
         .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
         .nav-more-item:hover .nav-more-list { display: block; }
+        .nav-highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: #fff !important; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); animation: glow 2s ease-in-out infinite; }
+        .nav-highlight i { color: #ffd700 !important; }
+        .nav-highlight:hover { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important; box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); transform: translateY(-2px); }
+        @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } }
 
         .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
         .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
@@ -61,7 +65,7 @@
         .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
 
         /* 移动端菜单 */
-        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 26px; color: #333; cursor: pointer; }
         .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .mobile-nav-menu.active { display: flex; }
         .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
@@ -1219,11 +1223,11 @@
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
+                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
+                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
+                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
                         <li class="nav-more-item" style="display: none;">
                             <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="nav-more-list"></ul>
@@ -1237,7 +1241,7 @@
                             <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888</span></p>
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888 / aicygg789</span></p>
                             <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
                         </div>
                     </div>
@@ -1274,7 +1278,7 @@
                     </div>
                     <div class="announcement-contact">
                         <i class="fa-brands fa-weixin"></i>
-                        <span>请联系微信：aicygg888</span>
+                        <span>请联系微信：aicygg888 / aicygg789</span>
                     </div>
                 </div>
                 <div class="announcement-qr">
@@ -1344,7 +1348,7 @@
 
                 <div class="note-warning">
                     <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>注：</strong>到期才可续</p>
-                    <p style="margin-top: 8px;"><i class="fa-solid fa-rotate-right"></i> <strong>提示：</strong>如遇充值失败请刷新网页进行重试，如多次失败请添加客服微信：<strong>aicygg888</strong></p>
+                    <p style="margin-top: 8px;"><i class="fa-solid fa-rotate-right"></i> <strong>提示：</strong>如遇充值失败请刷新网页进行重试，如多次失败请添加客服微信：<strong>aicygg888 / aicygg789</strong></p>
                 </div>
 
                 <div class="cta-text">
@@ -1362,7 +1366,7 @@
                         <div style="flex: 1; min-width: 200px;">
                             <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #e9ecef;">
                                 <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 8px; font-weight: 500;">联系微信</div>
-                                <div style="font-size: 1.5em; color: #6f42c1; font-weight: 700; margin-bottom: 8px;">aicygg888</div>
+                                <div style="font-size: 1.5em; color: #6f42c1; font-weight: 700; margin-bottom: 8px;">aicygg888 / aicygg789</div>
                                 <div style="font-size: 0.85em; color: #495057;">
                                     <i class="fa-solid fa-clock" style="margin-right: 5px;"></i>工作时间：9:00 - 24:00
                                 </div>
@@ -1472,12 +1476,12 @@
                         </div>
                         <div class="faq-item">
                             <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 aicygg888</p>
+                            <p class="faq-a">A：联系客服 aicygg888 / aicygg789</p>
                         </div>
                     </div>
 
                     <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
+                        <p>📞 需要帮助？联系客服：<strong>aicygg888 / aicygg789</strong></p>
                     </div>
                 </div>
 
@@ -1525,12 +1529,12 @@
                         </div>
                         <div class="faq-item">
                             <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 aicygg888</p>
+                            <p class="faq-a">A：联系客服 aicygg888 / aicygg789</p>
                         </div>
                     </div>
 
                     <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888</strong></p>
+                        <p>📞 需要帮助？联系客服：<strong>aicygg888 / aicygg789</strong></p>
                     </div>
                 </div>
             </div>
@@ -1541,7 +1545,7 @@
             <h3>💡 重要说明</h3>
             <p>• 新窗口打开的充值网站可以正常登录和支付，无任何限制</p>
             <p>• 充值完成后可返回此页面查看其他渠道或进行其他操作</p>
-            <p>• 如遇问题请联系客服：<strong>aicygg888</strong></p>
+            <p>• 如遇问题请联系客服：<strong>aicygg888 / aicygg789</strong></p>
             <p>• ⚠️ <strong>到期才可续费</strong></p>
         </div>
 
