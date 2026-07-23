@@ -25,7 +25,7 @@
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/instrumentserif/v4/jizBRFtNs2ka5fXjeivQ4LroWlx-6zIt.woff2) format('woff2');
   }
-  :root { --font-instrument-serif: 'Instrument Serif', serif; --header-height: 71px; --notice-bar-height: 0px; }
+  :root { --font-instrument-serif: 'Instrument Serif', serif; --header-height: 85px; --notice-bar-height: 0px; }
   body.antialiased { background-color: #F7F3EE; color: #1c1917; }
   #claudeTopBanner { position: fixed; left: 0; right: 0; top: var(--header-height, 71px); z-index: 60; background: linear-gradient(to right, #fef2f2, #fee2e2, #fef2f2); border-bottom: 1px solid rgba(254, 202, 202, 0.8); }
   #claudeTopBanner > div { position: relative; max-width: 72rem; margin: 0 auto; padding: 0.625rem 2.75rem; display: flex; align-items: center; justify-content: center; }
@@ -35,17 +35,21 @@
   .main-header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s ease; }
   .main-header .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
   .main-header .logo-container { display: flex; align-items: center; flex-shrink: 0; }
-  .main-header .logo { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #6f42c1; color: #fff; font-size: 24px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
-  .main-header .logo-text h1 { margin: 0; font-size: 22px; color: #495057; font-weight: 600; }
+  .main-header .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+  .main-header .logo-text h1 { margin: 0; font-size: 24px; color: #495057; font-weight: 600; }
   .main-header .logo-text .subtitle { font-size: 12px; color: #6c757d; }
-  .main-header .desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; }
-  .main-header .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-  .main-header .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
+  .main-header .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; }
+  .main-header .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .main-header .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; transition: all 0.3s ease; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
   .main-header .main-nav ul li a:hover { color: #6f42c1; background-color: #f1f3f5; }
-  .main-header .main-nav ul li a i { color: #888; }
+  .main-header .main-nav ul li a i { color: #888; font-size: 14px; }
   .main-header .nav-more-item { position: relative; }
   .main-header .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
   .main-header .nav-more-item:hover .nav-more-list { display: block; }
+        .nav-highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: #fff !important; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); animation: glow 2s ease-in-out infinite; }
+        .nav-highlight i { color: #ffd700 !important; }
+        .nav-highlight:hover { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important; box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); transform: translateY(-2px); }
+        @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } }
   .main-header .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
   .main-header .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
   .main-header .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
@@ -56,7 +60,7 @@
   .main-header .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px; }
   .main-header .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
   .main-header .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
-  .main-header .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+  .main-header .mobile-nav-toggle { display: none; background: none; border: none; font-size: 26px; color: #333; cursor: pointer; }
   .main-header .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
   .main-header .mobile-nav-menu.active { display: flex; }
   .main-header .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
@@ -154,11 +158,11 @@
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="https://littlemagic8.github.io/buychat/"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
+                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
+                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
+                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
+                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-house"></i> 可代充Grok等</a></li>
                         <li class="nav-more-item" style="display: none;">
                             <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="nav-more-list"></ul>
@@ -172,7 +176,7 @@
                             <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span></p>
+                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888 / aicygg789">aicygg888 / aicygg789</span></p>
                             <img src="blog/images/wechat-qrcode.png" alt="微信二维码">
                         </div>
                     </div>
@@ -204,10 +208,10 @@
     document.documentElement.style.setProperty('--notice-bar-height', '0px');
   }
 
-  const WECHAT_ID = 'aicygg888';
+  const WECHAT_ID = 'aicygg888 / aicygg789';
 
-  function copyWechatId(btn) {
-    navigator.clipboard.writeText(WECHAT_ID).then(function () {
+  function copyWechatIdSingle(wechatId, btn) {
+    navigator.clipboard.writeText(wechatId).then(function () {
       if (btn) {
         const original = btn.textContent;
         btn.textContent = '已复制';
@@ -249,8 +253,11 @@
     </button>
   </div>
   <div style="padding:16px 18px 18px;">
-    <p style="margin:0;font-size:14px;line-height:1.7;color:#374151;">Claude风控严重，如需Claude free号，了解详情请联系客服：<strong style="color:#ea580c;">aicygg888</strong></p>
-    <button type="button" id="copyWechatBtn" onclick="copyWechatId(this)" style="margin-top:16px;width:100%;padding:10px 16px;border-radius:10px;border:1px solid #d6d3d1;background:#fafaf9;font-size:14px;font-weight:600;color:#44403c;cursor:pointer;transition:all .2s;">点击复制 aicygg888</button>
+    <p style="margin:0;font-size:14px;line-height:1.7;color:#374151;">Claude风控严重，如需Claude free号，了解详情请联系客服：<strong style="color:#ea580c;">aicygg888 / aicygg789</strong></p>
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <button type="button" onclick="copyWechatIdSingle('aicygg888', this)" style="width:100%;padding:10px 16px;border-radius:10px;border:1px solid #d6d3d1;background:#fafaf9;font-size:14px;font-weight:600;color:#44403c;cursor:pointer;transition:all .2s;">复制 aicygg888</button>
+      <button type="button" onclick="copyWechatIdSingle('aicygg789', this)" style="width:100%;padding:10px 16px;border-radius:10px;border:1px solid #d6d3d1;background:#fafaf9;font-size:14px;font-weight:600;color:#44403c;cursor:pointer;transition:all .2s;">复制 aicygg789</button>
+    </div>
   </div>
 </div>`;
 
@@ -290,7 +297,7 @@
     <p style="margin:8px 0 6px;text-align:center;font-size:10px;color:#9ca3af;">没解决？扫码加微信</p>
     <div style="text-align:center;">
       <img alt="微信二维码" src="blog/images/wechat-qrcode.png" style="width:72px;height:72px;display:block;margin:0 auto;border-radius:6px;border:1px solid #e5e7eb;object-fit:cover;">
-      <p style="margin:6px 0 0;font-size:11px;font-weight:600;color:#374151;">微信号 <span style="color:#ea580c;">aicygg888</span></p>
+      <p style="margin:6px 0 0;font-size:11px;font-weight:600;color:#374151;">微信号 <span style="color:#ea580c;">aicygg888 / aicygg789</span></p>
       <p style="margin:4px 0 0;font-size:10px;color:#b45309;">备注 <strong>claude</strong></p>
     </div>
   </div>
