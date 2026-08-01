@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 基础重置 */
-        :root { --header-height: 85px; }
+        :root { --header-height: 85px; --notice-bar-height: 0px; }
         body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; }
 
@@ -1258,6 +1258,26 @@
         </div>
     </header>
 
+    <!-- 重要提示横幅 -->
+    <div id="grokNoticeBanner" style="position: fixed; left: 0; right: 0; top: var(--header-height); z-index: 60; background: linear-gradient(to right, #fef2f2, #fee2e2, #fef2f2); border-bottom: 1px solid rgba(254, 202, 202, 0.8);">
+        <div style="position: relative; max-width: 72rem; margin: 0 auto; padding: 0.625rem 2.75rem; display: flex; align-items: center; justify-content: center;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem 0.625rem; min-width: 0; color: #7f1d1d; font-size: 13px; line-height: 1.375;">
+                <span style="display: inline-flex; flex: none; align-items: center; gap: 0.25rem; border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 11px; font-weight: 600; letter-spacing: 0.025em; background-color: rgba(239, 68, 68, 0.1); color: #b91c1c; border: 1px solid rgba(220, 38, 38, 0.2);">
+                    <svg style="height: 12px; width: 12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"></path>
+                    </svg>
+                    重要
+                </span>
+                <span style="font-size: 13px; font-weight: 500; line-height: 1.375; letter-spacing: -0.025em;">目前SuperGrok官方已经将直充两月的通道关闭，一月充值也受限，推荐“购买充值码”里面的直充三个月的，性价比极高！</span>
+            </div>
+            <button type="button" aria-label="关闭公告" onclick="closeGrokNoticeBar()" style="position: absolute; right: 0.625rem; top: 50%; transform: translateY(-50%); display: flex; height: 1.5rem; width: 1.5rem; align-items: center; justify-content: center; border-radius: 9999px; color: #ef4444; transition: all 0.2s; background: none; border: none; cursor: pointer;">
+                <svg style="height: 12px; width: 12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <!-- 主体内容 -->
     <main class="main-content container">
 
@@ -1853,6 +1873,23 @@
                     closeRechargeModal();
                 }
             });
+
+            // --- 重要提示横幅逻辑 ---
+            // 初始化横幅高度
+            const grokNoticeBanner = document.getElementById('grokNoticeBanner');
+            if (grokNoticeBanner) {
+                const bannerHeight = Math.min(Math.max(grokNoticeBanner.offsetHeight || 0, 0), 120);
+                document.documentElement.style.setProperty('--notice-bar-height', bannerHeight + 'px');
+            }
+
+            // 关闭横幅函数
+            window.closeGrokNoticeBar = function() {
+                const banner = document.getElementById('grokNoticeBanner');
+                if (banner) {
+                    banner.style.display = 'none';
+                    document.documentElement.style.setProperty('--notice-bar-height', '0px');
+                }
+            };
         });
     </script>
 
