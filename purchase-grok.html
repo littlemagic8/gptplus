@@ -1585,6 +1585,11 @@
                 <div class="selection-option-price">$60（￥329）</div>
                 <div class="selection-option-period">购买两个月充值码</div>
             </div>
+            <div class="selection-option" onclick="goToPurchase('3months')">
+                <div class="selection-option-title">三个月</div>
+                <div class="selection-option-price">$90（￥480）</div>
+                <div class="selection-option-period">购买三个月充值码</div>
+            </div>
         </div>
     </div>
 
@@ -1781,6 +1786,8 @@
                     purchaseUrl = 'https://fe.dtyuedan.cn/item/8o39u4';
                 } else if (duration === '2months') {
                     purchaseUrl = 'https://fe.dtyuedan.cn/item/uw3qi6';
+                } else if (duration === '3months') {
+                    purchaseUrl = 'https://fe.dtyuedan.cn/item/yfmgvo';
                 }
 
                 if (purchaseUrl) {
