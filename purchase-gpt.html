@@ -714,6 +714,66 @@
             margin-bottom: 6px;
         }
 
+        /* 促销徽章容器 */
+        .promotion-badges {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        /* 立减徽章 */
+        .savings-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            animation: pulse 2s infinite 0.5s;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        /* 更新价格样式 - 保持原有黑色 */
+        .price-current {
+            color: #0f172a;
+            text-shadow: none;
+        }
+
+        .price-original {
+            color: #9ca3af;
+            text-decoration-color: #ef4444;
+            text-decoration-thickness: 2px;
+        }
+
+        /* 节省金额强调 */
+        .savings-highlight {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .savings-icon {
+            font-size: 16px;
+        }
+
+        .savings-percent {
+            background: #10b981;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
         /* 描述 */
         .pricing-desc {
             font-size: 14px;
@@ -1510,11 +1570,19 @@
                         <span class="pricing-tag">个人 Plus</span>
                     </div>
                     <div class="pricing-price">
-                        <div class="limited-time-badge">限时特惠</div>
+                        <div class="promotion-badges">
+                            <span class="limited-time-badge">限时特惠</span>
+                            <span class="savings-badge">立减20元</span>
+                        </div>
                         <div class="price-info-row">
-                            <div class="price-current">¥195</div>
+                            <div class="price-current">¥189</div>
                             <div class="price-original">原价¥209</div>
                             <div class="price-period">/ 月</div>
+                        </div>
+                        <div class="savings-highlight">
+                            <span class="savings-icon">💰</span>
+                            <span class="savings-text">节省20元</span>
+                            <span class="savings-percent">约9.6% OFF</span>
                         </div>
                     </div>
                     <p class="pricing-desc">正规官方通道充值，个人版 Plus 一键升级，不成功全额退款</p>
