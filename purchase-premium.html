@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI服务代充值服务</title>
+    <title>X-Premium(+) 自助充值 - AI模型服务</title>
+    <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 1. CSS 进行了大幅增强 */
-        
         /* 基础重置 */
-        :root { --header-height: 85px; }
+        :root { --header-height: 85px; --notice-bar-height: 0px; }
         body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; }
 
-        /* --- 响应式导航栏核心样式 (新增/修改) --- */
+        /* --- 响应式导航栏核心样式 --- */
         .main-header {
             background-color: #ffffff;
             border-bottom: 1px solid #e9ecef;
@@ -33,40 +32,23 @@
         .logo-container:hover { background-color: rgba(111, 66, 193, 0.1); }
         .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
         .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; }
-        .logo-text .subtitle { font-size: 13px; color: #6c757d; }
+        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
 
         /* 桌面导航容器 */
         .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; }
         .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; }
-        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: all 0.3s ease; border-radius: 6px; }
+        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; transition: all 0.3s ease; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
         .main-nav ul li a:hover { color: #6f42c1; background-color: rgba(111, 66, 193, 0.1); }
         .main-nav ul li a i { color: #888; font-size: 14px; }
 
-        /* 导航高亮样式 */
-        .nav-highlight {
-            color: #495057;
-            font-weight: 600;
-        }
-        .nav-highlight i {
-            color: #888;
-        }
-        .nav-highlight:hover {
-            background-color: rgba(111, 66, 193, 0.1);
-        }
-
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            }
-            50% {
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-            }
-        }
-
-        /* “更多”下拉菜单 */
+        /* "更多"下拉菜单 */
         .nav-more-item { position: relative; }
         .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
         .nav-more-item:hover .nav-more-list { display: block; }
+        .nav-highlight { color: #495057; font-weight: 600; }
+        .nav-highlight i { color: #888; }
+        .nav-highlight:hover { background-color: rgba(111, 66, 193, 0.1); }
+        @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } }
 
         .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
         .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
@@ -82,38 +64,378 @@
         .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
 
         /* 移动端菜单 */
-        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 26px; color: #333; cursor: pointer; }
         .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .mobile-nav-menu.active { display: flex; }
         .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
         .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
         .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        
+
         /* 响应式断点 */
         @media (max-width: 1024px) {
             .desktop-nav { display: none; }
             .mobile-nav-toggle { display: block; }
         }
 
-        /* --- 页面其余部分 (样式不变) --- */
+        /* 响应式产品卡片布局 */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+        }
+
+        /* --- 页面主体 --- */
         .main-content { padding: 40px 0; }
-        .welcome-section { text-align: center; padding: 60px 20px; background-color: #fff; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .welcome-section h1 { font-size: 42px; color: #343a40; margin-bottom: 15px; }
-        .welcome-section p { font-size: 18px; color: #6c757d; max-width: 600px; margin: 0 auto; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background-color: #fff; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
-        .service-card .icon { font-size: 48px; color: #6f42c1; margin-bottom: 20px; }
-        .service-card h2 { font-size: 24px; color: #343a40; margin-bottom: 15px; }
-        .service-card p { color: #6c757d; margin-bottom: 25px; min-height: 40px; }
-        .btn { display: inline-block; background-color: #6f42c1; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.3s ease; }
-        .btn:hover { background-color: #59369a; }
-        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; }
+
+        /* --- 公告横幅样式 --- */
+        .announcement-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            border-radius: 16px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-text {
+            flex: 1;
+        }
+
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .announcement-badge {
+            background-color: #fff;
+            color: #ff6b6b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .announcement-date {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .announcement-title {
+            color: #fff;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .announcement-message {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .announcement-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .announcement-contact i {
+            font-size: 1.2em;
+        }
+
+        .announcement-qr {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .announcement-qr img {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+
+        .announcement-qr-caption {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.85em;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-banner {
+                padding: 25px 20px;
+            }
+
+            .announcement-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .announcement-header {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .announcement-title {
+                font-size: 1.4em;
+            }
+
+            .announcement-message {
+                font-size: 1em;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10px, -10px); }
+        }
+
+        /* --- 产品展示区域 --- */
+        .products-section {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            justify-content: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .product-price {
+            font-size: 1.8em;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .btn-purchase {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+            box-sizing: border-box;
+        }
+
+        .btn-purchase:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .main-footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        /* 虚拟卡支付方式提示 */
+        .payment-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-notice h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .payment-notice p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .payment-notice .highlight {
+            background-color: rgba(102, 126, 234, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 2. HTML 结构已重组 -->
+    <!-- 导航栏 -->
     <header class="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo-container">
@@ -124,23 +446,17 @@
                 </div>
             </a>
 
-            <!-- 桌面导航 (JS会控制) -->
+            <!-- 桌面导航 -->
             <div class="desktop-nav">
                 <nav class="main-nav">
                     <ul>
-                        <!-- 使用了您提供的最新文本 -->
                         <li><a href="index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
                         <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
                         <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
                         <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href=”purchase-gemini.html” class=”nav-highlight”><i class=”fa-solid fa-star”></i> 可代充Gemini</a></li>
-                        <li><a href=”purchase-grok.html” class=”nav-highlight”><i class=”fa-solid fa-bolt”></i> 可代充Grok等</a></li>
-                        <li><a href=”purchase-premium.html” class=”nav-highlight”><i class=”fa-solid fa-crown”></i> 可代充X-Premium(+)</a></li>
-                        <!-- “更多”下拉菜单的占位符 -->
-                        <li class="nav-more-item" style="display: none;">
-                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
-                            <ul class="nav-more-list"></ul>
-                        </li>
+                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
+                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 可代充Grok等</a></li>
+                        <li><a href="purchase-premium.html" class="nav-highlight"><i class="fa-solid fa-crown"></i> 可代充X-Premium(+)</a></li>
                     </ul>
                 </nav>
                 <div class="user-actions">
@@ -157,83 +473,142 @@
                 </div>
             </div>
 
-            <!-- 移动端汉堡菜单按钮 -->
+            <!-- 移动端菜单按钮 -->
             <button class="mobile-nav-toggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            
-            <!-- 移动端展开的菜单 (JS会填充) -->
+
+            <!-- 移动端菜单 -->
             <div class="mobile-nav-menu"></div>
         </div>
     </header>
 
-    <!-- 您的页面主体内容 (保持不变) -->
+    <!-- 页面主体 -->
     <main class="main-content container">
-        <section class="welcome-section">
-            <h1>AI模型服务 一站式自助解决方案</h1>
-            <p>为您提供快速、安全、便捷的 GPT Go/Plus/Pro/Codex, Claude Pro, Gemini Pro, Super Grok 等主流AI模型升级与代充值服务，如需其它产品请添加客服微信咨询：aicygg888 / aicygg789。<a href="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png">如遇提示好友添加频繁请扫描</a>
-                <a href="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png">*微信二维码*</a>
-            </p>
-
-            <!-- 滚动发票提示 -->
-            <div style="margin-top: 20px; overflow: hidden; border-radius: 8px; padding: 12px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-                <div style="display: inline-block; white-space: nowrap; animation: scrollLeft 25s linear infinite; color: #4c51bf; font-size: 16px; font-weight: 600;">
-                    <span style="margin-right: 50px;">💼 所有商品如需要开发票，请联系客服微信：aicygg888 / aicygg789</span>
-                    <span style="margin-right: 50px;">💼 所有商品如需要开发票，请联系客服微信：aicygg888 / aicygg789</span>
-                    <span style="margin-right: 50px;">💼 所有商品如需要开发票，请联系客服微信：aicygg888 / aicygg789</span>
-                </div>
-            </div>
-
-            <style>
-                @keyframes scrollLeft {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-            </style>
-        </section>
 
         <!-- 警告提示 -->
         <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 8px; margin-bottom: 30px; color: #856404; font-size: 0.95em; font-weight: 500;">
             <p style="margin: 0;"><i class="fa-solid fa-triangle-exclamation"></i> 如遇购买充值码或者充值系统网址打不开，请关闭梯子</p>
         </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon"><i class="fa-brands fa-superpowers"></i></div>
-                <h2>GPT</h2>
-                <p>体验最前沿的通用人工智能，解锁 GPT-5 codex的强大能力。</p>
-                <a href="purchase-gpt.html" class="btn">立即充值</a>
-            </div>
-            <div class="service-card">
-                <div class="icon"><i class="fa-solid fa-c"></i></div>
-                <h2>Claude</h2>
-                <p>Anthropic 出品的强大对话模型，擅长长文本处理和深度对话。</p>
-                <a href="purchase-claude.html" class="btn">立即充值</a>
-            </div>
-            <div class="service-card">
-                <div class="icon"><i class="fa-solid fa-gem"></i></div>
-                <h2>Gemini</h2>
-                <p>Google 推出的新一代多模态大模型，原生支持文本、图片和视频。</p>
-                <a href="purchase-gemini.html" class="btn">立即充值</a>
-            </div>
-            <div class="service-card">
-                <div class="icon"><i class="fa-solid fa-rocket"></i></div>
-                <h2>Grok</h2>
-                <p>xAI 打造的AI模型，以实时信息获取和独特的成人幽默感为特色。</p>
-                <a href="purchase-grok.html" class="btn">立即充值</a>
+        <!-- 支付方式提示 -->
+        <div class="payment-notice">
+            <h4><i class="fa-solid fa-credit-card"></i> 支付方式说明</h4>
+            <p>本站支持<span class="">支付宝</span>、<span class="highlight">微信支付</span>等多种支付方式。如遇支付问题，请联系客服微信：<span class="highlight">aicygg888</span> / <span class="highlight">aicygg789</span></p>
+        </div>
+
+        <!-- 公告横幅 -->
+        <div class="announcement-banner">
+            <div class="announcement-content">
+                <div class="announcement-text">
+                    <div class="announcement-header">
+                        <span class="announcement-badge">服务公告</span>
+                        <span class="announcement-date">2025年8月</span>
+                    </div>
+                    <h2 class="announcement-title">X-Premium(+) 服务代充上线</h2>
+                    <p class="announcement-message">X Premium(+) 是 X 平台的高级会员服务，提供蓝标认证、更长推文、编辑推文等高级功能。我们提供专业快速的代充值服务，让您畅享完整功能。</p>
+                    <div class="announcement-contact" onclick="showCustomerService()">
+                        <i class="fa-brands fa-weixin"></i>
+                        充值过程有疑问请联系客服微信
+                    </div>
+                </div>
+                <div class="announcement-qr">
+                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                    <p class="announcement-qr-caption">扫码添加客服</p>
+                </div>
             </div>
         </div>
+
+        <!-- 产品展示 -->
+        <div class="products-section">
+            <h2 class="section-title">X Premium(+) 充值套餐</h2>
+            <p class="section-subtitle">选择适合您的套餐，享受 X 平台完整高级功能</p>
+
+            <div class="products-grid">
+                <!-- 基础套餐 -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3>X Premium(标准版) 月付</h3>
+                    <p>适合想要体验 X Premium 会员等级的用户，按月付费灵活便捷。</p>
+                    <div class="product-price">¥89<span style="font-size: 0.6em; color: #7f8c8d;">/月</span></div>
+                    <ul class="product-features">
+                        <li>蓝色认证标识</li>
+                        <li>创作者收益分成</li>
+                        <li>订阅功能</li>
+                        <li>更多Grok额度</li>
+                        <li>优先客户支持</li>
+                        <li>Media Studio</li>
+                    </ul>
+                    <a href="https://fe.dtyuedan.cn/item/eut98n" target="_blank" class="btn-purchase">立即购买</a>
+                </div>
+
+                <!-- 高级套餐 -->
+                <div class="product-card" style="border-color: #667eea; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3>X Premium+(高级版) 月付</h3>
+                    <p>最高级会员，适合大型账号/企业品牌/AI重度用户/新闻/投资/营销人员。</p>
+                    <div class="product-price">¥360[$40]<span style="font-size: 0.6em; color: #7f8c8d;">/月</span></div>
+                    <ul class="product-features">
+                        <li>包含所有Premium会员功能</li>
+                        <li>无广告体验</li>
+                        <li>最高回复优先级</li>
+                        <li>最高Grok额度</li>
+                        <li>Radar趋势分析</li>
+                        <li>Articles长文章</li>
+                    </ul>
+                    <a href="https://fe.dtyuedan.cn/item/d488qh" target="_blank" class="btn-purchase">立即购买</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能说明 -->
+        <div class="products-section">
+            <h2 class="section-title">X Premium(+) 核心功能</h2>
+            <p class="section-subtitle">了解 X Premium+ 的强大功能，提升您的使用体验</p>
+
+            <div class="products-grid">
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-check-circle" style="color: #667eea;"></i> 蓝色认证标识</h3>
+                    <p>获得官方认证的蓝色勾选标识，提升账号的可信度和影响力。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-edit" style="color: #667eea;"></i> 编辑推文功能</h3>
+                    <p>发布推文后仍可编辑修改，修正错误或更新内容。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-text-height" style="color: #667eea;"></i> 更长推文内容</h3>
+                    <p>单条推文可支持更长的字符数，表达更丰富的内容。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-chart-line" style="color: #667eea;"></i> 高级数据分析</h3>
+                    <p>查看详细的账号数据分析和互动统计，优化内容策略。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-ban" style="color: #667eea;"></i> 无广告体验</h3>
+                    <p>享受无广告的时间线，更清爽的使用环境。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-headset" style="color: #667eea;"></i> 优先客户支持</h3>
+                    <p>获得优先客户服务支持，快速解决问题。</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="main-footer">
         <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
     </footer>
 
-    <!-- 3. 添加了 JavaScript 动态逻辑 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -253,7 +628,7 @@
                     mobileUserActions.remove();
                 }
             };
-            
+
             populateMobileMenu();
 
             if (mobileNavToggle) {
@@ -299,27 +674,15 @@
                 }
             }
 
-             // --- 核心修改点在这里 ---
-             function handleResize() {
-                // 1. 运行桌面菜单的折叠逻辑
+            function handleResize() {
                 updateDesktopNav();
-
-                // 2. 新增：检查并关闭移动菜单
-                // 如果窗口宽度大于1024px（即进入桌面视图）
                 if (window.innerWidth > 1024) {
-                    // 强制移除移动菜单的 'active' 类，使其隐藏
                     mobileNavMenu.classList.remove('active');
                 }
             }
 
-            // 初始加载时运行
             handleResize();
-
-            // 监听窗口大小变化
             window.addEventListener('resize', handleResize);
-
-            // updateDesktopNav();
-            // window.addEventListener('resize', updateDesktopNav);
         });
 
         // 显示客服悬浮窗
@@ -352,33 +715,33 @@
                                             <circle cx="4" cy="20" r="2"></circle>
                                         </svg>
                                     </div>
-                                    <h4 style="font-size: 14px; font-weight: 700; color: #111827;">AI 工具充值服务</h4>
+                                    <h4 style="font-size: 14px; font-weight: 700; color: #111827;">X Premium(+) 充值服务</h4>
                                 </div>
-                                <p style="font-size: 12px; color: #4b5563; margin-bottom: 12px;">支持充值多种 AI 工具，让您畅享智能体验：</p>
+                                <p style="font-size: 12px; color: #4b5563; margin-bottom: 12px;">专业快速的代充值服务，让您畅享完整功能：</p>
                                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 12px;">
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">ChatGPT Pro</span>
+                                        <span style="color: #374151;">蓝色认证标识</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">Cursor</span>
+                                        <span style="color: #374151;">编辑推文功能</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">Claude Max</span>
+                                        <span style="color: #374151;">更长推文内容</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #ec4899; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">Gemini Pro</span>
+                                        <span style="color: #374151;">无广告体验</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #8b5cf6; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">Grok</span>
+                                        <span style="color: #374151;">高级数据分析</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <div style="width: 6px; height: 6px; background: #14b8a6; border-radius: 50%;"></div>
-                                        <span style="color: #374151;">更多服务</span>
+                                        <span style="color: #374151;">优先客户支持</span>
                                     </div>
                                 </div>
                             </div>
