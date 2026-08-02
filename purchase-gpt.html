@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT 充值 - AI模型服务</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
     <style>
         /* 粘贴 index.html 的全部 CSS 样式到这里 */
-        :root { --header-height: 85px; --notice-bar-height: 44px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: #ffffff; border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: box-shadow 0.3s ease; transition: box-shadow 0.3s ease; display: flex; flex-direction: column; } .header-container { display: flex; align-items: center; justify-content: space-between; height: var(--header-height); flex-shrink: 0; position: relative; } .logo-container { display: flex; align-items: center; flex-shrink: 0; padding: 10px 12px; border-radius: 6px; transition: all 0.3s ease; } .logo-container:hover { background-color: rgba(111, 66, 193, 0.1); } .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 13px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: all 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: rgba(111, 66, 193, 0.1); } .main-nav ul li a i { color: #888; font-size: 14px; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .nav-highlight { color: #495057; font-weight: 600; } .nav-highlight i { color: #888; } .nav-highlight:hover { background-color: rgba(111, 66, 193, 0.1); } @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
+        :root { --header-height: 85px; --notice-bar-height: 44px; } body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } a { text-decoration: none; } .main-header { background-color: #ffffff; border-bottom: 1px solid #e9ecef; position: fixed; top: var(--notice-bar-height); left: 0; width: 100%; height: var(--header-height); z-index: 1000; transition: box-shadow 0.3s ease; } .header-container { display: flex; align-items: center; justify-content: space-between; height: var(--header-height); flex-shrink: 0; position: relative; } .logo-container { display: flex; align-items: center; flex-shrink: 0; padding: 10px 12px; border-radius: 6px; transition: all 0.3s ease; } .logo-container:hover { background-color: rgba(111, 66, 193, 0.1); } .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; } .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; } .logo-text .subtitle { font-size: 13px; color: #6c757d; } .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; } .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; } .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: all 0.3s ease; border-radius: 6px; } .main-nav ul li a:hover { color: #6f42c1; background-color: rgba(111, 66, 193, 0.1); } .main-nav ul li a i { color: #888; font-size: 14px; } .nav-more-item { position: relative; } .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); } .nav-more-item:hover .nav-more-list { display: block; } .nav-highlight { color: #495057; font-weight: 600; } .nav-highlight i { color: #888; } .nav-highlight:hover { background-color: rgba(111, 66, 193, 0.1); } @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } } .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; } .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; } .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; } .more-services { position: relative; } .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; } .more-services:hover .dropdown-content { display: block; } .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;} .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; } .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; } .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; } .mobile-nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); } .mobile-nav-menu.active { display: flex; } .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; } .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; text-align: center; justify-content: center; } .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; } @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
 
         /* --- 提示框样式 --- */
         .stock-alert-wrapper { background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); border: 3px solid #ff8c00; border-radius: 16px; margin: 20px 0 30px; position: relative; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.25); }
@@ -27,7 +28,7 @@
         .stock-alert-wrapper.hidden { display: none; }
 
         /* 顶部公告栏 */
-        .top-notice-bar { background: linear-gradient(90deg, #fffaf5 0%, #fff4e6 50%, #fffaf5 100%); color: #c2410c; font-size: 13px; line-height: 1.45; flex-shrink: 0; border-bottom: 1px solid #fed7aa; }
+        .top-notice-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1001; background: linear-gradient(90deg, #fffaf5 0%, #fff4e6 50%, #fffaf5 100%); color: #c2410c; font-size: 13px; line-height: 1.45; flex-shrink: 0; border-bottom: 1px solid #fed7aa; }
         .top-notice-bar.hidden { display: none; }
         .top-notice-inner { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 36px 8px 12px; position: relative; min-height: 44px; }
         .top-notice-badge { flex-shrink: 0; background: rgba(234, 88, 12, 0.12); color: #ea580c; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.03em; white-space: nowrap; }
@@ -37,7 +38,7 @@
         .top-notice-models { color: #d97706; }
         .top-notice-link { flex-shrink: 0; color: #ea580c; font-size: 12px; font-weight: 600; white-space: nowrap; transition: color 0.2s; }
         .top-notice-link:hover { color: #c2410c; }
-        .top-notice-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: none; background: transparent; color: #fdba74; font-size: 18px; line-height: 1; cursor: pointer; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; padding: 0; }
+        .top-notice-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border: none; background: transparent; color: #fdba74; font-size: 20px; line-height: 1; cursor: pointer; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; padding: 0; z-index: 1002; pointer-events: auto; }
         .top-notice-close:hover { color: #ea580c; background: rgba(234, 88, 12, 0.1); }
 
         @media (max-width: 768px) {
@@ -1352,8 +1353,7 @@
 <body>
 
     <!-- 标准化 Header -->
-    <header class="main-header">
-        <div id="gpt56NoticeBar" class="top-notice-bar">
+    <div id="gpt56NoticeBar" class="top-notice-bar">
             <div class="container top-notice-inner">
                 <span class="top-notice-badge">OpenAI 官方</span>
                 <p class="top-notice-text">
@@ -1365,48 +1365,7 @@
                 <button type="button" class="top-notice-close" onclick="closeGpt56Notice()" aria-label="关闭公告">×</button>
             </div>
         </div>
-        <div class="container header-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo">AI</div>
-                <div class="logo-text">
-                    <h1>AI Pro Service</h1>
-                    <span class="subtitle">GPT/Claude/Gemini 充值</span>
-                </div>
-            </a>
-            <div class="desktop-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
-                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 可代充Grok等</a></li>
-                        <li class="nav-more-item" style="display: none;">
-                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
-                            <ul class="nav-more-list"></ul>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="user-actions">
-                    <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
-                    <div class="more-services">
-                        <div class="more-services-btn">
-                            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-copy wechat-id" data-wechat="aicygg888">aicygg888</span> / <span class="wechat-copy wechat-id" data-wechat="aicygg789">aicygg789</span></p>
-                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="mobile-nav-menu"></div>
-        </div>
-    </header>
+    <div id="main-header-placeholder"></div>
 
     <!-- 主体内容 -->
     <main class="main-content container">
@@ -1665,84 +1624,17 @@
     </footer>
 
     <!-- Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const priceAdjustToggle = document.getElementById('priceAdjustToggle');
-            const priceAdjustPanel = document.getElementById('priceAdjustPanel');
-            if (priceAdjustToggle && priceAdjustPanel) {
-                priceAdjustToggle.addEventListener('click', () => {
-                    const expanded = priceAdjustToggle.getAttribute('aria-expanded') === 'true';
-                    priceAdjustToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-                    priceAdjustPanel.hidden = expanded;
-                });
-            }
+    
+<script>
+// 关闭顶部公告（尽早定义，避免其它脚本错误影响关闭按钮）
+function closeGpt56Notice() {
+    var noticeBar = document.getElementById('gpt56NoticeBar');
+    if (!noticeBar) return;
+    noticeBar.classList.add('hidden');
+    document.documentElement.style.setProperty('--notice-bar-height', '0px');
+}
 
-            const noAccountToggle = document.getElementById('noAccountToggle');
-            const noAccountPanel = document.getElementById('noAccountPanel');
-            if (noAccountToggle && noAccountPanel) {
-                noAccountToggle.addEventListener('click', () => {
-                    const expanded = noAccountToggle.getAttribute('aria-expanded') === 'true';
-                    noAccountToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-                    noAccountPanel.hidden = expanded;
-                });
-
-                function scrollToFreeAccountCard() {
-                    const freeCard = document.getElementById('freeAccountCard');
-                    if (!freeCard) return;
-                    freeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    freeCard.classList.remove('free-card-highlight');
-                    void freeCard.offsetWidth;
-                    freeCard.classList.add('free-card-highlight');
-                    setTimeout(() => freeCard.classList.remove('free-card-highlight'), 1600);
-                }
-
-                const buyOption = noAccountPanel.querySelector('input[value="buy"]')?.closest('.account-option');
-                if (buyOption) {
-                    buyOption.addEventListener('click', () => {
-                        scrollToFreeAccountCard();
-                    });
-                }
-
-                const buyBtn = noAccountPanel.querySelector('[data-action="buy"]');
-                if (buyBtn) {
-                    buyBtn.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        const buyRadio = noAccountPanel.querySelector('input[value="buy"]');
-                        if (buyRadio) buyRadio.checked = true;
-                        scrollToFreeAccountCard();
-                    });
-                }
-            }
-
-            // --- 导航栏通用逻辑 ---
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
-            const desktopNav = document.querySelector('.desktop-nav');
-            const populateMobileMenu = () => { if (!desktopNav || !mobileNavMenu) return; const navContent = desktopNav.innerHTML; mobileNavMenu.innerHTML = navContent; const mobileUserActions = mobileNavMenu.querySelector('.user-actions'); const mobileNavList = mobileNavMenu.querySelector('.main-nav ul'); if (mobileUserActions && mobileNavList) { const actionsClone = mobileUserActions.cloneNode(true); actionsClone.classList.add('user-actions-mobile'); mobileNavList.appendChild(actionsClone); mobileUserActions.remove(); } };
-            populateMobileMenu();
-            if (mobileNavToggle) { mobileNavToggle.addEventListener('click', () => { mobileNavMenu.classList.toggle('active'); }); }
-            const mainNavList = document.querySelector('.main-nav > ul');
-            if (!mainNavList) return;
-            const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
-            const moreItem = document.querySelector('.nav-more-item');
-            const moreList = document.querySelector('.nav-more-list');
-            function updateDesktopNav() { if (!moreItem || !moreList || !desktopNav) return; if (window.innerWidth <= 1024) { moreItem.style.display = 'none'; return; } moreList.innerHTML = ''; allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem)); moreItem.style.display = 'none'; let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; if (isOverflowing) { moreItem.style.display = 'flex'; isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; } let i = allNavItems.length - 1; while (isOverflowing && i >= 0) { const itemToMove = allNavItems[i]; if (itemToMove.parentNode === mainNavList) { moreList.prepend(itemToMove); } isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth; i--; } }
-            function handleResize() { updateDesktopNav(); if (window.innerWidth > 1024) { mobileNavMenu.classList.remove('active'); } }
-            handleResize();
-            window.addEventListener('resize', handleResize);
-
-            // --- 全局微信号复制功能 ---
-            // 使用事件委托，为所有现有和未来的微信号添加点击事件
-            document.addEventListener('click', function(e) {
-                // 检查点击的是否是微信号或其子元素
-                const wechatElement = e.target.closest('.wechat-copy');
-                if (wechatElement) {
-                    copyWechatId(wechatElement);
-                }
-            });
-
-            function copyWechatId(element) {
+function copyWechatId(element) {
                 const wechatId = element.getAttribute('data-wechat');
 
                 navigator.clipboard.writeText(wechatId).then(() => {
@@ -1925,14 +1817,9 @@
             updateNoticeBarHeight();
             window.addEventListener('resize', updateNoticeBarHeight);
 
-            window.closeGpt56Notice = function() {
-                const noticeBar = document.getElementById('gpt56NoticeBar');
-                if (noticeBar) {
-                    noticeBar.classList.add('hidden');
-                    updateNoticeBarHeight();
-                }
-            };
-        });
-    </script>
+            window.closeGpt56Notice = closeGpt56Notice;
+</script>
+
+    <script src="main-header.js"></script>
 </body>
 </html>

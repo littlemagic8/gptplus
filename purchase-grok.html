@@ -6,6 +6,7 @@
     <title>Grok SuperGrok 自助充值 - AI模型服务</title>
     <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
     <style>
         /* 基础重置 */
         :root { --header-height: 85px; --notice-bar-height: 0px; }
@@ -1208,55 +1209,7 @@
 <body>
 
     <!-- Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo">AI</div>
-                <div class="logo-text">
-                    <h1>AI Pro Service</h1>
-                    <span class="subtitle">GPT/Claude/Gemini 充值</span>
-                </div>
-            </a>
-
-            <!-- 桌面导航 -->
-            <div class="desktop-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
-                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 可代充Grok等</a></li>
-                        <li class="nav-more-item" style="display: none;">
-                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
-                            <ul class="nav-more-list"></ul>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="user-actions">
-                    <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
-                    <div class="more-services">
-                        <div class="more-services-btn">
-                            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888 / aicygg789</span></p>
-                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 移动端汉堡菜单按钮 -->
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <!-- 移动端展开的菜单 -->
-            <div class="mobile-nav-menu"></div>
-        </div>
-    </header>
+    <div id="main-header-placeholder"></div>
 
     <!-- 重要提示横幅 -->
     <div id="grokNoticeBanner" style="position: fixed; left: 0; right: 0; top: var(--header-height); z-index: 60; background: linear-gradient(to right, #fef2f2, #fee2e2, #fef2f2); border-bottom: 1px solid rgba(254, 202, 202, 0.8);">
@@ -1637,81 +1590,7 @@
     <!-- Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- 导航栏通用逻辑 ---
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
-            const desktopNav = document.querySelector('.desktop-nav');
-
-            const populateMobileMenu = () => {
-                if (!desktopNav || !mobileNavMenu) return;
-                const navContent = desktopNav.innerHTML;
-                mobileNavMenu.innerHTML = navContent;
-                const mobileUserActions = mobileNavMenu.querySelector('.user-actions');
-                const mobileNavList = mobileNavMenu.querySelector('.main-nav ul');
-                if (mobileUserActions && mobileNavList) {
-                    const actionsClone = mobileUserActions.cloneNode(true);
-                    actionsClone.classList.add('user-actions-mobile');
-                    mobileNavList.appendChild(actionsClone);
-                    mobileUserActions.remove();
-                }
-            };
-
-            populateMobileMenu();
-
-            if (mobileNavToggle) {
-                mobileNavToggle.addEventListener('click', () => {
-                    mobileNavMenu.classList.toggle('active');
-                });
-            }
-
-            const mainNavList = document.querySelector('.main-nav > ul');
-            if (!mainNavList) return;
-
-            const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
-            const moreItem = document.querySelector('.nav-more-item');
-            const moreList = document.querySelector('.nav-more-list');
-
-            function updateDesktopNav() {
-                if (!moreItem || !moreList || !desktopNav) return;
-
-                if (window.innerWidth <= 1024) {
-                    moreItem.style.display = 'none';
-                    return;
-                }
-
-                moreList.innerHTML = '';
-                allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem));
-                moreItem.style.display = 'none';
-
-                let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-
-                if (isOverflowing) {
-                    moreItem.style.display = 'flex';
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                }
-
-                let i = allNavItems.length - 1;
-                while (isOverflowing && i >= 0) {
-                    const itemToMove = allNavItems[i];
-                    if (itemToMove.parentNode === mainNavList) {
-                        moreList.prepend(itemToMove);
-                    }
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                    i--;
-                }
-            }
-
-            function handleResize() {
-                updateDesktopNav();
-                if (window.innerWidth > 1024) {
-                    mobileNavMenu.classList.remove('active');
-                }
-            }
-
-            handleResize();
-            window.addEventListener('resize', handleResize);
-
-            // --- 渠道切换逻辑 ---
+            // --- 渠道切换（页面逻辑） ---
             const channelItems = document.querySelectorAll('.channel-item');
             const detailContents = document.querySelectorAll('.detail-content');
 
@@ -1895,7 +1774,9 @@
                 }
             };
         });
-    </script>
+</script>
 
+
+    <script src="main-header.js"></script>
 </body>
 </html>

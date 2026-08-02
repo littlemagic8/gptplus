@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI服务代充值服务</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
     <style>
         /* 1. CSS 进行了大幅增强 */
         
@@ -114,58 +115,7 @@
 <body>
 
     <!-- 2. HTML 结构已重组 -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo">AI</div>
-                <div class="logo-text">
-                    <h1>AI Pro Service</h1>
-                    <span class="subtitle">GPT/Claude/Gemini 充值</span>
-                </div>
-            </a>
-
-            <!-- 桌面导航 (JS会控制) -->
-            <div class="desktop-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <!-- 使用了您提供的最新文本 -->
-                        <li><a href="index.html"><i class="fa-solid fa-house"></i> 首页</a></li>
-                        <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>
-                        <li><a href="purchase-gpt.html" class="nav-highlight"><i class="fa-solid fa-book-open"></i> 可代充GPT Go/Pro(5x/20x)/Codex</a></li>
-                        <li><a href="purchase-claude.html" class="nav-highlight"><i class="fa-solid fa-right-to-bracket"></i> 可代充Claude Max</a></li>
-                        <li><a href="purchase-gemini.html" class="nav-highlight"><i class="fa-solid fa-star"></i> 可代充Gemini</a></li>
-                        <li><a href="purchase-grok.html" class="nav-highlight"><i class="fa-solid fa-bolt"></i> 可代充Grok等</a></li>
-                        <li><a href="purchase-premium.html" class="nav-highlight"><i class="fa-solid fa-crown"></i> 可代充X-Premium(+)</a></li>
-                        <!-- “更多"下拉菜单的占位符 -->
-                        <li class="nav-more-item" style="display: none;">
-                            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>
-                            <ul class="nav-more-list"></ul>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="user-actions">
-                    <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>
-                    <div class="more-services">
-                        <div class="more-services-btn">
-                            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="dropdown-content">
-                            <p>其它主流/非主流AI服务均可代充，<br>需要请联系微信：<span class="wechat-id">aicygg888</span> / <span class="wechat-id">aicygg789</span></p>
-                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 移动端汉堡菜单按钮 -->
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            
-            <!-- 移动端展开的菜单 (JS会填充) -->
-            <div class="mobile-nav-menu"></div>
-        </div>
-    </header>
+    <div id="main-header-placeholder"></div>
 
     <!-- 您的页面主体内容 (保持不变) -->
     <main class="main-content container">
@@ -226,6 +176,12 @@
                 <p>xAI 打造的AI模型，以实时信息获取和独特的成人幽默感为特色。</p>
                 <a href="purchase-grok.html" class="btn">立即充值</a>
             </div>
+            <div class="service-card">
+                <div class="icon"><i class="fa-brands fa-x-twitter"></i></div>
+                <h2>X Premium(+)</h2>
+                <p>X 平台高级会员，蓝标认证、无广告体验、更高 Grok 额度与创作权益。</p>
+                <a href="purchase-premium.html" class="btn">立即充值</a>
+            </div>
         </div>
     </main>
 
@@ -235,94 +191,7 @@
 
     <!-- 3. 添加了 JavaScript 动态逻辑 -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
-            const desktopNav = document.querySelector('.desktop-nav');
-
-            const populateMobileMenu = () => {
-                if (!desktopNav || !mobileNavMenu) return;
-                const navContent = desktopNav.innerHTML;
-                mobileNavMenu.innerHTML = navContent;
-                const mobileUserActions = mobileNavMenu.querySelector('.user-actions');
-                const mobileNavList = mobileNavMenu.querySelector('.main-nav ul');
-                if (mobileUserActions && mobileNavList) {
-                    const actionsClone = mobileUserActions.cloneNode(true);
-                    actionsClone.classList.add('user-actions-mobile');
-                    mobileNavList.appendChild(actionsClone);
-                    mobileUserActions.remove();
-                }
-            };
-            
-            populateMobileMenu();
-
-            if (mobileNavToggle) {
-                mobileNavToggle.addEventListener('click', () => {
-                    mobileNavMenu.classList.toggle('active');
-                });
-            }
-
-            const mainNavList = document.querySelector('.main-nav > ul');
-            if (!mainNavList) return;
-
-            const allNavItems = Array.from(mainNavList.querySelectorAll("li:not(.nav-more-item)"));
-            const moreItem = document.querySelector('.nav-more-item');
-            const moreList = document.querySelector('.nav-more-list');
-
-            function updateDesktopNav() {
-                if (!moreItem || !moreList || !desktopNav) return;
-
-                if (window.innerWidth <= 1024) {
-                    moreItem.style.display = 'none';
-                    return;
-                }
-
-                moreList.innerHTML = '';
-                allNavItems.forEach(item => mainNavList.insertBefore(item, moreItem));
-                moreItem.style.display = 'none';
-
-                let isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-
-                if (isOverflowing) {
-                    moreItem.style.display = 'flex';
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                }
-
-                let i = allNavItems.length - 1;
-                while (isOverflowing && i >= 0) {
-                    const itemToMove = allNavItems[i];
-                    if (itemToMove.parentNode === mainNavList) {
-                        moreList.prepend(itemToMove);
-                    }
-                    isOverflowing = desktopNav.scrollWidth > desktopNav.clientWidth;
-                    i--;
-                }
-            }
-
-             // --- 核心修改点在这里 ---
-             function handleResize() {
-                // 1. 运行桌面菜单的折叠逻辑
-                updateDesktopNav();
-
-                // 2. 新增：检查并关闭移动菜单
-                // 如果窗口宽度大于1024px（即进入桌面视图）
-                if (window.innerWidth > 1024) {
-                    // 强制移除移动菜单的 'active' 类，使其隐藏
-                    mobileNavMenu.classList.remove('active');
-                }
-            }
-
-            // 初始加载时运行
-            handleResize();
-
-            // 监听窗口大小变化
-            window.addEventListener('resize', handleResize);
-
-            // updateDesktopNav();
-            // window.addEventListener('resize', updateDesktopNav);
-        });
-
-        // 显示客服悬浮窗
+// 显示客服悬浮窗
         function showCustomerService() {
             const modal = document.createElement('div');
             modal.className = 'customer-service-modal active';
@@ -406,7 +275,7 @@
                 }
             });
         }
-    </script>
+</script>
 
     <!-- 悬浮客服按钮 -->
     <div style="position: fixed; bottom: 24px; right: 24px; z-index: 1000;">
@@ -449,5 +318,7 @@
             box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.6) !important;
         }
     </style>
+
+    <script src="main-header.js"></script>
 </body>
 </html>
