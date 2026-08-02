@@ -806,6 +806,22 @@
             border-color: rgba(111, 66, 193, 0.2);
         }
 
+        /* Pro 卡片样式 */
+        .pro-card {
+            border-color: #8b5cf6;
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+        }
+
+        .pro-card:hover {
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.25);
+        }
+
+        .pro-tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
         /* 功能列表 */
         .pricing-features {
             list-style: none;
@@ -1525,7 +1541,7 @@
                 <div class="pricing-card plus-card">
                     <span class="pricing-badge">推荐</span>
                     <div class="pricing-header">
-                        <h2>ChatGPT Plus / Pro</h2>
+                        <h2>ChatGPT Plus</h2>
                         <span class="pricing-tag">个人 Plus</span>
                     </div>
                     <div class="pricing-price">
@@ -1608,6 +1624,172 @@
                         立即购买
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                     </a>
+                </div>
+
+                <!-- ChatGPT Pro 5x 卡片 -->
+                <div class="pricing-card pro-card">
+                    <div class="pricing-header">
+                        <h2>ChatGPT Pro 5x</h2>
+                        <span class="pricing-tag">高级版 · 5倍容量</span>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="promotion-badges">
+                            <span class="limited-time-badge">限时特惠</span>
+                            <span class="savings-badge">立减70元</span>
+                        </div>
+                        <div class="price-info-row">
+                            <div class="price-current">¥830</div>
+                            <div class="price-original">原价¥900</div>
+                            <div class="price-period">/ 月</div>
+                        </div>
+                        <div class="savings-highlight">
+                            <span class="savings-icon">💰</span>
+                            <span class="savings-text">节省70元</span>
+                            <span class="savings-percent">约7.8% OFF</span>
+                        </div>
+                    </div>
+                    <p class="pricing-desc">ChatGPT Pro专业版，5倍于Plus的使用限额，适合重度用户和团队使用</p>
+                    <div class="pricing-features-inline">
+                        <span class="feature-tag pro-tag">5倍容量</span>
+                        <span class="feature-tag pro-tag">更高限额</span>
+                        <span class="feature-tag pro-tag">优先响应</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>5倍使用限额</strong>：相比Plus获得更多消息和API调用次数
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            包含Plus全部功能：GPT‑5、o1、Codex、Image 2、Canvas等
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            优先响应速度，适合商业团队和开发者使用
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            适合需要大量API调用或高频使用的专业场景
+                        </li>
+                    </ul>
+                    <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/ljd1qf" target="_blank" class="pricing-btn btn-plus" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);">
+                        立即购买
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                </div>
+
+                <!-- ChatGPT Pro 20x 卡片 -->
+                <div class="pricing-card pro-card">
+                    <div class="pricing-header">
+                        <h2>ChatGPT Pro 20x</h2>
+                        <span class="pricing-tag">旗舰版 · 20倍容量</span>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="promotion-badges">
+                            <span class="limited-time-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">限时特惠</span>
+                            <span class="savings-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">立减100元</span>
+                        </div>
+                        <div class="price-info-row">
+                            <div class="price-current">¥1520</div>
+                            <div class="price-original">原价¥1620</div>
+                            <div class="price-period">/ 月</div>
+                        </div>
+                        <div class="savings-highlight">
+                            <span class="savings-icon">💰</span>
+                            <span class="savings-text">节省100元</span>
+                            <span class="savings-percent">约6.2% OFF</span>
+                        </div>
+                    </div>
+                    <p class="pricing-desc">ChatGPT Pro旗舰版，20倍于Plus的使用限额，为企业级用户提供极致体验</p>
+                    <div class="pricing-features-inline">
+                        <span class="feature-tag pro-tag" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border-color: #d97706;">20倍容量</span>
+                        <span class="feature-tag pro-tag">企业级</span>
+                        <span class="feature-tag pro-tag">极致性能</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>20倍使用限额</strong>：几乎无限制的使用体验
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            包含Pro 5x全部功能，享受最高级别服务
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            极速响应，最适合企业级应用和高频API调用
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            适合大规模部署、AI集成和商业开发项目
+                        </li>
+                    </ul>
+                    <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/ljd1qf" target="_blank" class="pricing-btn btn-plus" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);">
+                        立即购买
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品等级对比说明 -->
+        <section class="comparison-section" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+            <h2 style="text-align: center; font-size: 28px; color: #1f2937; margin-bottom: 20px;">📊 ChatGPT 产品等级对比</h2>
+            <div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); color: white;">
+                            <th style="padding: 15px; text-align: left; border-radius: 8px 0 0 0;">产品等级</th>
+                            <th style="padding: 15px; text-align: center;">使用限额</th>
+                            <th style="padding: 15px; text-align: center;">价格</th>
+                            <th style="padding: 15px; text-align: left; border-radius: 0 8px 0 0;">适合用户</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 15px; font-weight: 600; color: #6f42c1;">ChatGPT Plus / Pro</td>
+                            <td style="padding: 15px; text-align: center; color: #6b7280;">标准限额</td>
+                            <td style="padding: 15px; text-align: center; font-weight: 600; color: #1f2937;">¥189/月</td>
+                            <td style="padding: 15px; color: #6b7280;">个人用户，日常使用</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e7eb; background: #f9fafb;">
+                            <td style="padding: 15px; font-weight: 600; color: #8b5cf6;">ChatGPT Pro 5x</td>
+                            <td style="padding: 15px; text-align: center; color: #8b5cf6; font-weight: 600;">5倍限额</td>
+                            <td style="padding: 15px; text-align: center; font-weight: 600; color: #1f2937;">¥830/月</td>
+                            <td style="padding: 15px; color: #6b7280;">重度用户、小团队、开发者</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 15px; font-weight: 600; color: #f59e0b;">ChatGPT Pro 20x</td>
+                            <td style="padding: 15px; text-align: center; color: #f59e0b; font-weight: 600;">20倍限额</td>
+                            <td style="padding: 15px; text-align: center; font-weight: 600; color: #1f2937;">¥1520/月</td>
+                            <td style="padding: 15px; color: #6b7280;">企业级用户、大规模部署</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; border-left: 4px solid #f59e0b;">
+                    <h4 style="margin: 0 0 10px 0; color: #92400e; font-size: 16px;">💡 5x 和 20x 的含义说明</h4>
+                    <ul style="margin: 0; padding-left: 20px; color: #78350f; line-height: 1.8;">
+                        <li><strong>倍数含义</strong>：5x 和 20x 指的是相对于 ChatGPT Plus 标准版的使用限额倍数</li>
+                        <li><strong>与 Plus 的区别</strong>：Plus 是标准个人版，Pro 5x/20x 是专业版，提供更高的使用限额和优先响应</li>
+                        <li><strong>适用场景</strong>：Pro 5x 适合需要频繁使用的专业用户和团队；Pro 20x 适合企业级应用和大规模集成</li>
+                        <li><strong>功能权益</strong>：所有等级都包含 GPT‑5、o1、Codex、Image 2 等核心功能，主要区别在于使用限额</li>
+                    </ul>
                 </div>
             </div>
         </section>
