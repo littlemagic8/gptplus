@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perplexity Pro 充值 - AI模型服务</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
+    <style>
+        /* 基础重置 */
+        :root { --header-height: 85px; --notice-bar-height: 0px; }
+        body, h1, h2, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: calc(var(--header-height) + var(--notice-bar-height)); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; }
+
+        /* --- 响应式导航栏核心样式 --- */
+        .main-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+        .logo-container { display: flex; align-items: center; flex-shrink: 0; padding: 10px 12px; border-radius: 6px; transition: all 0.3s ease; }
+        .logo-container:hover { background-color: rgba(111, 66, 193, 0.1); }
+        .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
+        .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; }
+        .logo-text .subtitle { font-size: 13px; color: #6c757d; }
+
+        /* 桌面导航容器 */
+        .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; }
+        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; white-space: nowrap; transition: all 0.3s ease; border-radius: 6px; }
+        .main-nav ul li a:hover { color: #6f42c1; background-color: rgba(111, 66, 193, 0.1); }
+        .main-nav ul li a i { color: #888; font-size: 14px; }
+
+        /* 导航高亮样式 */
+        .nav-highlight {
+            color: #495057;
+            font-weight: 600;
+        }
+        .nav-highlight i {
+            color: #888;
+        }
+        .nav-highlight:hover {
+            background-color: rgba(111, 66, 193, 0.1);
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        /* "更多"下拉菜单 */
+        .nav-more-item { position: relative; }
+        .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .nav-more-item:hover .nav-more-list { display: block; }
+
+        .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
+        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
+        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
+
+        /* 更多服务下拉菜单 */
+        .more-services { position: relative; }
+        .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 1; text-align: center; }
+        .more-services:hover .dropdown-content { display: block; }
+        .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;}
+        .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
+        .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
+
+        /* 移动端菜单 */
+        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+        .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .mobile-nav-menu.active { display: flex; }
+        .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
+        .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
+        .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+
+        /* 响应式断点 */
+        @media (max-width: 1024px) {
+            .desktop-nav { display: none; }
+            .mobile-nav-toggle { display: block; }
+        }
+
+        /* --- 主要内容区域样式 --- */
+        .main-content { padding: 40px 0; }
+
+        /* 警告提示 */
+        .warning-notice {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #856404;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        /* 支付方式提示 */
+        .payment-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-notice h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .payment-notice p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .payment-notice .highlight {
+            background-color: rgba(102, 126, 234, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* 公告横幅 */
+        .announcement-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-text {
+            flex: 1;
+        }
+
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .announcement-badge {
+            background-color: #fff;
+            color: #667eea;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .announcement-date {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .announcement-title {
+            color: #fff;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .announcement-message {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .announcement-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+        }
+
+        .announcement-qr {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .announcement-qr img {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+
+        .announcement-qr-caption {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.85em;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-banner { padding: 25px 20px; }
+            .announcement-content { flex-direction: column; gap: 20px; }
+            .announcement-title { font-size: 1.4em; }
+            .announcement-qr img { width: 120px; height: 120px; }
+        }
+
+        /* 产品展示区域 */
+        .products-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #fff;
+            font-size: 32px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .product-price {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #667eea;
+            text-align: center;
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-features li {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn-purchase {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn-purchase:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* 使用指南区域 */
+        .guide-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .guide-block {
+            margin-bottom: 35px;
+        }
+
+        .guide-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-block h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guide-block p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .guide-block a {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .guide-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .guide-list li {
+            color: #555;
+            margin-bottom: 12px;
+            padding-left: 0;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .list-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .time-highlight {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: #667eea;
+            font-weight: 600;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        /* 功能说明 */
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        /* FAQ区域 */
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            background: #fafbff;
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .faq-item[open] {
+            border-color: #c7d2fe;
+            box-shadow: 0 4px 14px rgba(102, 126, 234, 0.08);
+            background: #fff;
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 16px 18px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.45;
+            user-select: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::before {
+            content: 'Q';
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(102, 126, 234, 0.12);
+            color: #667eea;
+            font-size: 0.8em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .faq-item summary .faq-q {
+            flex: 1;
+        }
+
+        .faq-item summary .faq-chevron {
+            flex-shrink: 0;
+            color: #9ca3af;
+            font-size: 0.85em;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary .faq-chevron {
+            transform: rotate(180deg);
+            color: #667eea;
+        }
+
+        .faq-item .faq-a {
+            padding: 0 18px 18px 58px;
+            color: #6c757d;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .faq-item .faq-a a {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* 底部 */
+        .main-footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .guide-section { padding: 25px 20px; }
+            .announcement-content { flex-direction: column; }
+        }
+
+        /* 客服悬浮窗样式 */
+        .customer-service-modal {
+            display: none;
+        }
+
+        .customer-service-modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header占位符 -->
+    <div id="main-header-placeholder"></div>
+
+    <!-- 主要内容 -->
+    <main class="main-content container">
+
+        <!-- 警告提示 -->
+        <div class="warning-notice">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> 如遇购买充值码或者充值系统网址打不开，请关闭梯子</p>
+        </div>
+
+        <!-- 支付方式提示 -->
+        <div class="payment-notice">
+            <h4><i class="fa-solid fa-credit-card"></i> 支付方式说明</h4>
+            <p>本站支持<span class="highlight">支付宝</span>、<span class="highlight">微信支付</span>等多种支付方式。如遇支付问题，请联系客服微信：<span class="highlight">aicygg888</span> / <span class="highlight">aicygg789</span></p>
+        </div>
+
+        <!-- 公告横幅 -->
+        <div class="announcement-banner">
+            <div class="announcement-content">
+                <div class="announcement-text">
+                    <div class="announcement-header">
+                        <span class="announcement-badge">服务公告</span>
+                        <span class="announcement-date">2026年8月</span>
+                    </div>
+                    <h2 class="announcement-title">Perplexity Pro AI搜索引擎服务</h2>
+                    <p class="announcement-message">Perplexity Pro是革命性的AI搜索引擎，支持GPT、Claude、Gemini等多种模型，提供深度研究与智能问答功能。我们提供专业快速的代充值服务，让您畅享完整功能。</p>
+                    <div class="announcement-contact" onclick="showCustomerService()">
+                        <i class="fa-brands fa-weixin"></i>
+                        充值过程有疑问请联系客服微信
+                    </div>
+                </div>
+                <div class="announcement-qr">
+                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
+                    <p class="announcement-qr-caption">扫码添加客服</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 产品套餐展示 -->
+        <div class="products-section">
+            <h2 class="section-title">Perplexity Pro 充值套餐</h2>
+            <p class="section-subtitle">选择适合您的套餐，享受AI搜索引擎的强大功能</p>
+
+            <div class="products-grid">
+                <!-- Perplexity Pro 月付套餐 -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>Perplexity Pro 月付</h3>
+                    <p>全能AI助手，支持多种最新AI模型，提供深度研究与智能问答功能</p>
+                    <div class="product-price">142<span style="font-size: 0.4em; color: #7f8c8d; font-weight: 400;">/月</span></div>
+                    <ul class="product-features">
+                        <li>支持GPT、Claude、Gemini Pro等最新AI模型</li>
+                        <li>深度研究功能，复杂问题专业分析</li>
+                        <li>文件上传处理，智能文档分析</li>
+                        <li>API访问权限，开发者友好</li>
+                        <li>无广告体验，纯净搜索环境</li>
+                        <li>优先客户支持，快速响应</li>
+                    </ul>
+                    <a href="https://fe.dtyuedan.cn/item/at9yfc" target="_blank" class="btn-purchase">
+                        <i class="fa-solid fa-cart-shopping"></i> 立即购买
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用指南 -->
+        <div class="guide-section">
+            <div class="guide-block">
+                <h3><i class="fa-solid fa-lightbulb" style="color: #667eea;"></i> Perplexity Pro 是什么？</h3>
+                <p>Perplexity Pro是革命性的AI搜索引擎，不同于传统搜索引擎，它使用最新的AI模型来理解您的查询并提供准确的答案。它能够联网搜索获取最新信息，支持复杂的深度研究，并提供专业的分析报告。</p>
+            </div>
+
+            <div class="guide-block">
+                <h3><i class="fa-solid fa-sign-in-alt" style="color: #667eea;"></i> 如何登录和使用？</h3>
+                <p>点击“立即购买”按钮，弹出的商品介绍页面有详细的自助充值步骤</p>
+            </div>
+
+            <div class="guide-block">
+                <h3><i class="fa-solid fa-clock" style="color: #667eea;"></i> 充值需要多久？</h3>
+                <p>购买并提交订单后，系统会自动处理您的充值请求。</p>
+                <div class="time-highlight">
+                    <i class="fa-solid fa-clock"></i>
+                    通常 2–5 分钟即可完成，最长不超过 10 分钟
+                </div>
+            </div>
+        </div>
+
+        <!-- 核心功能 -->
+        <div class="products-section">
+            <h2 class="section-title">Perplexity Pro 核心功能</h2>
+            <p class="section-subtitle">了解Perplexity Pro的强大功能，提升您的搜索和研究效率</p>
+
+            <div class="products-grid">
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-brain" style="color: #667eea;"></i> 多模型AI引擎</h3>
+                    <p>支持GPT、Claude、Gemini Pro等最新AI模型，可选择最适合的模型处理不同类型的查询</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-microscope" style="color: #667eea;"></i> 深度研究</h3>
+                    <p>针对复杂问题进行深度分析，自动搜索多源信息，生成专业级的研究报告</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-file-alt" style="color: #667eea;"></i> 文件处理</h3>
+                    <p>支持上传PDF、文档等文件，AI将智能分析内容并提供见解和总结</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-globe" style="color: #667eea;"></i> 实时联网搜索</h3>
+                    <p>实时搜索互联网最新信息，确保获得准确、及时的答案</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-code" style="color: #667eea;"></i> API访问</h3>
+                    <p>开发者可通过API集成Perplexity Pro功能到自己的应用中</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><i class="fa-solid fa-ban" style="color: #667eea;"></i> 无广告体验</h3>
+                    <p>享受纯净的搜索环境，无广告干扰，专注于获取信息</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="faq-section">
+            <h2 class="section-title">常见问题</h2>
+            <p class="section-subtitle">关于Perplexity Pro使用和充值的常见问题解答</p>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-q">Perplexity Pro和免费版有什么区别？</span>
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </summary>
+                    <div class="faq-a">
+                        <p>Pro版本提供更多高级功能： unlimited搜索次数、深度研究功能、更高级的AI模型、文件处理能力、API访问权限、无广告体验等。免费版每天有搜索次数限制，功能相对基础。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-q">支持哪些AI模型？</span>
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </summary>
+                    <div class="faq-a">
+                        <p>Perplexity Pro支持多种最新AI模型，包括GPT、Claude Opus/Sonnet、Gemini Pro等。您可以根据查询类型选择最适合的模型获得最佳结果。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-q">什么是深度研究功能？</span>
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </summary>
+                    <div class="faq-a">
+                        <p>深度研究是Perplexity Pro的高级功能，针对复杂问题自动进行多轮搜索和分析，综合多个信息源，生成包含引用来源的专业级研究报告。特别适合学术研究、商业分析等场景。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-q">可以在手机上使用吗？</span>
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </summary>
+                    <div class="faq-a">
+                        <p>可以！Perplexity提供移动端应用（iOS和Android），也可以直接在手机浏览器中访问网站使用。Pro账号在所有平台都能正常使用，功能完全同步。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 底部 -->
+    <footer class="main-footer">
+        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 客服悬浮窗脚本 -->
+    <script>
+        function showCustomerService() {
+            const modal = document.createElement('div');
+            modal.className = 'customer-service-modal active';
+            modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center; padding: 16px;';
+            modal.innerHTML = `
+                <div style="max-width: 320px; width: 100%;">
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); width: 100%; padding: 24px; position: relative;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                            <h3 style="font-size: 18px; font-weight: 600; color: #1f2937;">联系客服</h3>
+                            <button onclick="this.closest('.customer-service-modal').remove(); document.body.style.overflow = '';" style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码" style="width: 200px; height: 200px; border-radius: 12px; border: 1px solid #e5e7eb; margin: 0 auto 12px; display: block;">
+                            <div style="background: #f3f4f6; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                <p style="color: #374151; font-size: 14px; font-weight: 600; margin: 0;">微信号：<span style="color: #4f46e5;">aicygg888</span> / <span style="color: #4f46e5;">aicygg789</span></p>
+                            </div>
+                            <p style="color: #6b7280; font-size: 12px; margin: 0;">工作时间：9:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    </script>
+
+    <script src="main-header.js"></script>
+</body>
+</html>
