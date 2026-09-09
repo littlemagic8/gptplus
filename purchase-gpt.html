@@ -1369,16 +1369,16 @@
 <body>
 
     <!-- 标准化 Header -->
-    <div id="gpt56NoticeBar" class="top-notice-bar">
+    <div id="gpt6NoticeBar" class="top-notice-bar">
             <div class="container top-notice-inner">
                 <span class="top-notice-badge">OpenAI 官方</span>
                 <p class="top-notice-text">
-                    <strong>GPT-5.6 Sol</strong> 将于 <strong>7月9日（周四）</strong> 正式发布，Terra / Luna 同步上线；全球预览访问正在扩大。
-                    <span class="top-notice-models">Sol 为下一代前沿模型 · Terra 日常均衡 · Luna 高速实惠</span>
-                    <span class="notice-cta">建议提前充好 GPT Plus，Sol 发车后第一时间体验！</span>
+                    <strong>GPT-6 Astra</strong> 已正式发布，正在向所有 ChatGPT Plus / Pro / Business 用户逐步开放。
+                    <span class="top-notice-models">Astra 为新一代前沿模型 · 计算机使用 / 软件工程 / 科学能力全面领先 · Pro 用户可享 Astra Pro</span>
+                    <span class="notice-cta">建议提前充好 GPT Plus，第一时间体验 GPT-6 Astra！</span>
                 </p>
-                <a href="https://x.com/OpenAI/status/2074704958419792299" target="_blank" rel="noopener noreferrer" class="top-notice-link">查看 @OpenAI 原文 →</a>
-                <button type="button" class="top-notice-close" onclick="closeGpt56Notice()" aria-label="关闭公告">×</button>
+                <a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener noreferrer" class="top-notice-link">查看 OpenAI 官方公告 →</a>
+                <button type="button" class="top-notice-close" onclick="closeGpt6Notice()" aria-label="关闭公告">×</button>
             </div>
         </div>
     <div id="main-header-placeholder"></div>
@@ -1809,8 +1809,8 @@
     
 <script>
 // 关闭顶部公告（尽早定义，避免其它脚本错误影响关闭按钮）
-function closeGpt56Notice() {
-    var noticeBar = document.getElementById('gpt56NoticeBar');
+function closeGpt6Notice() {
+    var noticeBar = document.getElementById('gpt6NoticeBar');
     if (!noticeBar) return;
     noticeBar.classList.add('hidden');
     document.documentElement.style.setProperty('--notice-bar-height', '0px');
@@ -1989,7 +1989,7 @@ function copyWechatId(element) {
             };
 
             function updateNoticeBarHeight() {
-                const noticeBar = document.getElementById('gpt56NoticeBar');
+                const noticeBar = document.getElementById('gpt6NoticeBar');
                 const height = noticeBar && !noticeBar.classList.contains('hidden')
                     ? (noticeBar.offsetHeight || 44)
                     : 0;
@@ -1999,7 +1999,7 @@ function copyWechatId(element) {
             updateNoticeBarHeight();
             window.addEventListener('resize', updateNoticeBarHeight);
 
-            window.closeGpt56Notice = closeGpt56Notice;
+            window.closeGpt6Notice = closeGpt6Notice;
 </script>
 
     <script src="main-header.js"></script>
