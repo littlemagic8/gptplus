@@ -486,6 +486,346 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
+        /* --- Grok Heavy 高性能订阅卡片 --- */
+        .heavy-section {
+            margin: 0 auto 50px;
+            max-width: 1000px;
+        }
+
+        .heavy-card {
+            position: relative;
+            overflow: hidden;
+            padding: 42px;
+            border: 1px solid #fbbf24;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #171717 0%, #2a1a05 52%, #4a2c07 100%);
+            box-shadow: 0 20px 40px rgba(120, 70, 10, 0.22);
+            color: #fff;
+        }
+
+        .heavy-card::before {
+            content: '';
+            position: absolute;
+            top: -90px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, transparent 68%);
+            pointer-events: none;
+        }
+
+        .heavy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid rgba(253, 230, 138, 0.55);
+            border-radius: 999px;
+            background: rgba(251, 191, 36, 0.13);
+            color: #fde68a;
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .heavy-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+            margin: 18px 0 28px;
+        }
+
+        .heavy-header h3 {
+            margin: 0 0 8px;
+            font-size: 2em;
+        }
+
+        .heavy-header p {
+            margin: 0;
+            color: #fde68a;
+            font-size: 1.05em;
+        }
+
+        .heavy-price {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .heavy-price strong {
+            display: block;
+            color: #fef3c7;
+            font-size: 2.35em;
+            line-height: 1;
+        }
+
+        .heavy-price span {
+            color: #d6d3d1;
+            font-size: 0.92em;
+        }
+
+        .heavy-difference {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 24px;
+            padding: 14px 16px;
+            border-left: 3px solid #fbbf24;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5f5f4;
+            line-height: 1.65;
+        }
+
+        .heavy-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .heavy-panel {
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .heavy-panel h4 {
+            margin: 0 0 12px;
+            color: #fde68a;
+            font-size: 1.02em;
+        }
+
+        .heavy-panel ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .heavy-panel li {
+            margin: 0 0 10px;
+            color: #f5f5f4;
+            font-size: 0.93em;
+            line-height: 1.55;
+        }
+
+        .heavy-panel li:last-child {
+            margin-bottom: 0;
+        }
+
+        .heavy-panel li::before {
+            content: '✓';
+            margin-right: 8px;
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .heavy-note {
+            position: relative;
+            z-index: 1;
+            margin-top: 16px;
+            padding: 14px 16px;
+            border: 1px solid rgba(253, 230, 138, 0.34);
+            border-radius: 12px;
+            background: rgba(120, 70, 10, 0.22);
+            color: #fef3c7;
+            font-size: 0.9em;
+            line-height: 1.65;
+        }
+
+        .heavy-note strong {
+            color: #fbbf24;
+        }
+
+        .heavy-cta {
+            margin-top: 28px;
+            border: none;
+            color: #1c1917;
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+        }
+
+        .heavy-cta-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .heavy-cta small {
+            font-size: 0.72em;
+            font-weight: 500;
+            opacity: 0.72;
+        }
+
+        /* --- 页面信息架构：套餐优先、流程其次 --- */
+        .page-header {
+            display: none;
+        }
+
+        .catalog-hero {
+            margin-bottom: 28px;
+            padding: 18px 0 10px;
+        }
+
+        .catalog-eyebrow {
+            margin: 0 0 10px;
+            color: #6f42c1;
+            font-size: 0.82em;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .catalog-hero h1 {
+            margin: 0;
+            color: #1f2937;
+            font-size: clamp(2em, 5vw, 3em);
+            letter-spacing: -0.04em;
+        }
+
+        .catalog-hero p:last-child {
+            max-width: 640px;
+            margin: 12px 0 0;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+            gap: 24px;
+            align-items: stretch;
+            margin-bottom: 42px;
+        }
+
+        .plan-grid .subscription-section,
+        .plan-grid .heavy-section {
+            max-width: none;
+            margin: 0;
+        }
+
+        .plan-grid .subscription-card,
+        .plan-grid .heavy-card {
+            box-sizing: border-box;
+            min-height: 100%;
+        }
+
+        .plan-grid .subscription-card {
+            padding: 40px 34px;
+        }
+
+        .plan-grid .sub-icon {
+            margin-bottom: 12px;
+            font-size: 3em;
+        }
+
+        .plan-grid .sub-tagline {
+            margin-bottom: 22px;
+        }
+
+        .plan-grid .sub-features {
+            margin-bottom: 24px;
+        }
+
+        .plan-grid .sub-features li {
+            padding: 8px 0;
+            font-size: 0.96em;
+        }
+
+        .recharge-guide {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 28px;
+            align-items: center;
+            margin: 0 auto 42px;
+            padding: 28px 32px;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .recharge-guide h2 {
+            margin: 0 0 8px;
+            color: #1f2937;
+            font-size: 1.35em;
+        }
+
+        .recharge-guide p {
+            margin: 0;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .guide-steps {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .guide-steps li {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #475569;
+            font-size: 0.9em;
+        }
+
+        .guide-steps li:not(:last-child)::after {
+            content: '→';
+            margin-left: 4px;
+            color: #94a3b8;
+        }
+
+        .guide-step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #ede9fe;
+            color: #6f42c1;
+            font-size: 0.8em;
+            font-weight: 800;
+        }
+
+        .guide-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .guide-actions .btn {
+            white-space: nowrap;
+        }
+
+        .channels-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 0 auto 16px;
+        }
+
+        .channels-heading h2 {
+            margin: 0;
+            color: #1f2937;
+            font-size: 1.45em;
+        }
+
+        .channels-heading p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.92em;
+        }
+
         /* --- 左右分栏布局 --- */
         .channels-layout {
             display: grid;
@@ -865,6 +1205,72 @@
 
             .subscription-card {
                 padding: 40px 30px;
+            }
+
+            .heavy-card {
+                padding: 30px 22px;
+            }
+
+            .heavy-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .heavy-header h3 {
+                font-size: 1.7em;
+            }
+
+            .heavy-price {
+                text-align: left;
+            }
+
+            .heavy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .catalog-hero {
+                padding-top: 8px;
+            }
+
+            .plan-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                margin-bottom: 28px;
+            }
+
+            .plan-grid .subscription-card {
+                padding: 34px 26px;
+            }
+
+            .recharge-guide {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 24px 20px;
+                margin-bottom: 30px;
+            }
+
+            .guide-steps {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .guide-steps li:not(:last-child)::after {
+                display: none;
+            }
+
+            .guide-actions {
+                justify-content: stretch;
+            }
+
+            .guide-actions .btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .channels-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 4px;
             }
 
             .sub-price {
@@ -1356,8 +1762,16 @@
             </div>
         </div>
 
+        <!-- 套餐总览 -->
+        <section class="catalog-hero" aria-labelledby="catalog-title">
+            <p class="catalog-eyebrow">Grok subscriptions</p>
+            <h1 id="catalog-title">选择适合你的 Grok 套餐</h1>
+            <p>日常创作与实时问答可选择 SuperGrok；需要处理高难度推理、深度研究或复杂代码任务时，可选择 Grok Heavy。</p>
+        </section>
+
+        <section class="plan-grid" aria-label="Grok 套餐选择">
         <!-- SuperGrok 订阅方案 -->
-        <section class="subscription-section">
+        <article class="subscription-section">
             <div class="subscription-card">
                 <div class="sub-icon">🚀</div>
                 <h3>SuperGrok</h3>
@@ -1378,7 +1792,89 @@
                     <i class="fa-solid fa-arrow-down"></i>
                 </div>
             </div>
+        </article>
+
+        <!-- Grok Heavy 独立订阅方案 -->
+        <article class="heavy-section" aria-labelledby="grok-heavy-title">
+            <div class="heavy-card">
+                <div class="heavy-badge"><i class="fa-solid fa-bolt"></i> 高算力独立套餐</div>
+                <div class="heavy-header">
+                    <div>
+                        <h3 id="grok-heavy-title">Grok Heavy</h3>
+                        <p>Grok 4 Heavy · 面向高难度推理与深度工作的旗舰版本</p>
+                    </div>
+                    <div class="heavy-price">
+                        <strong>¥1620</strong>
+                        <span>$300 / 1 个月</span>
+                    </div>
+                </div>
+
+                <div class="heavy-difference">
+                    <strong>与 SuperGrok 的区别：</strong>SuperGrok 适合日常问答、创作和常规高频使用；Grok Heavy 面向需要更高推理算力、更高使用额度与多路径分析的复杂任务，不是普通 SuperGrok 的替代套餐。
+                </div>
+
+                <div class="heavy-grid">
+                    <div class="heavy-panel">
+                        <h4>适用场景</h4>
+                        <ul>
+                            <li>复杂研究、尽调与跨来源信息梳理</li>
+                            <li>高难度数学、科学与逻辑推理</li>
+                            <li>通过 Cursor / Grok Bot 委派代码、排错和多步骤任务</li>
+                            <li>长文档、表格与多文件的深度分析</li>
+                        </ul>
+                    </div>
+                    <div class="heavy-panel">
+                        <h4>具体权益与能力</h4>
+                        <ul>
+                            <li>Grok 4 Heavy 多假设并行推理</li>
+                            <li>Heavy 档位的更高使用额度</li>
+                            <li>关联 Cursor 账号后，可获得最高档 Grok Bot 使用额度</li>
+                            <li>Grok Bot 可在云端电脑中使用浏览器、文件系统与终端执行任务</li>
+                        </ul>
+                    </div>
+                    <div class="heavy-panel">
+                        <h4>与其他高阶套餐的差异</h4>
+                        <ul>
+                            <li>相较 ChatGPT Pro 20x：原生结合实时 Web 与 X 平台信号，适合热点和舆情研究</li>
+                            <li>相较 Claude Max 20x：更适合需要边检索边推理、并比较多个方案的开放式问题</li>
+                            <li>相较普通 SuperGrok：Heavy 提供更高额度与更强的复杂任务推理能力</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="heavy-note">
+                    <strong>Cursor 权益说明：</strong>使用同一账号关联 Cursor 后，可获得 Grok Bot 使用额度；Heavy 为最高档。该权益是 Grok Bot 使用额度，不等同于赠送或叠加 Cursor Pro / Ultra 订阅，现有 Cursor 套餐独立计费。
+                </div>
+
+                <a href="https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta heavy-cta">
+                    <span class="heavy-cta-text">立即购买 Grok Heavy<small>进入 Grok 商品专区</small></span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article>
         </section>
+
+        <!-- SuperGrok 充值引导 -->
+        <section class="recharge-guide" aria-labelledby="recharge-guide-title">
+            <div>
+                <h2 id="recharge-guide-title">SuperGrok 充值流程</h2>
+                <p>购买充值码后，前往充值系统绑定 Grok 用户 ID，即可完成激活。</p>
+                <ol class="guide-steps">
+                    <li><span class="guide-step-number">1</span>购买充值码</li>
+                    <li><span class="guide-step-number">2</span>验证充值码</li>
+                    <li><span class="guide-step-number">3</span>绑定账号并激活</li>
+                </ol>
+            </div>
+            <div class="guide-actions">
+                <a href="javascript:void(0)" onclick="openPurchaseModal()" class="btn btn-secondary">购买充值码</a>
+                <a href="javascript:void(0)" onclick="openRechargeModal()" class="btn btn-primary">前往系统充值</a>
+            </div>
+        </section>
+
+        <div class="channels-heading">
+            <h2>SuperGrok 充值渠道</h2>
+            <p>选择渠道后可查看充值说明与常见问题</p>
+        </div>
 
         <!-- 左右分栏布局 -->
         <div class="channels-layout">
@@ -1565,6 +2061,11 @@
                 <div class="selection-option-price">$90（￥569）</div>
                 <div class="selection-option-period">购买三个月充值码</div>
             </div>
+            <div class="selection-option" onclick="goToPurchase('heavy1month')">
+                <div class="selection-option-title">Grok Heavy 一个月</div>
+                <div class="selection-option-price">$300（￥1620）</div>
+                <div class="selection-option-period">进入 Grok Heavy 商品专区</div>
+            </div>
         </div>
     </div>
 
@@ -1585,6 +2086,10 @@
             <div class="selection-option" onclick="goToRecharge('3months')">
                 <div class="selection-option-title">三个月</div>
                 <div class="selection-option-price">$90（￥569）</div>
+            </div>
+            <div class="selection-option" onclick="goToRecharge('heavy1month')">
+                <div class="selection-option-title">Grok Heavy 一个月</div>
+                <div class="selection-option-price">$300（￥1620）</div>
             </div>
         </div>
     </div>
@@ -1691,6 +2196,8 @@
                     purchaseUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
                 } else if (duration === '3months') {
                     purchaseUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
+                } else if (duration === 'heavy1month') {
+                    purchaseUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
                 }
 
                 if (purchaseUrl) {
@@ -1735,6 +2242,8 @@
                 } else if (duration === '2months') {
                     rechargeUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
                 } else if (duration === '3months') {
+                    rechargeUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
+                } else if (duration === 'heavy1month') {
                     rechargeUrl = 'https://fe.dtyuedan.cn/shop/W3JEJKNX/we0qay';
                 }
 
