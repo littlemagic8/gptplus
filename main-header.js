@@ -39,7 +39,7 @@
     '        </ul>',
     '      </nav>',
     '      <div class="user-actions">',
-    '        <a href="https://fe.dtyuedan.cn/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>',
+    '        <a href="https://qfcc99.com/order" target="_blank" class="query-btn"><i class="fa-solid fa-list-check"></i> 查询订单</a>',
     '        <div class="more-services">',
     '          <div class="more-services-btn">',
     '            <span>更多服务</span> <i class="fa-solid fa-chevron-down"></i>',
