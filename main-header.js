@@ -25,7 +25,7 @@
     '      <nav class="main-nav">',
     '        <ul>',
     '          <li><a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i> 首页</a></li>',
-    '          <li><a href="https://littlemagic8.github.io/buychat/" class="nav-highlight" data-nav="share"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>',
+    '          <li><a href="https://aigpt8.xyz/shop/W3JEJKNX/vbnetb" class="nav-highlight" data-nav="share"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>',
     '          <li><a href="purchase-gpt.html" class="nav-highlight" data-nav="gpt"><i class="fa-solid fa-book-open"></i> ChatGPT</a></li>',
     '          <li><a href="purchase-claude.html" class="nav-highlight" data-nav="claude"><i class="fa-solid fa-right-to-bracket"></i> Claude Pro</a></li>',
     '          <li><a href="purchase-gemini.html" class="nav-highlight" data-nav="gemini"><i class="fa-solid fa-star"></i> Gemini</a></li>',
