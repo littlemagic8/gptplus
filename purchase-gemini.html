@@ -3,118 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini 充值 - AI模型服务</title>
+    <meta name="description" content="Gemini Pro 会员充值与 Gemini 账号服务，支持支付宝、微信支付。">
+    <title>Gemini 充值与账号服务 | AI Pro Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="main-header.css">
     <style>
-        /* 1. 完整的、最新的 CSS 样式 */
-        :root { --header-height: 85px; }
-        body, h1, h2, h3, h4, ul, li, p, button { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; background-color: #f8f9fa; color: #333; padding-top: var(--header-height); line-height: 1.7; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; }
-
-        /* --- 导航栏通用样式 --- */
-        .main-header { background-color: #ffffff; border-bottom: 1px solid #e9ecef; position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; transition: box-shadow 0.3s ease; }
-        .header-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-        .logo-container { display: flex; align-items: center; flex-shrink: 0; padding: 10px 12px; border-radius: 6px; transition: all 0.3s ease; }
-        .logo-container:hover { background-color: rgba(111, 66, 193, 0.1); }
-        .logo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background-color: #6f42c1; color: #fff; font-size: 26px; font-weight: bold; border-radius: 8px; margin-right: 15px; }
-        .logo-text h1 { font-size: 24px; color: #495057; font-weight: 600; }
-        .logo-text .subtitle { font-size: 12px; color: #6c757d; }
-        .desktop-nav { display: flex; align-items: center; justify-content: center; flex-grow: 1; }
-        .main-nav ul { list-style: none; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; }
-        .main-nav ul li a { color: #495057; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; transition: all 0.3s ease; white-space: nowrap; transition: color 0.3s ease; border-radius: 6px; }
-        .main-nav ul li a:hover { color: #6f42c1; background-color: rgba(111, 66, 193, 0.1); }
-        .main-nav ul li a i { color: #888; font-size: 14px; }
-        .nav-more-item { position: relative; }
-        .nav-more-list { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; list-style: none; padding: 8px; min-width: 150px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-        .nav-more-item:hover .nav-more-list { display: block; }
-        .nav-highlight { color: #495057; font-weight: 600; }
-        .nav-highlight i { color: #888; }
-        .nav-highlight:hover { background-color: rgba(111, 66, 193, 0.1); }
-        @keyframes glow { 0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); } 50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); } }
-        .user-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; margin-left: 20px; }
-        .query-btn { background-color: #fff; color: #495057; border: 1px solid #ced4da; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; }
-        .query-btn:hover { background-color: #f8f9fa; border-color: #adb5bd; }
-        .more-services { position: relative; }
-        .more-services-btn { font-size: 16px; color: #495057; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-        .dropdown-content { display: none; position: absolute; right: 0; top: 150%; background-color: #fff; min-width: 260px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; z-index: 10; text-align: center; }
-        .more-services:hover .dropdown-content { display: block; }
-        .dropdown-content p { color: #333; font-size: 15px; margin-bottom: 10px;}
-        .dropdown-content .wechat-id { font-weight: bold; color: #6f42c1; }
-        .dropdown-content img { width: 150px; height: 150px; margin-top: 10px; }
-        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 26px; color: #333; cursor: pointer; }
-        .mobile-nav-menu { display: none; position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: #fff; flex-direction: column; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .mobile-nav-menu.active { display: flex; }
-        .mobile-nav-menu ul { list-style: none; display: flex; flex-direction: column; width: 100%; text-align: center; }
-        .mobile-nav-menu a { color: #495057; display: block; padding: 15px 0; font-size: 18px; }
-        .mobile-nav-menu .user-actions-mobile { border-top: 1px solid #f1f3f5; margin-top: 15px; padding-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        @media (max-width: 1024px) { .desktop-nav { display: none; } .mobile-nav-toggle { display: block; } }
-
-        /* --- purchase-gemini.html 专属样式 --- */
-        .main-content { padding: 40px 20px; } 
-        .purchase-layout { display: flex; gap: 30px; align-items: flex-start; } 
-        .iframe-container { flex-grow: 1; height: 85vh; } 
-        .iframe-container iframe { width: 100%; height: 100%; border: 1px solid #e9ecef; border-radius: 12px; } 
-        .sidebar-instructions { width: 340px; flex-shrink: 0; background-color: #fff; border-radius: 12px; padding: 25px 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); } 
-        .sidebar-instructions h3 { font-size: 24px; color: #343a40; margin-bottom: 20px; text-align: center; } 
-        .sidebar-instructions h4 { font-size: 16px; color: #495057; margin-top: 25px; margin-bottom: 10px; border-left: 3px solid #6f42c1; padding-left: 10px; } 
-        .sidebar-instructions p { font-size: 14px; color: #6c757d; margin-bottom: 10px; } 
-        .sidebar-instructions a { color: #6f42c1; text-decoration: none; word-break: break-all; } 
-        .sidebar-instructions a:hover { text-decoration: underline; } 
-        .sidebar-instructions strong { color: #d9534f; }
-        .main-footer { text-align: center; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px; }
-        
-        /* 移动端响应式布局 */
-        @media (max-width: 768px) {
-            .purchase-layout { flex-direction: column; }
-            .sidebar-instructions { width: 100%; margin-top: 30px; }
-            .iframe-container { height: 70vh; }
-        }
+        :root { --gemini-blue:#2563eb; --gemini-indigo:#4f46e5; --ink:#172033; --muted:#62708a; --line:#e5eaf3; --paper:#fff; --wash:#f6f8fc; }
+        * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+        body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.6; }
+        a { color:inherit; text-decoration:none; } .gemini-page { overflow:hidden; } .page-shell { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+        .gemini-hero { position:relative; isolation:isolate; overflow:hidden; padding:92px 0 80px; background:linear-gradient(135deg,#eef5ff 0%,#f7f6ff 48%,#fff 100%); }
+        .gemini-hero::before,.gemini-hero::after { position:absolute; z-index:-1; width:440px; height:440px; border-radius:50%; content:""; filter:blur(4px); opacity:.62; }
+        .gemini-hero::before { top:-265px; right:-100px; background:#b9dcff; } .gemini-hero::after { bottom:-300px; left:-160px; background:#ddd1ff; }
+        .hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(320px,.8fr); gap:72px; align-items:center; }
+        .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--gemini-blue); font-size:13px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+        .eyebrow i { font-size:16px; } .hero-copy h1 { max-width:650px; margin:14px 0 0; font-size:clamp(38px,5vw,62px); line-height:1.12; letter-spacing:-.045em; }
+        .hero-copy h1 span { color:var(--gemini-indigo); } .hero-copy > p { max-width:590px; margin:24px 0 0; color:var(--muted); font-size:17px; line-height:1.8; }
+        .hero-points { display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:29px; color:#3e4a61; font-size:14px; }.hero-points span { display:inline-flex; align-items:center; gap:7px; }.hero-points i { color:var(--gemini-blue); font-size:12px; }
+        .purchase-card { padding:30px; border:1px solid rgba(194,208,231,.85); border-radius:23px; background:rgba(255,255,255,.93); box-shadow:0 24px 60px rgba(39,79,147,.13); backdrop-filter:blur(12px); }
+        .purchase-card .card-kicker { color:var(--gemini-blue); font-size:12px; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }.purchase-card h2 { margin:8px 0 0; font-size:25px; letter-spacing:-.025em; }.purchase-card > p { margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.7; }
+        .purchase-options { display:grid; gap:11px; margin:25px 0; }.purchase-option { display:flex; align-items:flex-start; gap:12px; padding:14px 13px; border:1px solid var(--line); border-radius:13px; background:#fff; }.purchase-option i { display:grid; width:28px; height:28px; flex:0 0 auto; place-items:center; border-radius:9px; background:#eaf2ff; color:var(--gemini-blue); font-size:13px; }.purchase-option strong { display:block; font-size:14px; }.purchase-option span { display:block; margin-top:2px; color:var(--muted); font-size:12px; line-height:1.5; }
+        .primary-button { display:flex; min-height:52px; align-items:center; justify-content:center; gap:10px; border-radius:13px; background:var(--gemini-blue); color:#fff; font-size:15px; font-weight:700; box-shadow:0 10px 20px rgba(37,99,235,.2); transition:transform .2s ease,background .2s ease,box-shadow .2s ease; }.primary-button:hover { background:#1d4ed8; transform:translateY(-1px); box-shadow:0 14px 26px rgba(37,99,235,.28); }.payment-note { margin:12px 0 0; color:#78849a; font-size:12px; text-align:center; }
+        .section { padding:82px 0; }.section-soft { background:var(--wash); }.section-heading { display:flex; align-items:end; justify-content:space-between; gap:28px; margin-bottom:36px; }.section-heading h2 { margin:0; font-size:clamp(27px,3.5vw,38px); line-height:1.22; letter-spacing:-.035em; }.section-heading p { max-width:430px; margin:0; color:var(--muted); font-size:15px; line-height:1.75; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }.feature { min-height:190px; padding:28px 30px 24px 0; border-bottom:1px solid var(--line); }.feature:not(:nth-child(3n + 1)) { padding-left:30px; border-left:1px solid var(--line); }.feature-icon { display:grid; width:38px; height:38px; place-items:center; border-radius:11px; background:#eaf2ff; color:var(--gemini-blue); }.feature h3 { margin:18px 0 0; font-size:17px; letter-spacing:-.01em; }.feature p { margin:9px 0 0; color:var(--muted); font-size:14px; line-height:1.75; }
+        .steps { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }.steps-list { display:grid; grid-template-columns:repeat(3,1fr); gap:44px; list-style:none; padding:0; }.step-no { color:#96a1b4; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; font-weight:700; }.step h3 { margin:13px 0 0; font-size:17px; }.step p { margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.75; }
+        .guide-layout { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr); gap:62px; align-items:start; }.faq-list { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }.faq-list details { border-bottom:1px solid var(--line); }.faq-list details:last-child { border-bottom:0; }.faq-list summary { display:flex; cursor:pointer; align-items:center; justify-content:space-between; gap:18px; padding:20px 2px; list-style:none; font-size:15px; font-weight:650; }.faq-list summary::-webkit-details-marker { display:none; }.faq-list summary::after { content:"+"; color:#8090a8; font-size:21px; font-weight:400; transition:transform .2s ease; }.faq-list details[open] summary::after { transform:rotate(45deg); }.faq-list p { margin:-2px 34px 20px 2px; color:var(--muted); font-size:14px; line-height:1.8; }
+        .guide-panel { padding:27px; border-radius:20px; background:#edf4ff; }.guide-panel h3 { margin:0; font-size:19px; }.guide-panel > p { margin:9px 0 0; color:#526075; font-size:14px; line-height:1.75; }.guide-links { display:grid; gap:10px; margin-top:20px; }.guide-links a { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 13px; border:1px solid #d8e5f9; border-radius:11px; background:rgba(255,255,255,.75); color:#304461; font-size:13px; font-weight:650; transition:background .2s ease; }.guide-links a:hover { background:#fff; }.guide-links i { color:var(--gemini-blue); }.guide-panel .small-note { margin-top:20px; color:#66748a; font-size:12px; line-height:1.7; }
+        .final-cta { padding:67px 0; background:#17213b; color:#fff; text-align:center; }.final-cta h2 { margin:0; font-size:clamp(27px,4vw,40px); letter-spacing:-.035em; }.final-cta p { max-width:540px; margin:13px auto 25px; color:#b7c2d5; font-size:15px; }.final-cta .primary-button { width:fit-content; min-width:190px; margin:0 auto; background:#fff; color:#1d4ed8; box-shadow:none; }.final-cta .primary-button:hover { background:#eaf2ff; }.site-footer { padding:27px 20px; color:#7b8799; background:#101827; font-size:13px; text-align:center; }
+        @media (max-width:800px) { .page-shell { width:min(100% - 32px,620px); }.gemini-hero { padding:65px 0 58px; }.hero-grid,.guide-layout { grid-template-columns:1fr; gap:38px; }.section { padding:59px 0; }.section-heading { display:block; margin-bottom:25px; }.section-heading p { margin-top:10px; }.feature-grid,.steps-list { grid-template-columns:1fr; gap:0; }.feature { min-height:0; padding:23px 0; }.feature:not(:nth-child(3n + 1)) { padding-left:0; border-left:0; }.steps-list { gap:25px; } }
+        @media (max-width:480px) { .gemini-hero { padding-top:51px; }.hero-copy h1 { font-size:37px; }.hero-copy > p { font-size:15px; }.purchase-card { padding:23px 19px; }.section-heading h2 { font-size:28px; } }
     </style>
 </head>
 <body>
-
-    <!-- 2. 最新的 Header HTML 结构 -->
     <div id="main-header-placeholder"></div>
-
-    <!-- Gemini 页面专属主体内容 -->
-    <main class="main-content container">
-        <div class="purchase-layout">
-            <div class="iframe-container">
-                <iframe src="https://aigpt8.xyz/shop/W3JEJKNX/y709d1" title="Gemini 购买网站"></iframe>
+    <main class="gemini-page">
+        <section class="gemini-hero">
+            <div class="page-shell hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> Gemini 服务</span>
+                    <h1>让每一个想法，<br><span>更快成为可能。</span></h1>
+                    <p>选择适合你的 Gemini 账号或充值方案。人民币即可下单，无需海外信用卡；商品选择、购买与开通说明都集中在一个页面。</p>
+                    <div class="hero-points"><span><i class="fa-solid fa-check"></i> 支持支付宝 / 微信</span><span><i class="fa-solid fa-check"></i> 账号与充值方案可选</span><span><i class="fa-solid fa-check"></i> 购买后按说明开通</span></div>
+                </div>
+                <aside class="purchase-card" aria-label="Gemini 方案选购">
+                    <div class="card-kicker">Gemini 方案</div><h2>选择适合你的方式</h2><p>可在商品页查看实时方案、价格与对应说明。</p>
+                    <div class="purchase-options">
+                        <div class="purchase-option"><i class="fa-solid fa-id-card"></i><div><strong>Gemini 成品账号</strong><span>适合需要新账号、希望直接登录使用的用户。</span></div></div>
+                        <div class="purchase-option"><i class="fa-solid fa-bolt"></i><div><strong>Gemini 会员充值</strong><span>在已有账号上选择对应的充值服务。</span></div></div>
+                    </div>
+                    <a class="primary-button" href="https://aigpt8.xyz/shop/W3JEJKNX/y709d1" target="_blank" rel="noopener noreferrer">选购 Gemini 方案 <i class="fa-solid fa-arrow-up-right-from-square"></i></a><p class="payment-note">支付宝 / 微信支付 · 无需海外信用卡</p>
+                </aside>
             </div>
-            <aside class="sidebar-instructions">
-                <h3>Gemini 账号说明</h3>
-                <h4>一、前置网络条件</h4>
-                <p>尽量使用<strong>美区IP</strong>，越干净的 IP 越好。这里可以检测 IP 质量（一般极度纯净为好）：<br><a href="https://ping0.cc/" target="_blank">https://ping0.cc/</a></p>
-                <h4>二、登录地址</h4>
-                <p><a href="https://gemini.google.com/" target="_blank">https://gemini.google.com/</a></p>
-                <h4>三、账号说明</h4>
-                <p>我们提供的账号都是只有 谷歌账号 + 密码，没有提前绑定任何的手机号 + 辅助邮箱等，以避免二次验证问题。</p>
-                <p>所以不会存在隔几天就会要求验证注册账号的手机号， 导致登录不上了</p>
-                <p><strong>强烈建议：</strong>大家首次登录后及时绑定的自己的手机号（国内的可以） + 邮箱（推荐 QQ 邮箱或者自己常用的即可）</p>
-                <p><strong>！！！！然后记得改密码！！！！！！！！！！！！！！</strong></p>
-                <h4>3.1 绑定找回方式</h4>
-                <p>进入账号设置页面：<br><a href="https://myaccount.google.com/?hl=zh_CN" target="_blank">https://myaccount.google.com/?hl=zh_CN</a></p>
-                <p>进入安全设置页面：<br><a href="https://myaccount.google.com/security?hl=zh_CN" target="_blank">https://myaccount.google.com/security?hl=zh_CN</a></p>
-                <p>请务必添加手机号和邮箱。如果条件允许，建议开启身份验证器和两步验证（2FA）<strong>如果您登录账号已经设置了 2fa(即两步验证显示了 启用时间：xx:xx)，就不用去修改为自己的了，这样会触发风控验证（就是用 2fa token 每次去获取那个）</strong>，最大程度保障账号安全。</p>
-                <h4>3.2 设备管理</h4>
-                <p>进入设备管理页面，您可能会看到注册时使用的设备。可以安全地将它们全部退出，只保留您自己的设备。</p>
-                <p style="margin-top: 20px; font-weight: bold; text-align: center;">完成以上步骤，账号即可稳定使用！</p>
-            </aside>
-        </div>
+        </section>
+        <section class="section">
+            <div class="page-shell"><div class="section-heading"><h2>从一个想法，到更多可能</h2><p>Gemini 可以协助处理文字、图片与日常工作任务；请根据自己的使用频率和需求选择合适的方案。</p></div>
+                <div class="feature-grid">
+                    <article class="feature"><div class="feature-icon"><i class="fa-regular fa-message"></i></div><h3>日常对话与写作</h3><p>整理思路、润色文案、提炼信息，让学习和工作中的表达更清晰。</p></article>
+                    <article class="feature"><div class="feature-icon"><i class="fa-regular fa-file-lines"></i></div><h3>多模态理解</h3><p>结合文字、图片和资料提问，围绕你的具体任务获得更有针对性的帮助。</p></article>
+                    <article class="feature"><div class="feature-icon"><i class="fa-regular fa-image"></i></div><h3>图像创作与灵感</h3><p>用自然语言描述创意，探索视觉表达与不同的内容创作方向。</p></article>
+                </div>
+            </div>
+        </section>
+        <section class="section section-soft steps"><div class="page-shell"><div class="section-heading"><h2>如何开通 Gemini？</h2><p>流程清晰、步骤简单。购买前请先确认你需要的是成品账号还是已有账号充值。</p></div>
+            <ol class="steps-list"><li class="step"><div class="step-no">01</div><h3>选择账号或充值方案</h3><p>前往商品页，根据说明选择 Gemini 成品账号或对应的充值服务。</p></li><li class="step"><div class="step-no">02</div><h3>完成支付并保存订单</h3><p>使用支付宝或微信支付，下单后请保存订单信息，便于后续查询。</p></li><li class="step"><div class="step-no">03</div><h3>按商品说明开通</h3><p>根据商品页提示完成账号交付或充值操作；遇到问题可联系页面客服。</p></li></ol>
+        </div></section>
+        <section class="section"><div class="page-shell guide-layout"><div><div class="section-heading"><h2>Gemini 购买常见问题</h2></div><div class="faq-list">
+            <details><summary>Gemini 成品账号和会员充值有什么区别？</summary><p>成品账号适合需要一个可直接登录的 Gemini 账号的用户；会员充值则是在你已有的账号上选择相应服务。具体可用方案请以商品页说明为准。</p></details>
+            <details><summary>购买 Gemini 需要海外信用卡吗？</summary><p>不需要。商品页支持支付宝、微信支付，可以使用人民币完成下单。</p></details>
+            <details><summary>首次登录账号后需要做什么？</summary><p>建议在登录后尽快补充自己的手机号和辅助邮箱，并修改初始密码。请使用安全、可信的网络环境进行登录。</p></details>
+            <details><summary>已有 Gemini 账号，应该如何选择？</summary><p>如果只需要开通已有账号的服务，可在商品页选择相应的充值方案；下单前请仔细阅读商品的适用范围与操作说明。</p></details>
+        </div></div>
+        <aside class="guide-panel"><h3>账号使用小贴士</h3><p>为保障账号安全，建议完成以下设置后再开始长期使用。</p><div class="guide-links"><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"><span>前往 Gemini 登录</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a><a href="https://myaccount.google.com/?hl=zh_CN" target="_blank" rel="noopener noreferrer"><span>补充账号找回方式</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a><a href="https://myaccount.google.com/security?hl=zh_CN" target="_blank" rel="noopener noreferrer"><span>查看 Google 安全设置</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div><p class="small-note">建议绑定自己的手机号和辅助邮箱，并妥善保存新密码。不要在不可信的设备或网络环境中长期登录账号。</p></aside>
+        </div></section>
+        <section class="final-cta"><div class="page-shell"><h2>准备好开始使用 Gemini？</h2><p>查看商品页，选择与你的使用方式匹配的账号或充值方案。</p><a class="primary-button" href="https://aigpt8.xyz/shop/W3JEJKNX/y709d1" target="_blank" rel="noopener noreferrer">立即选购 <i class="fa-solid fa-arrow-right"></i></a></div></section>
     </main>
-
-    <!-- 标准化 Footer -->
-    <footer class="main-footer">
-        <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
-    </footer>
-
-    <!-- 3. 最新的 Script 逻辑 -->
-    
-
+    <footer class="site-footer">&copy; 2025 AI Pro Service. All Rights Reserved.</footer>
     <script src="main-header.js"></script>
 </body>
 </html>
