@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grok SuperGrok 自助充值 - AI模型服务</title>
+    <title>Grok 四合一套餐 - AI模型服务</title>
     <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="main-header.css">
@@ -190,6 +190,12 @@
             font-size: 0.85em;
             margin-top: 8px;
             font-weight: 500;
+        }
+
+        @media (max-width: 1100px) {
+            .plan-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -486,180 +492,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- Grok Heavy 高性能订阅卡片 --- */
-        .heavy-section {
-            margin: 0 auto 50px;
-            max-width: 1000px;
-        }
-
-        .heavy-card {
-            position: relative;
-            overflow: hidden;
-            padding: 42px;
-            border: 1px solid #fbbf24;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #171717 0%, #2a1a05 52%, #4a2c07 100%);
-            box-shadow: 0 20px 40px rgba(120, 70, 10, 0.22);
-            color: #fff;
-        }
-
-        .heavy-card::before {
-            content: '';
-            position: absolute;
-            top: -90px;
-            right: -80px;
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, transparent 68%);
-            pointer-events: none;
-        }
-
-        .heavy-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 12px;
-            border: 1px solid rgba(253, 230, 138, 0.55);
-            border-radius: 999px;
-            background: rgba(251, 191, 36, 0.13);
-            color: #fde68a;
-            font-size: 0.85em;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-        }
-
-        .heavy-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-            margin: 18px 0 28px;
-        }
-
-        .heavy-header h3 {
-            margin: 0 0 8px;
-            font-size: 2em;
-        }
-
-        .heavy-header p {
-            margin: 0;
-            color: #fde68a;
-            font-size: 1.05em;
-        }
-
-        .heavy-price {
-            text-align: right;
-            white-space: nowrap;
-        }
-
-        .heavy-price strong {
-            display: block;
-            color: #fef3c7;
-            font-size: 2.35em;
-            line-height: 1;
-        }
-
-        .heavy-price span {
-            color: #d6d3d1;
-            font-size: 0.92em;
-        }
-
-        .heavy-difference {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 24px;
-            padding: 14px 16px;
-            border-left: 3px solid #fbbf24;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #f5f5f4;
-            line-height: 1.65;
-        }
-
-        .heavy-grid {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .heavy-panel {
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 14px;
-            background: rgba(0, 0, 0, 0.18);
-        }
-
-        .heavy-panel h4 {
-            margin: 0 0 12px;
-            color: #fde68a;
-            font-size: 1.02em;
-        }
-
-        .heavy-panel ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .heavy-panel li {
-            margin: 0 0 10px;
-            color: #f5f5f4;
-            font-size: 0.93em;
-            line-height: 1.55;
-        }
-
-        .heavy-panel li:last-child {
-            margin-bottom: 0;
-        }
-
-        .heavy-panel li::before {
-            content: '✓';
-            margin-right: 8px;
-            color: #fbbf24;
-            font-weight: 700;
-        }
-
-        .heavy-note {
-            position: relative;
-            z-index: 1;
-            margin-top: 16px;
-            padding: 14px 16px;
-            border: 1px solid rgba(253, 230, 138, 0.34);
-            border-radius: 12px;
-            background: rgba(120, 70, 10, 0.22);
-            color: #fef3c7;
-            font-size: 0.9em;
-            line-height: 1.65;
-        }
-
-        .heavy-note strong {
-            color: #fbbf24;
-        }
-
-        .heavy-cta {
-            margin-top: 28px;
-            border: none;
-            color: #1c1917;
-            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
-        }
-
-        .heavy-cta-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .heavy-cta small {
-            font-size: 0.72em;
-            font-weight: 500;
-            opacity: 0.72;
-        }
-
         /* --- 页面信息架构：套餐优先、流程其次 --- */
         .page-header {
             display: none;
@@ -695,26 +527,50 @@
 
         .plan-grid {
             display: grid;
-            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 24px;
             align-items: stretch;
             margin-bottom: 42px;
         }
 
-        .plan-grid .subscription-section,
-        .plan-grid .heavy-section {
+        .plan-grid .subscription-section {
             max-width: none;
             margin: 0;
-        }
-
-        .plan-grid .subscription-card,
-        .plan-grid .heavy-card {
-            box-sizing: border-box;
-            min-height: 100%;
+            display: flex;
         }
 
         .plan-grid .subscription-card {
-            padding: 40px 34px;
+            box-sizing: border-box;
+            min-height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-grid .subscription-card {
+            padding: 32px 22px;
+        }
+
+        .plan-grid .subscription-card h3 {
+            font-size: 1.55em;
+        }
+
+        .plan-grid .sub-tagline {
+            min-height: 2.8em;
+            font-size: 0.98em;
+        }
+
+        .limited-badge {
+            display: inline-block;
+            margin: 0 auto 14px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 0.78em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
         }
 
         .plan-grid .sub-icon {
@@ -728,6 +584,22 @@
 
         .plan-grid .sub-features {
             margin-bottom: 24px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .limited-badge-placeholder {
+            visibility: hidden;
+        }
+
+        .plan-grid .sub-cta {
+            margin-top: auto;
+        }
+
+        @media (max-width: 1100px) {
+            .plan-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         .plan-grid .sub-features li {
@@ -829,9 +701,9 @@
         /* --- 左右分栏布局 --- */
         .channels-layout {
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 50px;
             align-items: start;
         }
@@ -1177,7 +1049,7 @@
         /* --- 移动端响应式 --- */
         @media (max-width: 1024px) {
             .channels-layout {
-                grid-template-columns: 280px 1fr;
+                grid-template-columns: 1fr;
                 gap: 24px;
             }
 
@@ -1205,27 +1077,6 @@
 
             .subscription-card {
                 padding: 40px 30px;
-            }
-
-            .heavy-card {
-                padding: 30px 22px;
-            }
-
-            .heavy-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .heavy-header h3 {
-                font-size: 1.7em;
-            }
-
-            .heavy-price {
-                text-align: left;
-            }
-
-            .heavy-grid {
-                grid-template-columns: 1fr;
             }
 
             .catalog-hero {
@@ -1297,9 +1148,8 @@
                 transform: none;
             }
 
-            /* 隐藏右侧详情，使用模态弹窗替代 */
             .channel-detail {
-                display: none;
+                display: block;
             }
 
             /* 移动端：添加"查看详情"按钮 */
@@ -1610,6 +1460,183 @@
                 right: 12px;
             }
         }
+        /* --- X Sub 四合一说明区 --- */
+        .bundle-section {
+            margin: 0 auto 44px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: #172033;
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            letter-spacing: -0.03em;
+        }
+
+        .section-heading p {
+            max-width: 560px;
+            margin: 0;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .benefit-card,
+        .steps-panel,
+        .faq-panel {
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+        }
+
+        .benefit-card {
+            padding: 20px;
+        }
+
+        .benefit-icon {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            border-radius: 12px;
+            background: #f2edff;
+            color: #6f42c1;
+            font-size: 1.25rem;
+        }
+
+        .benefit-card h3 {
+            margin: 0 0 8px;
+            color: #1f2937;
+            font-size: 1.05rem;
+        }
+
+        .benefit-card p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        .steps-panel {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            padding: 22px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            display: inline-flex;
+            flex: 0 0 32px;
+            width: 32px;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #6f42c1;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .step-item h3 {
+            margin: 1px 0 5px;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .step-item p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faq-panel {
+            padding: 8px 22px;
+        }
+
+        .faq-panel details {
+            border-bottom: 1px solid #eef0f3;
+        }
+
+        .faq-panel details:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-panel summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 17px 30px 17px 0;
+            color: #1f2937;
+            font-weight: 750;
+            position: relative;
+        }
+
+        .faq-panel summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-panel summary::after {
+            content: '+';
+            position: absolute;
+            right: 2px;
+            color: #6f42c1;
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .faq-panel details[open] summary::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            max-width: 860px;
+            padding: 0 0 17px;
+            color: #64748b;
+            line-height: 1.75;
+        }
+
+        .trust-note {
+            margin: 14px 0 0;
+            color: #94a3b8;
+            font-size: 0.84rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .steps-panel { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 560px) {
+            .container { padding-left: 14px; padding-right: 14px; }
+            .section-heading { display: block; }
+            .section-heading p { margin-top: 8px; }
+            .benefit-grid { grid-template-columns: 1fr; }
+            .steps-panel, .faq-panel { padding: 18px; }
+            .catalog-hero h1 { font-size: 2rem; }
+            .faq-panel summary, .faq-answer { overflow-wrap: anywhere; }
+        }
     </style>
 </head>
 <body>
@@ -1617,408 +1644,144 @@
     <!-- Header -->
     <div id="main-header-placeholder"></div>
 
-    <!-- 重要提示横幅 -->
-    <div id="grokNoticeBanner" style="position: fixed; left: 0; right: 0; top: var(--header-height); z-index: 60; background: linear-gradient(to right, #fef2f2, #fee2e2, #fef2f2); border-bottom: 1px solid rgba(254, 202, 202, 0.8);">
-        <div style="position: relative; max-width: 72rem; margin: 0 auto; padding: 0.625rem 2.75rem; display: flex; align-items: center; justify-content: center;">
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem 0.625rem; min-width: 0; color: #7f1d1d; font-size: 13px; line-height: 1.375;">
-                <span style="display: inline-flex; flex: none; align-items: center; gap: 0.25rem; border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 11px; font-weight: 600; letter-spacing: 0.025em; background-color: rgba(239, 68, 68, 0.1); color: #b91c1c; border: 1px solid rgba(220, 38, 38, 0.2);">
-                    <svg style="height: 12px; width: 12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"></path>
-                    </svg>
-                    重要
-                </span>
-                <span style="font-size: 13px; font-weight: 500; line-height: 1.375; letter-spacing: -0.025em;">目前SuperGrok官方已经将直充两月的通道关闭，可以选择一月或者三月自助充值，推荐点击<a href="javascript:void(0)" onclick="openPurchaseModal()" style="color: #dc2626; font-weight: 700; background: linear-gradient(180deg, rgba(254, 226, 226, 0.4) 0%, rgba(254, 226, 226, 0.1) 100%); padding: 2px 6px; border-radius: 4px; border: 1px solid #fca5a5; text-decoration: none; cursor: pointer;">购买充值码</a>购买直充三个月的，性价比较高！</span>
-            </div>
-            <button type="button" aria-label="关闭公告" onclick="closeGrokNoticeBar()" style="position: absolute; right: 0.625rem; top: 50%; transform: translateY(-50%); display: flex; height: 1.5rem; width: 1.5rem; align-items: center; justify-content: center; border-radius: 9999px; color: #ef4444; transition: all 0.2s; background: none; border: none; cursor: pointer;">
-                <svg style="height: 12px; width: 12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-
     <!-- 主体内容 -->
     <main class="main-content container">
-
-        <!-- ============================================================ -->
-        <!-- 【维护公告区域】需要隐藏时，请注释掉以下整个 announcement-banner 区域 -->
-        <!-- ============================================================ -->
-        <!-- <div class="announcement-banner">
-            <div class="announcement-content">
-                <div class="announcement-text">
-                    <div class="announcement-header">
-                        <div class="announcement-badge">📢 最新公告</div>
-                        <div class="announcement-date">📅 2026/05/06</div>
-                    </div>
-                    <div class="announcement-title">⚠️ SuperGrok 自助维护通知</div>
-                    <div class="announcement-message">
-                        尊敬的用户，SuperGrok 自助充值系统维护升级完成！但是后台没有货，暂时无法自助SuperGrok。<br>
-                        期间仅支持<strong>手动代充服务</strong>，给您带来的不便敬请谅解！
-                    </div>
-                    <div class="announcement-contact">
-                        <i class="fa-brands fa-weixin"></i>
-                        <span>请联系微信：aicygg888 / aicygg789</span>
-                    </div>
-                </div>
-                <div class="announcement-qr">
-                    <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码">
-                    <div class="announcement-qr-caption">扫码联系客服</div>
-                </div>
-            </div>
-        </div> -->
-        <!-- ============================================================ -->
-        <!-- 【维护公告区域结束】 -->
-        <!-- ============================================================ -->
-
-        <!-- 页面标题区域 -->
-        <div class="page-header">
-            <h2> SuperGrok 自助代充值系统上线 </h2>
-
-            <div class="process-flow">
-                <div class="process-flow-title">SuperGrok 充值流程</div>
-                <div class="note-warning" style="text-align: center; margin-top: -10px; margin-bottom: 20px;">
-                    <p><i class="fa-solid fa-triangle-exclamation"></i> 如遇购买充值码或者充值系统网址打不开，请关闭梯子</p>
-                </div>
-
-                <div class="flow-steps">
-                    <a href="javascript:void(0)" onclick="openPurchaseModal()" class="flow-step flow-step-link">
-                        <i class="fa-solid fa-ticket"></i> 第一步：购买充值码（点击直达）
-                    </a>
-                    <div class="flow-arrow">→</div>
-                    <a href="javascript:void(0)" onclick="openRechargeModal()" class="flow-step flow-step-link">
-                        <i class="fa-solid fa-rocket"></i> 第二步：系统充值（点击直达）
-                    </a>
-                </div>
-
-                <div class="detailed-steps">
-                    <div class="detailed-step">
-                        <span class="step-number">1</span>
-                        <div class="step-content">
-                            <h4>第一步：购买充值码</h4>
-                            <p>点击上方「购买充值码」按钮，购买后会立即收到充值码</p>
-                        </div>
-                    </div>
-
-                    <div class="detailed-step">
-                        <span class="step-number">2</span>
-                        <div class="step-content">
-                            <h4>第二步：验证充值码</h4>
-                            <p>进入充值系统，输入您购买的充值码进行验证</p>
-                        </div>
-                    </div>
-
-                    <div class="detailed-step">
-                        <span class="step-number">3</span>
-                        <div class="step-content">
-                            <h4>第三步：绑定 Grok 账号</h4>
-                            <p>输入您的 Grok 用户 ID（在 <a href="https://grok.com/api/auth/session" target="_blank" style="color: #6f42c1; text-decoration: underline;">grok.com session页面</a> 获取）</p>
-                            <p style="margin-top: 8px; font-size: 0.9em; color: #6c757d;"><strong>用户ID获取步骤：</strong>进入 <a href="https://grok.com/api/auth/session" target="_blank" style="color: #6f42c1; text-decoration: underline;">grok.com</a> → 复制字段对应的内容值"userId": 格式示例：ea297950-79e4-466a-be73-dd3f8efbd29c</p>
-                        </div>
-                    </div>
-
-                    <div class="detailed-step">
-                        <span class="step-number">4</span>
-                        <div class="step-content">
-                            <h4>第四步：激活充值</h4>
-                            <p>确认信息无误后，点击「确认并充值」按钮完成充值</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="note-warning">
-                    <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>注：</strong>到期才可续</p>
-                    <p style="margin-top: 8px;"><i class="fa-solid fa-rotate-right"></i> <strong>提示：</strong>如遇充值失败请刷新网页进行重试，如多次失败请添加客服微信：<strong>aicygg888 / aicygg789</strong></p>
-                </div>
-
-                <div class="cta-text">
-                    需要的童鞋看过来 🤝🤝
-                </div>
-
-                <!-- 客服帮助卡片 -->
-                <div class="support-card" style="margin-top: 20px; background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 25px; border: 1px solid #e9ecef;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.3em; color: #212529; margin-bottom: 8px; font-weight: 700;">需要更多帮助？</div>
-                        <p style="color: #6c757d; font-size: 0.95em; margin-bottom: 20px; line-height: 1.6;">无论是下单疑问，还是想要了解更多风控细节，<br>欢迎随时添加我们的微信客服。</p>
-                    </div>
-
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 200px;">
-                            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #e9ecef;">
-                                <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 8px; font-weight: 500;">联系微信</div>
-                                <div style="font-size: 1.5em; color: #6f42c1; font-weight: 700; margin-bottom: 8px;">aicygg888 / aicygg789</div>
-                                <div style="font-size: 0.85em; color: #495057;">
-                                    <i class="fa-solid fa-clock" style="margin-right: 5px;"></i>工作时间：9:00 - 24:00
-                                </div>
-                                <div style="font-size: 0.85em; color: #495057; margin-top: 4px;">
-                                    <i class="fa-solid fa-calendar-check" style="margin-right: 5px;"></i>节假日不休
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex: 0 0 auto;">
-                            <img src="https://picx.zhimg.com/80/v2-46f7cfd62d1e94381388ab08b0fea3af_720w.png" alt="微信二维码" style="width: 150px; height: 150px; border-radius: 12px; border: 2px solid #e9ecef; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 套餐总览 -->
         <section class="catalog-hero" aria-labelledby="catalog-title">
-            <p class="catalog-eyebrow">Grok subscriptions</p>
-            <h1 id="catalog-title">选择适合你的 Grok 套餐</h1>
-            <p>日常创作与实时问答可选择 SuperGrok；需要处理高难度推理、深度研究或复杂代码任务时，可选择 Grok Heavy。</p>
+            <p class="catalog-eyebrow">X / Grok / Grok Bot / Cursor</p>
+            <h1 id="catalog-title">新版 X Sub 四合一订阅</h1>
+            <p>一份订阅，覆盖 X、Grok、Grok Bot 与 Cursor。按使用强度选择方案，权益与额度以对应商品说明和实际交付为准。</p>
         </section>
 
-        <section class="plan-grid" aria-label="Grok 套餐选择">
-        <!-- SuperGrok 订阅方案 -->
-        <article class="subscription-section">
-            <div class="subscription-card">
-                <div class="sub-icon">🚀</div>
-                <h3>SuperGrok</h3>
-                <p class="sub-tagline">年度超值订阅套餐</p>
-                <div class="sub-price">$30</div>
-                <div class="sub-period">/ 月</div>
-
-                <ul class="sub-features">
-                    <li><i class="fa-solid fa-check-circle"></i> 实时联网能力 - 获取最新信息</li>
-                    <li><i class="fa-solid fa-check-circle"></i> 独特个性 - 幽默风趣的对话风格</li>
-                    <li><i class="fa-solid fa-check-circle"></i> 更少限制 - 更开放的交互体验</li>
-                    <li><i class="fa-solid fa-check-circle"></i> Grok-4 最强模型访问</li>
-                    <li><i class="fa-solid fa-check-circle"></i> 全部 Premium 功能解锁</li>
-                </ul>
-
-                <div class="sub-cta" onclick="scrollToChannels()">
-                    选择下方渠道开始充值
-                    <i class="fa-solid fa-arrow-down"></i>
+        <section class="plan-grid" aria-label="新版四合一 Grok 套餐选择">
+            <article class="subscription-section">
+                <div class="subscription-card">
+                    <div class="sub-icon">⚡</div>
+                    <span class="limited-badge limited-badge-placeholder" aria-hidden="true">限时半价优惠</span>
+                    <h3>Grok Plus</h3>
+                    <p class="sub-tagline">基础方案，适合日常 X / Grok 使用</p>
+                    <div class="sub-price">¥89</div>
+                    <div class="sub-period">/ 月</div>
+                    <ul class="sub-features">
+                        <li><i class="fa-solid fa-check-circle"></i> X、Grok 与 Cursor 基础权益</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 实时联网问答与 X 内容浏览</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 适合日常对话、写作与轻量代码</li>
+                        <li><i class="fa-solid fa-circle-xmark"></i> 不包含 Grok Bot 使用额度</li>
+                    </ul>
+                    <a href="https://aigpt8.xyz/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta">立即购买 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
-            </div>
-        </article>
+            </article>
 
-        <!-- Grok Heavy 独立订阅方案 -->
-        <article class="heavy-section" aria-labelledby="grok-heavy-title">
-            <div class="heavy-card">
-                <div class="heavy-badge"><i class="fa-solid fa-bolt"></i> 高算力独立套餐</div>
-                <div class="heavy-header">
-                    <div>
-                        <h3 id="grok-heavy-title">Grok Heavy</h3>
-                        <p>Grok 4 Heavy · 面向高难度推理与深度工作的旗舰版本</p>
-                    </div>
-                    <div class="heavy-price">
-                        <strong>¥1620</strong>
-                        <span>$300 / 1 个月</span>
-                    </div>
+            <article class="subscription-section">
+                <div class="subscription-card">
+                    <div class="sub-icon">🚀</div>
+                    <span class="limited-badge">限时半价优惠</span>
+                    <h3>Grok Premium</h3>
+                    <p class="sub-tagline">更高额度，满足高频创作与研究</p>
+                    <div class="sub-price">¥165</div>
+                    <div class="sub-period">/ 月</div>
+                    <ul class="sub-features">
+                        <li><i class="fa-solid fa-check-circle"></i> X、Grok、Grok Bot、Cursor 四合一</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 更高使用额度与更快响应</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 适合内容创作、资料整理与代码协作</li>
+                    </ul>
+                    <a href="https://aigpt8.xyz/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta">立即购买 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
+            </article>
 
-                <div class="heavy-difference">
-                    <strong>与 SuperGrok 的区别：</strong>SuperGrok 适合日常问答、创作和常规高频使用；Grok Heavy 面向需要更高推理算力、更高使用额度与多路径分析的复杂任务，不是普通 SuperGrok 的替代套餐。
+            <article class="subscription-section">
+                <div class="subscription-card">
+                    <div class="sub-icon">💎</div>
+                    <span class="limited-badge">限时半价优惠</span>
+                    <h3>Grok Super</h3>
+                    <p class="sub-tagline">高强度方案，适合深度工作流</p>
+                    <div class="sub-price">¥430</div>
+                    <div class="sub-period">/ 月</div>
+                    <ul class="sub-features">
+                        <li><i class="fa-solid fa-check-circle"></i> X、Grok、Grok Bot、Cursor 四合一</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 高额度模型调用与复杂任务处理</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 适合研究分析、长文档与多步骤代码任务</li>
+                    </ul>
+                    <a href="https://aigpt8.xyz/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta">立即购买 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
+            </article>
 
-                <div class="heavy-grid">
-                    <div class="heavy-panel">
-                        <h4>适用场景</h4>
-                        <ul>
-                            <li>复杂研究、尽调与跨来源信息梳理</li>
-                            <li>高难度数学、科学与逻辑推理</li>
-                            <li>通过 Cursor / Grok Bot 委派代码、排错和多步骤任务</li>
-                            <li>长文档、表格与多文件的深度分析</li>
-                        </ul>
-                    </div>
-                    <div class="heavy-panel">
-                        <h4>具体权益与能力</h4>
-                        <ul>
-                            <li>Grok 4 Heavy 多假设并行推理</li>
-                            <li>Heavy 档位的更高使用额度</li>
-                            <li>关联 Cursor 账号后，可获得最高档 Grok Bot 使用额度</li>
-                            <li>Grok Bot 可在云端电脑中使用浏览器、文件系统与终端执行任务</li>
-                        </ul>
-                    </div>
-                    <div class="heavy-panel">
-                        <h4>与其他高阶套餐的差异</h4>
-                        <ul>
-                            <li>相较 ChatGPT Pro 20x：原生结合实时 Web 与 X 平台信号，适合热点和舆情研究</li>
-                            <li>相较 Claude Max 20x：更适合需要边检索边推理、并比较多个方案的开放式问题</li>
-                            <li>相较普通 SuperGrok：Heavy 提供更高额度与更强的复杂任务推理能力</li>
-                        </ul>
-                    </div>
+            <article class="subscription-section">
+                <div class="subscription-card">
+                    <div class="sub-icon">👑</div>
+                    <span class="limited-badge">限时半价优惠</span>
+                    <h3>Grok Ultra</h3>
+                    <p class="sub-tagline">旗舰四合一方案，适合重度使用</p>
+                    <div class="sub-price">¥820</div>
+                    <div class="sub-period">/ 月</div>
+                    <ul class="sub-features">
+                        <li><i class="fa-solid fa-check-circle"></i> X、Grok、Grok Bot、Cursor 四合一</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 旗舰级使用额度与优先体验</li>
+                        <li><i class="fa-solid fa-check-circle"></i> 适合团队协作、深度研究与重度开发</li>
+                    </ul>
+                    <a href="https://aigpt8.xyz/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta">立即购买 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
-
-                <div class="heavy-note">
-                    <strong>Cursor 权益说明：</strong>使用同一账号关联 Cursor 后，可获得 Grok Bot 使用额度；Heavy 为最高档。该权益是 Grok Bot 使用额度，不等同于赠送或叠加 Cursor Pro / Ultra 订阅，现有 Cursor 套餐独立计费。
-                </div>
-
-                <a href="https://aigpt8.xyz/shop/W3JEJKNX/we0qay" target="_blank" rel="noopener noreferrer" class="sub-cta heavy-cta">
-                    <span class="heavy-cta-text">立即购买 Grok Heavy<small>进入 Grok 商品专区</small></span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-        </article>
+            </article>
         </section>
 
-        <!-- SuperGrok 充值引导 -->
-        <section class="recharge-guide" aria-labelledby="recharge-guide-title">
-            <div>
-                <h2 id="recharge-guide-title">SuperGrok 充值流程</h2>
-                <p>购买充值码后，前往充值系统绑定 Grok 用户 ID，即可完成激活。</p>
-                <ol class="guide-steps">
-                    <li><span class="guide-step-number">1</span>购买充值码</li>
-                    <li><span class="guide-step-number">2</span>验证充值码</li>
-                    <li><span class="guide-step-number">3</span>绑定账号并激活</li>
-                </ol>
+        <section class="bundle-section" aria-labelledby="benefits-title">
+            <div class="section-heading">
+                <div><h2 id="benefits-title">四合一，分别能做什么？</h2></div>
+                <p>把社交、研究、自动化和开发放进同一套工作流，减少在多个平台之间切换。</p>
             </div>
-            <div class="guide-actions">
-                <a href="javascript:void(0)" onclick="openPurchaseModal()" class="btn btn-secondary">购买充值码</a>
-                <a href="javascript:void(0)" onclick="openRechargeModal()" class="btn btn-primary">前往系统充值</a>
+            <div class="benefit-grid">
+                <article class="benefit-card">
+                    <span class="benefit-icon">𝕏</span>
+                    <h3>X Premium</h3>
+                    <p>更长内容、编辑、回复优先级与更完整的 X 使用体验，适合持续发布和跟踪信息。</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-icon">✦</span>
+                    <h3>Grok</h3>
+                    <p>用于实时问答、资料梳理、写作与研究分析；更高档位适合长对话和复杂任务。</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-icon">◎</span>
+                    <h3>Grok Bot</h3>
+                    <p>适合需要持续执行、调用工具或处理多步骤任务的场景；Plus 不包含 Grok Bot 使用额度。</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-icon">⌘</span>
+                    <h3>Cursor</h3>
+                    <p>在代码编辑器中使用 AI 完成补全、重构、调试和 Agent 协作，适合开发者工作流。</p>
+                </article>
             </div>
         </section>
 
-        <div class="channels-heading">
-            <h2>SuperGrok 充值渠道</h2>
-            <p>选择渠道后可查看充值说明与常见问题</p>
-        </div>
-
-        <!-- 左右分栏布局 -->
-        <div class="channels-layout">
-            <!-- 左侧：渠道列表 -->
-            <div class="channels-sidebar">
-                <div class="channel-item active" data-channel="1">
-                    <div class="channel-item-icon">🏪</div>
-                    <div class="channel-item-info">
-                        <h4>渠道一 <span class="recommended-tag">推荐</span></h4>
-                        <span class="channel-item-name">SuperGrok</span>
-                    </div>
-                    <div class="channel-item-arrow">›</div>
-                </div>
-
-                <!-- 渠道二相关代码已注释
-                <div class="channel-item" data-channel="2">
-                    <div class="channel-item-icon">🏪</div>
-                    <div class="channel-item-info">
-                        <h4>渠道二</h4>
-                        <span class="channel-item-name">SuperGrok</span>
-                    </div>
-                    <div class="channel-item-arrow">›</div>
-                </div>
-                -->
+        <section class="bundle-section" aria-labelledby="steps-title">
+            <div class="section-heading">
+                <div><h2 id="steps-title">购买与使用流程</h2></div>
+                <p>下单前先确认档位；如需升级、续费或核对权益，可通过站内客服确认。</p>
             </div>
-
-            <!-- 右侧：渠道详情 -->
-            <div class="channel-detail">
-                <!-- 渠道一详情 -->
-                <div class="detail-content active" id="detail-1">
-                    <div class="detail-header">
-                        <h3>🎯 渠道一 (推荐) - SuperGrok</h3>
-                    </div>
-
-                    <!-- 操作按钮移到顶部 -->
-                    <div class="detail-actions detail-actions-top">
-                        <a href="javascript:void(0)" onclick="openPurchaseModal()" class="btn btn-secondary">
-                            📝 购买充值码
-                        </a>
-                        <a href="javascript:void(0)" onclick="openRechargeModal()" class="btn btn-primary">
-                            🚀 前往系统充值 →
-                        </a>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📌 渠道特点</h4>
-                        <ul class="feature-list">
-                            <li>✓ 正规官方通道充值</li>
-                            <li>✓ 支持支付宝/微信支付</li>
-                            <li>✓ 自助操作，快速到账</li>
-                            <li>✓ 到账时间：5-10分钟</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📝 充值流程（4步）</h4>
-                        <ol class="process-list">
-                            <li>点击「购买充值码」购买充值码</li>
-                            <li>点击「前往系统充值」，输入充值码进行验证</li>
-                            <li>输入您的 Grok 用户 ID（登录grok之后，在 <a href="https://grok.com/api/auth/session" target="_blank" style="color: #6f42c1;">grok.com</a> → 复制字段对应的内容值"userId": 格式示例：ea297950-79e4-466a-be73-dd3f8efbd29c）</li>
-                            <li>点击「立即激活 SuperGrok」完成充值</li>
-                        </ol>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>💡 常见问题</h4>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：什么时候可以续费？</p>
-                            <p class="faq-a">A：到期后才可续费</p>
-                        </div>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 aicygg888 / aicygg789</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888 / aicygg789</strong></p>
-                    </div>
-                </div>
-
-                <!-- 渠道二详情已注释
-                <div class="detail-content" id="detail-2">
-                    <div class="detail-header">
-                        <h3>🎯 渠道二 - SuperGrok</h3>
-                    </div>
-
-                    <div class="detail-actions detail-actions-top">
-                        <a href="https://qfcc99.com/item/px6b4g" target="_blank" class="btn btn-secondary">
-                            📝 购买充值码
-                        </a>
-                        <a href="https://quickplus.vip/public/grok/" target="_blank" class="btn btn-primary">
-                            🚀 前往系统充值 →
-                        </a>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📌 渠道特点</h4>
-                        <ul class="feature-list">
-                            <li>✓ 正规官方通道充值</li>
-                            <li>✓ 支持支付宝/微信支付</li>
-                            <li>✓ 自助操作，快速到账</li>
-                            <li>✓ 到账时间：5-10分钟</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>📝 充值流程（4步）</h4>
-                        <ol class="process-list">
-                            <li>点击「购买充值码」购买充值码</li>
-                            <li>点击「前往系统充值」，输入充值码进行验证</li>
-                            <li>输入您的 Grok 用户 ID（登录grok后，在 <a href="https://grok.com/api/auth/session" target="_blank" style="color: #6f42c1;">grok.com</a> → 复制字段对应的内容值"userId": 格式示例：ea297950-79e4-466a-be73-dd3f8efbd29c）</li>
-                            <li>点击「立即激活 SuperGrok」完成充值</li>
-                        </ol>
-                    </div>
-
-                    <div class="detail-section">
-                        <h4>💡 常见问题</h4>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：什么时候可以续费？</p>
-                            <p class="faq-a">A：到期后才可续费</p>
-                        </div>
-                        <div class="faq-item">
-                            <p class="faq-q">• Q：充值失败怎么办？</p>
-                            <p class="faq-a">A：联系客服 aicygg888 / aicygg789</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-support">
-                        <p>📞 需要帮助？联系客服：<strong>aicygg888 / aicygg789</strong></p>
-                    </div>
-                </div>
-                -->
+            <div class="steps-panel">
+                <div class="step-item"><span class="step-number">1</span><div><h3>选择套餐</h3><p>根据 X、Grok Bot 和 Cursor 的使用强度选择档位。</p></div></div>
+                <div class="step-item"><span class="step-number">2</span><div><h3>提交订单</h3><p>点击对应商品的“立即购买”，按订单页面提示完成支付。</p></div></div>
+                <div class="step-item"><span class="step-number">3</span><div><h3>确认交付</h3><p>收到交付信息后，按说明登录并检查四项权益是否生效。</p></div></div>
             </div>
-        </div>
+        </section>
 
-        <!-- 底部说明区域 -->
-        <div class="tips-section">
-            <h3>💡 重要说明</h3>
-            <p>• 新窗口打开的充值网站可以正常登录和支付，无任何限制</p>
-            <p>• 充值完成后可返回此页面查看其他渠道或进行其他操作</p>
-            <p>• 如遇问题请联系客服：<strong>aicygg888 / aicygg789</strong></p>
-            <p>• ⚠️ <strong>到期才可续费</strong></p>
-        </div>
+        <section class="bundle-section" aria-labelledby="faq-title">
+            <div class="section-heading">
+                <div><h2 id="faq-title">新版 X Sub 四合一常见问题</h2></div>
+                <p>以下说明用于帮助选购；平台权益、额度和可用地区可能调整，请以订单页和客服确认结果为准。</p>
+            </div>
+            <div class="faq-panel">
+                <details open><summary>新版 X Sub 四合一具体包含哪些服务？</summary><div class="faq-answer">本页四合一套餐按商品说明提供 X、Grok、Grok Bot 与 Cursor 的组合权益。不同档位的额度和可用能力不同，购买前请重点查看卡片中的档位说明。</div></details>
+                <details><summary>Grok Plus 为什么不包含 Grok Bot？</summary><div class="faq-answer">Grok Plus 定位为基础档位，包含 X、Grok 与 Cursor 基础权益，不包含 Grok Bot 使用额度。需要 Bot 或更高使用强度时，建议选择 Premium、Super 或 Ultra。</div></details>
+                <details><summary>四个档位应该怎么选？</summary><div class="faq-answer">日常浏览、问答和轻量代码可选 Plus；需要高频创作、研究和代码协作可选 Premium；长文档、多步骤任务或重度开发可考虑 Super / Ultra。</div></details>
+                <details><summary>Grok 和 Cursor 的额度是分开计算的吗？</summary><div class="faq-answer">不同套餐的计量方式可能不同，且平台会不定期调整规则。不要仅按名称推断额度，具体共享池、速率和模型范围以订单页列出的交付说明为准。</div></details>
+                <details><summary>购买后需要提供 X、Grok 或 Cursor 密码吗？</summary><div class="faq-answer">请先按订单页要求提交必要信息，不要在公开聊天中发送密码、验证码或恢复代码。如交付方式需要额外资料，客服会在订单渠道中明确说明。</div></details>
+                <details><summary>已有订阅可以续费或升级吗？</summary><div class="faq-answer">可以先联系客服确认当前账号状态、剩余时间和目标档位，再决定续费或升级，避免重复购买或权益覆盖。</div></details>
+                <details><summary>付款后多久可以使用？权益没有生效怎么办？</summary><div class="faq-answer">虚拟商品的交付时间以订单页说明为准。付款成功后如果权益未生效，请保留订单号和支付凭证，通过站内客服核对，不要重复下单。</div></details>
+                <details><summary>“限时半价优惠”有什么限制？</summary><div class="faq-answer">限时优惠仅针对标注优惠的 Premium、Super 和 Ultra 商品，价格、库存和活动时间以实际商品页为准；活动结束后可能恢复原价。</div></details>
+                <details><summary>可以退款吗？</summary><div class="faq-answer">数字订阅和已交付的虚拟商品通常无法按普通实物商品退货。下单前请确认档位；如遇未交付、重复扣款等问题，请及时联系客服按订单规则处理。</div></details>
+            </div>
+            <p class="trust-note">提示：X、Grok、Grok Bot 与 Cursor 的功能和额度由相关平台决定，页面所述为套餐交付说明，不代表平台官方背书。</p>
+        </section>
 
     </main>
 
@@ -2026,267 +1789,6 @@
     <footer class="main-footer">
         <p>&copy; 2025 AI Pro Service. All Rights Reserved.</p>
     </footer>
-
-    <!-- 移动端模态弹窗 -->
-    <div class="modal-overlay" id="channelModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">渠道详情</h3>
-                <button class="modal-close" id="modalClose">✕</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- 动态内容 -->
-            </div>
-        </div>
-    </div>
-
-    <!-- 第一步：购买充值码选择弹窗 -->
-    <div class="selection-overlay" id="purchaseModal">
-        <div class="selection-dialog">
-            <button class="selection-close" onclick="closePurchaseModal()">✕</button>
-            <h3>购买充值码</h3>
-            <p style="text-align: center; color: #6c757d; font-size: 0.9em; margin-bottom: 16px;">请选择要购买的充值时长</p>
-            <div class="selection-option" onclick="goToPurchase('1month')">
-                <div class="selection-option-title">一个月</div>
-                <div class="selection-option-price">$30（229）</div>
-                <div class="selection-option-period">购买一个月充值码</div>
-            </div>
-            <div class="selection-option" onclick="goToPurchase('2months')">
-                <div class="selection-option-title">两个月</div>
-                <div class="selection-option-price">$60（￥329）</div>
-                <div class="selection-option-period">购买两个月充值码</div>
-            </div>
-            <div class="selection-option" onclick="goToPurchase('3months')">
-                <div class="selection-option-title">三个月</div>
-                <div class="selection-option-price">$90（￥569）</div>
-                <div class="selection-option-period">购买三个月充值码</div>
-            </div>
-            <div class="selection-option" onclick="goToPurchase('heavy1month')">
-                <div class="selection-option-title">Grok Heavy 一个月</div>
-                <div class="selection-option-price">$300（￥1620）</div>
-                <div class="selection-option-period">进入 Grok Heavy 商品专区</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 第二步：系统充值选择弹窗 -->
-    <div class="selection-overlay" id="rechargeModal">
-        <div class="selection-dialog">
-            <button class="selection-close" onclick="closeRechargeModal()">✕</button>
-            <h3>系统充值</h3>
-            <p style="text-align: center; color: #6c757d; font-size: 0.9em; margin-bottom: 16px;">请选择您购买的充值时长，系统将跳转到对应的充值地址</p>
-            <div class="selection-option" onclick="goToRecharge('1month')">
-                <div class="selection-option-title">一个月</div>
-                <div class="selection-option-price">$30（￥229）</div>
-            </div>
-            <div class="selection-option" onclick="goToRecharge('2months')">
-                <div class="selection-option-title">两个月</div>
-                <div class="selection-option-price">$60（￥329）</div>
-            </div>
-            <div class="selection-option" onclick="goToRecharge('3months')">
-                <div class="selection-option-title">三个月</div>
-                <div class="selection-option-price">$90（￥569）</div>
-            </div>
-            <div class="selection-option" onclick="goToRecharge('heavy1month')">
-                <div class="selection-option-title">Grok Heavy 一个月</div>
-                <div class="selection-option-price">$300（￥1620）</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- 渠道切换（页面逻辑） ---
-            const channelItems = document.querySelectorAll('.channel-item');
-            const detailContents = document.querySelectorAll('.detail-content');
-
-            channelItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const channelId = this.getAttribute('data-channel');
-
-                    // 检查是否是移动端
-                    if (window.innerWidth <= 768) {
-                        // 移动端：打开模态弹窗
-                        openModal(channelId);
-                    } else {
-                        // 网页端：切换详情显示
-                        switchChannel(channelId);
-                    }
-                });
-            });
-
-            function switchChannel(channelId) {
-                // 移除所有active状态
-                channelItems.forEach(item => item.classList.remove('active'));
-                detailContents.forEach(content => content.classList.remove('active'));
-
-                // 添加active状态到当前选中的渠道
-                document.querySelector(`.channel-item[data-channel="${channelId}"]`).classList.add('active');
-                document.querySelector(`#detail-${channelId}`).classList.add('active');
-            }
-
-            // --- 移动端模态弹窗逻辑 ---
-            const modal = document.getElementById('channelModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-            const modalClose = document.getElementById('modalClose');
-
-            function openModal(channelId) {
-                const detailContent = document.querySelector(`#detail-${channelId}`);
-                const title = detailContent.querySelector('.detail-header h3').textContent;
-
-                modalTitle.textContent = title;
-                modalBody.innerHTML = detailContent.innerHTML;
-                modal.classList.add('active');
-
-                // 阻止背景滚动
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            // 点击关闭按钮
-            modalClose.addEventListener('click', closeModal);
-
-            // 点击遮罩层关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-
-            // --- 滚动到渠道区域 ---
-            window.scrollToChannels = function() {
-                const channelsSection = document.querySelector('.channels-layout');
-                if (channelsSection) {
-                    channelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            };
-
-            // --- 第一步：购买充值码弹窗逻辑 ---
-            const purchaseModal = document.getElementById('purchaseModal');
-
-            window.openPurchaseModal = function() {
-                purchaseModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            };
-
-            window.closePurchaseModal = function() {
-                purchaseModal.classList.remove('active');
-                document.body.style.overflow = '';
-            };
-
-            window.goToPurchase = function(duration) {
-                // 根据时长打开对应的购买页面
-                let purchaseUrl = '';
-                if (duration === '1month') {
-                    purchaseUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === '2months') {
-                    purchaseUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === '3months') {
-                    purchaseUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === 'heavy1month') {
-                    purchaseUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                }
-
-                if (purchaseUrl) {
-                    window.open(purchaseUrl, '_blank');
-                }
-
-                closePurchaseModal();
-            };
-
-            // 点击遮罩层关闭
-            purchaseModal.addEventListener('click', function(e) {
-                if (e.target === purchaseModal) {
-                    closePurchaseModal();
-                }
-            });
-
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && purchaseModal.classList.contains('active')) {
-                    closePurchaseModal();
-                }
-            });
-
-            // --- 第二步：系统充值弹窗逻辑 ---
-            const rechargeModal = document.getElementById('rechargeModal');
-
-            window.openRechargeModal = function() {
-                rechargeModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            };
-
-            window.closeRechargeModal = function() {
-                rechargeModal.classList.remove('active');
-                document.body.style.overflow = '';
-            };
-
-            window.goToRecharge = function(duration) {
-                // 根据时长打开对应的充值地址
-                let rechargeUrl = '';
-                if (duration === '1month') {
-                    rechargeUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === '2months') {
-                    rechargeUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === '3months') {
-                    rechargeUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                } else if (duration === 'heavy1month') {
-                    rechargeUrl = 'https://aigpt8.xyz/shop/W3JEJKNX/we0qay';
-                }
-
-                if (rechargeUrl) {
-                    window.open(rechargeUrl, '_blank');
-                }
-
-                closeRechargeModal();
-            };
-
-            // 点击遮罩层关闭
-            rechargeModal.addEventListener('click', function(e) {
-                if (e.target === rechargeModal) {
-                    closeRechargeModal();
-                }
-            });
-
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && rechargeModal.classList.contains('active')) {
-                    closeRechargeModal();
-                }
-            });
-
-            // --- 重要提示横幅逻辑 ---
-            // 初始化横幅高度
-            const grokNoticeBanner = document.getElementById('grokNoticeBanner');
-            if (grokNoticeBanner) {
-                const bannerHeight = Math.min(Math.max(grokNoticeBanner.offsetHeight || 0, 0), 120);
-                document.documentElement.style.setProperty('--notice-bar-height', bannerHeight + 'px');
-            }
-
-            // 关闭横幅函数
-            window.closeGrokNoticeBar = function() {
-                const banner = document.getElementById('grokNoticeBanner');
-                if (banner) {
-                    banner.style.display = 'none';
-                    document.documentElement.style.setProperty('--notice-bar-height', '0px');
-                }
-            };
-        });
-</script>
-
 
     <script src="main-header.js"></script>
 </body>
