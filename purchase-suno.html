@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suno Premium 自助充值 - AI模型服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
+    <style>
+        :root { --header-height: 85px; --ink: #231630; --muted: #6e6578; --plum: #6c2a7e; --pink: #ef4e88; --line: #eadde9; --cream: #fff9fd; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding-top: var(--header-height); overflow-x: hidden; background: #fdf9fc; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif; }
+        a { text-decoration: none; }
+        .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+        .main-content { padding: 42px 0 20px; }
+        .hero { position: relative; overflow: hidden; padding: clamp(34px, 7vw, 76px); border-radius: 28px; background: radial-gradient(circle at 84% 20%, rgba(255,255,255,.38) 0, transparent 17%), radial-gradient(circle at 12% 92%, rgba(236,79,138,.6) 0, transparent 28%), linear-gradient(135deg, #35154f, #71277d 52%, #ed4f87); color: #fff; box-shadow: 0 24px 48px rgba(104, 40, 116, .24); }
+        .hero::after { position: absolute; right: -86px; bottom: -134px; width: 380px; height: 380px; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; box-shadow: 0 0 0 35px rgba(255,255,255,.08), 0 0 0 70px rgba(255,255,255,.05); content: ""; }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 7px 11px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; background: rgba(255,255,255,.13); font-size: .82rem; font-weight: 750; letter-spacing: .08em; }
+        .hero h1 { margin: 0; font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1; letter-spacing: -.055em; }
+        .hero p { max-width: 660px; margin: 18px 0 0; color: rgba(255,255,255,.92); font-size: clamp(1rem, 2vw, 1.13rem); line-height: 1.8; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+        .hero-tags li { padding: 8px 11px; border-radius: 10px; background: rgba(41, 10, 58, .25); font-size: .88rem; }
+        .section { margin: 52px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+        .section-head h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -.04em; }
+        .section-head p { max-width: 570px; margin: 0; color: var(--muted); line-height: 1.7; }
+        .feature-grid, .audience-grid, .scenario-grid { display: grid; gap: 16px; }
+        .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .audience-grid, .scenario-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .card, .purchase-card, .notice { border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 14px 32px rgba(95, 46, 95, .06); }
+        .card { padding: 22px; }
+        .icon { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 13px; background: #f9e9f3; color: var(--plum); font-size: 1.15rem; }
+        .card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+        .card p { margin: 0; color: var(--muted); font-size: .93rem; line-height: 1.68; }
+        .purchase-card { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); overflow: hidden; }
+        .purchase-copy { padding: 34px; }
+        .purchase-label { margin: 0 0 12px; color: var(--pink); font-size: .84rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+        .purchase-copy h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.7rem); letter-spacing: -.04em; }
+        .purchase-copy > p { margin: 13px 0 22px; color: var(--muted); line-height: 1.72; }
+        .benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+        .benefits li { display: flex; gap: 8px; color: #51465a; font-size: .92rem; line-height: 1.5; }
+        .benefits i { padding-top: 3px; color: #1aa16e; }
+        .buy-panel { display: flex; flex-direction: column; justify-content: center; padding: 34px; background: linear-gradient(145deg, #f9ecf5, #fff8fc); }
+        .old-price { margin: 0 0 3px; color: #917c91; font-size: .92rem; }
+        .price { margin: 0; color: var(--plum); font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 850; letter-spacing: -.07em; }
+        .period { margin: 5px 0 22px; color: var(--muted); }
+        .buy-button { display: block; padding: 15px 18px; border-radius: 12px; background: linear-gradient(135deg, #6c2a7e, #ef4e88); color: #fff; font-weight: 800; text-align: center; transition: transform .2s ease, box-shadow .2s ease; }
+        .buy-button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(177, 44, 120, .3); }
+        .buy-tip { margin: 12px 0 0; color: #816e80; font-size: .82rem; line-height: 1.55; text-align: center; }
+        .notice { display: flex; gap: 13px; align-items: flex-start; padding: 19px 21px; color: #5f5363; line-height: 1.72; }
+        .notice i { margin-top: 5px; color: var(--pink); }
+        .main-footer { margin-top: 48px; padding: 30px 20px; border-top: 1px solid var(--line); color: #897c89; font-size: 14px; text-align: center; }
+        @media (max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } .audience-grid, .scenario-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .purchase-card { grid-template-columns: 1fr; } }
+        @media (max-width: 720px) { .container { width: min(100% - 28px, 1160px); } .main-content { padding-top: 25px; } .hero { border-radius: 22px; } .section { margin: 38px 0; } .section-head { display: block; } .section-head p { margin-top: 8px; } .purchase-copy, .buy-panel { padding: 26px; } }
+        @media (max-width: 460px) { .audience-grid, .scenario-grid, .benefits { grid-template-columns: 1fr; } .hero-tags { display: grid; grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+    <div id="main-header-placeholder"></div>
+    <main class="main-content container">
+        <section class="hero" aria-labelledby="suno-title">
+            <div class="hero-content">
+                <p class="eyebrow"><i class="fa-solid fa-music"></i> SUNO · AI MUSIC CREATION</p>
+                <h1 id="suno-title">把灵感，变成一首完整的歌</h1>
+                <p>Suno 让你用一句描述、歌词、哼唱或音频片段开始创作，再生成包含人声、旋律、编曲与歌曲结构的音乐。适合快速做灵感 demo，也适合持续打磨内容和配乐素材。</p>
+                <ul class="hero-tags"><li>文本生成音乐</li><li>人声与歌词创作</li><li>音频扩展与 Remix</li></ul>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="features-title">
+            <div class="section-head"><h2 id="features-title">Suno 能做什么？</h2><p>从一句创意到可听的完整作品，也可以基于已有旋律、声音和歌曲不断延展、改写与制作。</p></div>
+            <div class="feature-grid">
+                <article class="card"><span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span><h3>文字生成完整歌曲</h3><p>用自然语言描述曲风、情绪、乐器、人声、语言和歌曲结构，快速得到有编曲与人声的歌曲版本。</p></article>
+                <article class="card"><span class="icon"><i class="fa-solid fa-microphone-lines"></i></span><h3>歌词、人声与音频输入</h3><p>可自定义歌词，也可从哼唱、语音备忘录、旋律或短音频出发，让作品保留你的原始灵感。</p></article>
+                <article class="card"><span class="icon"><i class="fa-solid fa-sliders"></i></span><h3>延展、翻唱与编辑</h3><p>对已有作品继续延长、Remix、翻唱、替换局部段落或采样，让一个想法逐步发展成完整项目。</p></article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="audience-title">
+            <div class="section-head"><h2 id="audience-title">适合哪些人？</h2><p>不需要乐理或专业录音设备，也可从灵感和文字开始；有制作基础的创作者则可把它作为快速打样与素材工具。</p></div>
+            <div class="audience-grid">
+                <article class="card"><h3>内容创作者</h3><p>为短视频、播客、直播、Vlog 和栏目制作原创 BGM、片头或主题音乐。</p></article>
+                <article class="card"><h3>独立音乐人</h3><p>快速验证旋律、歌词和编曲方向，完成 demo，再进入更细致的制作流程。</p></article>
+                <article class="card"><h3>营销与品牌团队</h3><p>为活动、品牌内容、节日传播和广告脚本制作不同风格的声音素材。</p></article>
+                <article class="card"><h3>游戏与影视创作</h3><p>生成氛围配乐、循环音乐、概念歌曲和音效灵感，辅助前期创作与原型展示。</p></article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="scenes-title">
+            <div class="section-head"><h2 id="scenes-title">常见任务场景</h2><p>建议先快速生成多个方向，再选出最合适的版本继续延展和编辑，创作效率会更高。</p></div>
+            <div class="scenario-grid">
+                <article class="card"><h3>短视频配乐</h3><p>针对画面节奏生成 15–60 秒的背景音乐、转场片段或品牌音效。</p></article>
+                <article class="card"><h3>主题曲与 Demo</h3><p>为歌曲概念、角色、节目或产品快速制作可试听的完整样稿。</p></article>
+                <article class="card"><h3>歌词与曲风试验</h3><p>用同一段歌词测试流行、摇滚、电子、R&B、民谣等不同表现方向。</p></article>
+                <article class="card"><h3>音乐素材迭代</h3><p>从已有歌曲或音频片段继续扩写、改编和组合，构建自己的创作素材库。</p></article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="product-title">
+            <div class="section-head"><h2 id="product-title">Suno Premium 自助充值</h2><p>适合需要更稳定创作额度与付费订阅权益的用户；具体权益与使用说明请以购买页商品详情为准。</p></div>
+            <article class="purchase-card">
+                <div class="purchase-copy">
+                    <p class="purchase-label">SUNO PREMIUM</p>
+                    <h2>Suno Premium · $30 会员</h2>
+                    <p>自助充值方案，适合持续生成歌曲、尝试多种曲风、制作内容配乐与开展长期音乐创作。</p>
+                    <ul class="benefits"><li><i class="fa-solid fa-circle-check"></i><span>解锁付费订阅对应的创作权益</span></li><li><i class="fa-solid fa-circle-check"></i><span>适合高频生成、试错与迭代</span></li><li><i class="fa-solid fa-circle-check"></i><span>用于歌曲、配乐与音乐素材创作</span></li><li><i class="fa-solid fa-circle-check"></i><span>使用说明请在商品详情页查看</span></li></ul>
+                </div>
+                <div class="buy-panel"><p class="old-price">Suno Premium $30 会员</p><p class="price">¥269</p><p class="period">/ 月</p><a class="buy-button" href="https://aigpt8.xyz/shop/W3JEJKNX/uygiv3" target="_blank" rel="noopener noreferrer">立即购买 <i class="fa-solid fa-arrow-up-right-from-square"></i></a><p class="buy-tip">点击购买后，请在商品详情页查看使用方式与注意事项。</p></div>
+            </article>
+        </section>
+
+        <div class="notice"><i class="fa-solid fa-circle-info"></i><div><strong>商用与版权提示：</strong>付费订阅期间生成的歌曲通常可获得 Suno 授予的商业使用权，但不等同于在所有地区自动享有完整著作权保护。请确保歌词、音频和素材拥有必要权利，并以 Suno 当时的服务条款及商品详情说明为准。</div></div>
+    </main>
+    <footer class="main-footer"><p>&copy; 2025 AI Pro Service. All Rights Reserved.</p></footer>
+    <script src="main-header.js"></script>
+</body>
+</html>
