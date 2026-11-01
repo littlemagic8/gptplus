@@ -4,6 +4,8 @@
 
 - Never commit or push changes directly to `main`.
 - Start every implementation task from a new feature branch. Use the `codex/` prefix unless the user specifies another branch name.
+- Before creating a new feature branch, fetch `origin` and check whether `origin/main` has advanced.
+- If it has advanced, update the local `main` branch to the latest `origin/main` (rebasing any local-only commits when applicable), then create the new branch from that updated `main`.
 - Commit and push the feature branch to the remote repository.
 - Create a Merge Request / Pull Request targeting `main`, and wait for it to be merged before considering the change part of `main`.
 - Direct pushes to `main` are prohibited, including small fixes, documentation updates, and configuration changes.
