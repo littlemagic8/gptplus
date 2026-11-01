@@ -18,7 +18,7 @@
     '      <div class="logo">AI</div>',
     '      <div class="logo-text">',
     '        <h1>AI Pro Service</h1>',
-    '        <span class="subtitle">GPT/Claude/Gemini/Perplexity 充值</span>',
+    '        <span class="subtitle">GPT/Claude/Gemini/Muse/Suno 充值</span>',
     '      </div>',
     '    </a>',
     '    <div class="desktop-nav">',
@@ -26,12 +26,19 @@
     '        <ul>',
     '          <li><a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i> 首页</a></li>',
     '          <li><a href="https://aigpt8.xyz/shop/W3JEJKNX/vbnetb" class="nav-highlight" data-nav="share"><i class="fa-solid fa-bolt"></i> 共享账号</a></li>',
-    '          <li><a href="purchase-gpt.html" class="nav-highlight" data-nav="gpt"><i class="fa-solid fa-book-open"></i> ChatGPT</a></li>',
-    '          <li><a href="purchase-claude.html" class="nav-highlight" data-nav="claude"><i class="fa-solid fa-right-to-bracket"></i> Claude Pro</a></li>',
-    '          <li><a href="purchase-gemini.html" class="nav-highlight" data-nav="gemini"><i class="fa-solid fa-star"></i> Gemini</a></li>',
-    '          <li><a href="purchase-grok.html" class="nav-highlight" data-nav="grok"><i class="fa-solid fa-bolt"></i> SuperGrok</a></li>',
-    '          <li><a href="purchase-perplexity.html" class="nav-highlight" data-nav="perplexity"><i class="fa-solid fa-lightbulb"></i> Perplexity Pro</a></li>',
-    '          <li><a href="purchase-premium.html" class="nav-highlight" data-nav="premium"><i class="fa-solid fa-crown"></i> X Premium(+)</a></li>',
+    '          <li class="nav-products-item">',
+    '            <a href="#" class="nav-products-trigger"><i class="fa-solid fa-layer-group"></i> AI 产品 <i class="fa-solid fa-chevron-down"></i></a>',
+    '            <ul class="nav-products-list">',
+    '              <li><a href="purchase-gpt.html" data-nav="gpt"><i class="fa-solid fa-book-open"></i> ChatGPT</a></li>',
+    '              <li><a href="purchase-claude.html" data-nav="claude"><i class="fa-solid fa-right-to-bracket"></i> Claude Pro</a></li>',
+    '              <li><a href="purchase-gemini.html" data-nav="gemini"><i class="fa-solid fa-star"></i> Gemini</a></li>',
+    '              <li><a href="purchase-grok.html" data-nav="grok"><i class="fa-solid fa-bolt"></i> SuperGrok</a></li>',
+    '              <li><a href="purchase-perplexity.html" data-nav="perplexity"><i class="fa-solid fa-lightbulb"></i> Perplexity Pro</a></li>',
+    '              <li><a href="purchase-premium.html" data-nav="premium"><i class="fa-solid fa-crown"></i> X Premium(+)</a></li>',
+    '              <li><a href="purchase-muse.html" data-nav="muse"><i class="fa-solid fa-wand-magic-sparkles"></i> Muse AI</a></li>',
+    '              <li><a href="purchase-suno.html" data-nav="suno"><i class="fa-solid fa-music"></i> Suno Premium</a></li>',
+    '            </ul>',
+    '          </li>',
     '          <li class="nav-more-item" style="display: none;">',
     '            <a href="#">更多 <i class="fa-solid fa-chevron-down"></i></a>',
     '            <ul class="nav-more-list"></ul>',
@@ -105,7 +112,9 @@
       });
     }
 
-    var allNavItems = Array.from(mainNavList.querySelectorAll('li:not(.nav-more-item)'));
+    var allNavItems = Array.from(mainNavList.children).filter(function (item) {
+      return !item.classList.contains('nav-more-item');
+    });
     var moreItem = root.querySelector('.nav-more-item');
     var moreList = root.querySelector('.nav-more-list');
 

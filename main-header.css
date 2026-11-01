@@ -143,6 +143,58 @@
   background-color: rgba(111, 66, 193, 0.1);
 }
 
+/* AI 产品下拉菜单 */
+.nav-products-item {
+  position: relative;
+}
+
+.nav-products-trigger .fa-chevron-down {
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.main-nav .nav-products-list {
+  display: none;
+  position: absolute;
+  /* Keep the panel directly against its trigger.  A vertical gap here breaks
+     :hover while moving the pointer from “AI 产品” into the panel. */
+  top: 100%;
+  left: 50%;
+  width: 238px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid #e9e2f2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(47, 30, 71, 0.14);
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.main-nav .nav-products-item:hover .nav-products-list,
+.main-nav .nav-products-item:focus-within .nav-products-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.nav-products-item:hover .nav-products-trigger .fa-chevron-down,
+.nav-products-item:focus-within .nav-products-trigger .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.main-nav .nav-products-list li a {
+  gap: 7px;
+  padding: 9px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.main-nav .nav-products-list li a:hover {
+  background: #f6f1fb;
+}
+
 /* “更多”下拉 */
 .nav-more-item {
   position: relative;
@@ -298,6 +350,28 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
+
+.mobile-nav-menu .main-nav .nav-products-list {
+  display: grid;
+  position: static;
+  width: 100%;
+  margin: 0;
+  padding: 0 16px 8px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mobile-nav-menu .nav-products-trigger {
+  padding-bottom: 10px;
+}
+
+.mobile-nav-menu .nav-products-list li a {
+  padding: 11px 6px;
+  font-size: 15px;
 }
 
 @media (max-width: 1024px) {
