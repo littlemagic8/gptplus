@@ -43,7 +43,8 @@
         .task-list { flex: 1; margin: 0 0 24px; padding: 0; list-style: none; }
         .task-list li { display: flex; gap: 9px; padding: 9px 0; color: #40536e; line-height: 1.55; }
         .task-list i { padding-top: 4px; color: #18a06c; font-size: .8rem; }
-        .pending { display: block; padding: 14px 18px; border: 1px dashed #9eb2cc; border-radius: 11px; color: #71839a; background: #f7faff; font-weight: 750; text-align: center; }
+        .pending { display: block; padding: 14px 18px; border: 1px solid var(--blue); border-radius: 11px; color: #fff; background: var(--blue); box-shadow: 0 8px 18px rgba(22, 119, 255, .18); font-weight: 750; text-align: center; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+        .pending:hover { color: #fff; background: #0b63dc; box-shadow: 0 12px 24px rgba(22, 119, 255, .28); transform: translateY(-1px); }
         .pending small { display: block; margin-top: 4px; font-weight: 500; }
         .scenario-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         .scenario-card { padding: 20px; }
@@ -84,7 +85,7 @@
         </section>
 
         <section class="section" aria-labelledby="products-title">
-            <div class="section-head"><h2 id="products-title">Muse 成品号</h2><p>账号自含大容量 Token；按使用强度选择合适版本。</p></div>
+            <div class="section-head"><h2 id="products-title">Muse 成品号与会员充值</h2><p>可按 Token 容量或月度会员额度选择适合自己的使用方式。</p></div>
             <div class="product-grid">
                 <article class="product-card">
                     <p class="product-label">STARTER CAPACITY</p><h3>Muse 成品号</h3><div class="token-number">¥20</div><p class="token-caption">自含 10 亿 Token，适合稳定的个人使用、日常工作与阶段性项目。使用说明请点击购买链接后，在商品详情页查看。</p>
@@ -95,6 +96,16 @@
                     <p class="product-label">POWER CAPACITY</p><h3>Muse 成品号</h3><div class="token-number">¥60</div><p class="token-caption">自含 310 亿 Token，适合高频 Agent、长期项目、开发与研究型重度工作流。使用说明请点击购买链接后，在商品详情页查看。</p>
                     <ul class="task-list"><li><i class="fa-solid fa-circle-check"></i><span>并行推进大量研究任务：长期选题追踪、报告迭代、跨来源信息核对与知识库建设。</span></li><li><i class="fa-solid fa-circle-check"></i><span>支撑大型代码库和持续开发：多轮调试、跨文件重构、测试补全与长周期功能开发。</span></li><li><i class="fa-solid fa-circle-check"></i><span>适合高频、多轮、工具密集型 Agent 工作，例如持续监控、批量内容生产与复杂流程编排。</span></li><li><i class="fa-solid fa-circle-check"></i><span>为团队协作、创业项目或长期个人自动化预留更充足的使用空间。</span></li></ul>
                     <a class="pending" href="https://aigpt8.xyz/shop/W3JEJKNX/bq2jml" target="_blank" rel="noopener noreferrer">立即购买<small>310 亿 Token</small></a>
+                </article>
+                <article class="product-card">
+                    <p class="product-label">POWER MEMBERSHIP</p><h3>Muse $20 充值</h3><div class="token-number">¥185</div><p class="token-caption">对应 $20/月会员充值档位，适合规律使用 Muse、需要更高 Agent 使用额度的个人用户。</p>
+                    <ul class="task-list"><li><i class="fa-solid fa-circle-check"></i><span>适合持续处理研究、写作、网页任务与日常工作流。</span></li><li><i class="fa-solid fa-circle-check"></i><span>为多步骤 Agent 任务提供更充足的月度使用空间。</span></li><li><i class="fa-solid fa-circle-check"></i><span>商品使用与充值说明请在购买链接的详情页查看。</span></li></ul>
+                    <a class="pending" href="https://aigpt8.xyz/shop/W3JEJKNX/bq2jml" target="_blank" rel="noopener noreferrer">立即购买<small>$20/月会员充值</small></a>
+                </article>
+                <article class="product-card featured">
+                    <p class="product-label">MAXIMUM MEMBERSHIP</p><h3>Muse $100 充值</h3><div class="token-number">¥830</div><p class="token-caption">对应 $100/月会员充值档位，面向高频、多任务与重度 Agent 工作流需求。</p>
+                    <ul class="task-list"><li><i class="fa-solid fa-circle-check"></i><span>适合持续进行复杂研究、开发协作与长期自动化。</span></li><li><i class="fa-solid fa-circle-check"></i><span>为高频工具调用、多轮任务与并行项目预留更高额度。</span></li><li><i class="fa-solid fa-circle-check"></i><span>商品使用与充值说明请在购买链接的详情页查看。</span></li></ul>
+                    <a class="pending" href="https://aigpt8.xyz/shop/W3JEJKNX/bq2jml" target="_blank" rel="noopener noreferrer">立即购买<small>$100/月会员充值</small></a>
                 </article>
             </div>
         </section>
