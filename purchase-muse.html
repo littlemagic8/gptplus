@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse AI 成品号 - AI模型服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="main-header.css">
+    <style>
+        :root { --header-height: 85px; --ink: #10233f; --muted: #61718a; --blue: #1677ff; --cyan: #00a9c7; --line: #dce6f4; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding-top: var(--header-height); overflow-x: hidden; color: var(--ink); background: #f5f9ff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif; }
+        a { text-decoration: none; }
+        .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+        .main-content { padding: 42px 0 20px; }
+        .hero { position: relative; overflow: hidden; padding: clamp(34px, 7vw, 76px); border-radius: 28px; color: #fff; background: radial-gradient(circle at 84% 15%, #58d6ea 0, transparent 25%), radial-gradient(circle at 12% 88%, #4067e9 0, transparent 27%), linear-gradient(135deg, #102f64, #1677ff 55%, #00a9c7); box-shadow: 0 24px 48px rgba(18, 79, 165, .2); }
+        .hero::after { content: ""; position: absolute; right: -80px; bottom: -120px; width: 360px; height: 360px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; box-shadow: 0 0 0 36px rgba(255,255,255,.06), 0 0 0 72px rgba(255,255,255,.04); }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; }
+        .eyebrow { display: inline-flex; gap: 8px; align-items: center; margin: 0 0 16px; padding: 7px 11px; border: 1px solid rgba(255,255,255,.26); border-radius: 999px; background: rgba(255,255,255,.12); font-size: .82rem; font-weight: 750; letter-spacing: .06em; }
+        .hero h1 { margin: 0; font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1; letter-spacing: -.055em; }
+        .hero p { max-width: 650px; margin: 18px 0 0; color: rgba(255,255,255,.9); font-size: clamp(1rem, 2vw, 1.13rem); line-height: 1.8; }
+        .hero-points { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+        .hero-points li { padding: 8px 11px; border-radius: 10px; background: rgba(8, 29, 65, .26); font-size: .88rem; }
+        .section { margin: 52px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+        .section-head h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -.04em; }
+        .section-head p { max-width: 560px; margin: 0; color: var(--muted); line-height: 1.7; }
+        .model-grid, .product-grid, .scenario-grid { display: grid; gap: 16px; }
+        .model-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .model-card, .product-card, .scenario-card, .notice { border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 14px 32px rgba(24, 72, 140, .06); }
+        .model-card { padding: 22px; }
+        .model-icon { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 13px; background: #e8f3ff; color: var(--blue); font-size: 1.2rem; }
+        .model-card h3 { margin: 0 0 8px; font-size: 1.12rem; }
+        .model-card p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.7; }
+        .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+        .product-card { position: relative; display: flex; min-height: 100%; flex-direction: column; padding: 30px; overflow: hidden; }
+        .product-card.featured { border-color: #87c8ff; background: linear-gradient(135deg, #f5fbff, #fff); }
+        .product-card::before { position: absolute; top: 0; right: 0; left: 0; height: 5px; content: ""; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+        .product-label { margin: 0 0 12px; color: var(--blue); font-size: .84rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+        .product-card h3 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.035em; }
+        .token-number { margin: 14px 0 6px; color: var(--blue); font-size: clamp(2.2rem, 5vw, 3.35rem); font-weight: 850; letter-spacing: -.06em; }
+        .token-caption { margin: 0 0 18px; color: var(--muted); font-size: .93rem; }
+        .task-list { flex: 1; margin: 0 0 24px; padding: 0; list-style: none; }
+        .task-list li { display: flex; gap: 9px; padding: 9px 0; color: #40536e; line-height: 1.55; }
+        .task-list i { padding-top: 4px; color: #18a06c; font-size: .8rem; }
+        .pending { display: block; padding: 14px 18px; border: 1px dashed #9eb2cc; border-radius: 11px; color: #71839a; background: #f7faff; font-weight: 750; text-align: center; }
+        .pending small { display: block; margin-top: 4px; font-weight: 500; }
+        .scenario-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .scenario-card { padding: 20px; }
+        .scenario-card strong { display: block; margin-bottom: 8px; color: var(--ink); }
+        .scenario-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.65; }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 14px 32px rgba(24, 72, 140, .06); }
+        .comparison > div { padding: 26px; }
+        .comparison > div + div { border-left: 1px solid var(--line); background: #fbfdff; }
+        .comparison h3 { margin: 0 0 12px; font-size: 1.2rem; }
+        .comparison ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.9; }
+        .notice { display: flex; gap: 13px; align-items: flex-start; padding: 18px 20px; color: #4d607a; line-height: 1.7; }
+        .notice i { margin-top: 5px; color: var(--blue); }
+        .main-footer { margin-top: 48px; padding: 30px 20px; border-top: 1px solid #dce6f4; color: #7c8ba0; font-size: 14px; text-align: center; }
+        @media (max-width: 900px) { .model-grid { grid-template-columns: 1fr; } .scenario-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 720px) { .main-content { padding-top: 25px; } .container { width: min(100% - 28px, 1160px); } .hero { border-radius: 22px; } .section { margin: 38px 0; } .section-head { display: block; } .section-head p { margin-top: 8px; } .product-grid, .comparison { grid-template-columns: 1fr; } .comparison > div + div { border-top: 1px solid var(--line); border-left: 0; } .product-card { padding: 25px; } }
+        @media (max-width: 460px) { .scenario-grid { grid-template-columns: 1fr; } .hero-points { display: grid; grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+    <div id="main-header-placeholder"></div>
+    <main class="main-content container">
+        <section class="hero" aria-labelledby="muse-title">
+            <div class="hero-content">
+                <p class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> MUSE AI · PERSONAL AGENT</p>
+                <h1 id="muse-title">把复杂任务，交给 Muse 持续推进</h1>
+                <p>Muse 是面向真实工作流的个人 AI Agent：理解目标、规划步骤，并可结合网页、已连接应用和工具持续处理任务。Muse 成品号提供大容量 Token，适合从日常效率到长期项目的不同使用强度。</p>
+                <ul class="hero-points"><li>多步骤 Agent 工作流</li><li>长上下文与多模态理解</li><li>代码、检索与工具调用</li></ul>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="models-title">
+            <div class="section-head"><h2 id="models-title">Muse 的模型与能力</h2><p>不同模型和模式适合不同任务；实际可用模型以账户与平台当时开放的功能为准。</p></div>
+            <div class="model-grid">
+                <article class="model-card"><span class="model-icon"><i class="fa-solid fa-bolt"></i></span><h3>Muse Spark</h3><p>面向高强度推理和 Agent 工作流，可用于跨步骤规划、复杂代码任务、并行工具调用与长上下文处理。</p></article>
+                <article class="model-card"><span class="model-icon"><i class="fa-solid fa-compass"></i></span><h3>Muse Wonder</h3><p>面向日常个人 Agent 体验，可把目标拆成计划，在网页和已连接服务中协助完成持续性的事务。</p></article>
+                <article class="model-card"><span class="model-icon"><i class="fa-solid fa-code"></i></span><h3>Muse Glimmer</h3><p>适合始终在线的本地 Agent 场景；可作为工具型工作流的一部分，用于自动化、辅助编程和任务执行。</p></article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="products-title">
+            <div class="section-head"><h2 id="products-title">Muse 成品号</h2><p>账号自含大容量 Token；按使用强度选择合适版本。</p></div>
+            <div class="product-grid">
+                <article class="product-card">
+                    <p class="product-label">STARTER CAPACITY</p><h3>Muse 成品号</h3><div class="token-number">¥20</div><p class="token-caption">自含 10 亿 Token，适合稳定的个人使用、日常工作与阶段性项目。</p>
+                    <ul class="task-list"><li><i class="fa-solid fa-circle-check"></i><span>持续进行网页研究、资料归纳、带引用的方案初稿与竞品整理。</span></li><li><i class="fa-solid fa-circle-check"></i><span>处理日常写作、邮件草拟、会议准备、日程规划与信息提取。</span></li><li><i class="fa-solid fa-circle-check"></i><span>完成中小型代码需求：理解仓库、修复问题、编写测试、重构局部模块。</span></li><li><i class="fa-solid fa-circle-check"></i><span>运行有限量的多步骤 Agent 任务，例如信息搜集、表格整理和重复性流程辅助。</span></li></ul>
+                    <a class="pending" href="https://aigpt8.xyz/shop/W3JEJKNX/bq2jml" target="_blank" rel="noopener noreferrer">立即购买<small>10 亿 Token</small></a>
+                </article>
+                <article class="product-card featured">
+                    <p class="product-label">POWER CAPACITY</p><h3>Muse 成品号</h3><div class="token-number">¥60</div><p class="token-caption">自含 310 亿 Token，适合高频 Agent、长期项目、开发与研究型重度工作流。</p>
+                    <ul class="task-list"><li><i class="fa-solid fa-circle-check"></i><span>并行推进大量研究任务：长期选题追踪、报告迭代、跨来源信息核对与知识库建设。</span></li><li><i class="fa-solid fa-circle-check"></i><span>支撑大型代码库和持续开发：多轮调试、跨文件重构、测试补全与长周期功能开发。</span></li><li><i class="fa-solid fa-circle-check"></i><span>适合高频、多轮、工具密集型 Agent 工作，例如持续监控、批量内容生产与复杂流程编排。</span></li><li><i class="fa-solid fa-circle-check"></i><span>为团队协作、创业项目或长期个人自动化预留更充足的使用空间。</span></li></ul>
+                    <a class="pending" href="https://aigpt8.xyz/shop/W3JEJKNX/bq2jml" target="_blank" rel="noopener noreferrer">立即购买<small>310 亿 Token</small></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="scenarios-title">
+            <div class="section-head"><h2 id="scenarios-title">Muse 适合哪些工作？</h2><p>它不只是一次性问答，更适合有明确目标、需要拆解并持续推进的任务。</p></div>
+            <div class="scenario-grid">
+                <article class="scenario-card"><strong>研究与决策</strong><p>搜集资料、比较方案、整理出处、持续补充结论，并输出可读的决策摘要。</p></article>
+                <article class="scenario-card"><strong>开发与产品</strong><p>理解需求和代码上下文，协助实现功能、排查问题、生成测试与维护项目文档。</p></article>
+                <article class="scenario-card"><strong>个人运营</strong><p>安排计划、草拟邮件、制作清单、整理收件信息，并将长期目标拆成可执行步骤。</p></article>
+                <article class="scenario-card"><strong>内容与创作</strong><p>建立选题池、检索素材、生成初稿、改写不同风格，并持续维护内容生产流程。</p></article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="capacity-title">
+            <div class="section-head"><h2 id="capacity-title">如何选择 Token 容量？</h2><p>Token 会随对话长度、模型、图片或文件输入、检索、代码执行和工具调用而变化；以下按工作强度选择即可。</p></div>
+            <div class="comparison"><div><h3>10 亿 Token：个人与阶段项目</h3><ul><li>以日常任务、短到中期项目为主</li><li>间歇性使用 Agent 与编程能力</li><li>希望获得充足余量，同时控制投入</li></ul></div><div><h3>310 亿 Token：高频与长期 Agent</h3><ul><li>高频使用、多任务并行或长期自动化</li><li>需要大量代码、研究或工具调用</li><li>希望减少容量焦虑，服务长期项目</li></ul></div></div>
+        </section>
+
+        <div class="notice"><i class="fa-solid fa-circle-info"></i><div><strong>使用提示：</strong>实际 Token 消耗取决于所选模型、上下文长度、图片或文件、多步骤规划和工具调用次数。涉及登录、支付、删除内容或对外发送信息的操作，请在 Muse 请求确认时仔细核对目标与权限。</div></div>
+    </main>
+    <footer class="main-footer"><p>&copy; 2025 AI Pro Service. All Rights Reserved.</p></footer>
+    <script src="main-header.js"></script>
+</body>
+</html>
